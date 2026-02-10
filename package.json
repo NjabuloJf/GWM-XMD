@@ -1,16 +1,16 @@
 {
-  "name": "Buddy-XTR",
+  "name": "whatsapp-njabuloelite",
   "version": "10.8.1",
-  "description": "A whatsapp bot created by Carl william",
-  "main": "synapse.js",
+  "description": "A whatsapp bot created by Njabulo Jb",
+  "main": "fanajb.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 start synapse.js --deep-monitoring --attach --name  Buddy-XTR",
-    "stop": "pm2 stop  Buddy-XTR",
-    "restart": "pm2 restart  Buddy-XTR"
+    "start": "pm2 start synapse.js --deep-monitoring --attach --name  whatsapp-njabuloelite",
+    "stop": "pm2 stop  whatsapp-njabuloelite",
+    "restart": "pm2 restart  whatsapp-njabuloelite"
   },
-  "keywords": ["carl-william", "whatsapp-bot", "whatsapp md bot"],
-  "author": "Buddy-XTR",
+  "keywords": ["Njabulo-Jb", "whatsapp-bot", "whatsapp md bot"],
+  "author": "whatsapp-njabuloelite",
   "license": "ISC",
   "dependencies": {
     "@whiskeysockets/baileys": "npm:xmd-baileys@latest",
