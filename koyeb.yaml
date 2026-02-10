@@ -1,6 +1,6 @@
-name: BERA-TECH 
+name: whatsapp-njabuloelite
 services:
-  - name: BERA-TECH-SERVICE
+  - name: whatsapp-njabuloelite-SERVICE
     type: web
     ports:
       - 5000
