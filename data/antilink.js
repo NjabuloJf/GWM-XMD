@@ -5,7 +5,7 @@ const antilinkSettings = {}; // In-memory database to store antilink settings fo
 
 export const handleAntilink = async (m, sock, logger, isBotAdmins, isAdmins, isCreator) => {
   try {
-    if (!m || !m.body || !m.from) {
+    if (!m || !m.body || !m.from || m.type !== 'text') {
       console.log('Invalid message object');
       return;
     }
