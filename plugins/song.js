@@ -7,7 +7,7 @@ import path from "path";
 import { spawn } from "child_process";
 import moment from "moment-timezone";
 
-const play = async (m, gss) => {
+const song = async (m, gss) => {
   const prefix = config.PREFIX;
   const body = m.body || "";
   const cmd = body.startsWith(prefix) ? body.slice(prefix.length).trim().split(/\s+/)[0]?.toLowerCase() : "";
