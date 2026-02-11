@@ -24,7 +24,7 @@ const alive = async (m, Matrix) => {
       contextInfo: {
         externalAdReply: {
           title: `👋hy ${m.pushName}`,
-          body: `Uptime: ${timeString}`;
+          body: `Uptime: ${timeString}`,
           thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
