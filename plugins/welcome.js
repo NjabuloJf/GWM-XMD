@@ -7,15 +7,26 @@ const gcEvent = async (m, Matrix) => {
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
   if (cmd === 'welcome') {
+    // Group-only command check
+    if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
+
     try {
+      // Get updated group metadata
       const groupMetadata = await Matrix.groupMetadata(m.from);
       const participants = groupMetadata.participants;
-      const superUser = config.SUPER_USER.includes(m.sender);
-      const isVerifiedAdmin = participants.find(p => p.id === m.sender)?.admin;
 
-      if (!superUser && !isVerifiedAdmin) return m.reply("*📛 YOU MUST BE AN ADMIN TO USE THIS COMMAND*");
+      // Get bot and sender info
+      const botNumber = await Matrix.decodeJid(Matrix.user.id);
+      const botAdmin = participants.find(p => p.id === botNumber)?.admin || participants.find(p => p.id === botNumber)?.isAdmin;
+      const senderAdmin = participants.find(p => p.id === m.sender)?.admin || participants.find(p => p.id === m.sender)?.isAdmin;
+
+      // Permission checks
+      if (!botAdmin) return m.reply("*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND*");
+      if (!senderAdmin) return m.reply("*📛 YOU MUST BE AN ADMIN TO USE THIS COMMAND*");
 
       let responseMessage;
+
+      // Handle command options
       if (text === 'on') {
         config.WELCOME = true;
         responseMessage = "✅ *WELCOME & GOODBYE MESSAGES ENABLED*\nThe bot will now send welcome messages when new members join and goodbye messages when members leave.";
@@ -23,17 +34,52 @@ const gcEvent = async (m, Matrix) => {
         config.WELCOME = false;
         responseMessage = "❌ *WELCOME & GOODBYE MESSAGES DISABLED*\nThe bot will no longer send welcome or goodbye messages.";
       } else {
-        responseMessage = `📋 *WELCOME COMMAND USAGE*\n*Enable:* ${prefix}welcome on\n*Disable:* ${prefix}welcome off\n*Current Status:* ${config.WELCOME ? '✅ Enabled' : '❌ Disabled'}`;
+        // Show usage information
+        responseMessage = `📋 *WELCOME COMMAND USAGE* *Enable:* ${prefix}welcome on *Disable:* ${prefix}welcome off *Current Status:* ${config.WELCOME ? '✅ Enabled' : '❌ Disabled'} *Requirements:* • Command must be used in a group • Both you and the bot must be admins • Bot needs message sending permissions`;
       }
 
-      await Matrix.sendMessage(m.from, { text: " ", contextInfo: { externalAdReply: { title: `👋hy ${m.pushName}`, body: responseMessage, thumbnailUrl: "", mediaType: 1, renderLargerThumbnail: false, sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb", } } }, { quoted: m });
+      // Send response with proper formatting
+      await Matrix.sendMessage(m.from, {
+        text: " ",
+        contextInfo: {
+          externalAdReply: {
+            title: `👋hy ${m.pushName}`,
+            body: responseMessage,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            mediaType: 1,
+            renderLargerThumbnail: false,
+            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
+          }
+        }
+      }, { quoted: m });
     } catch (error) {
       console.error("Error processing welcome command:", error);
+
+      // Better error messages
       let errorMessage = "❌ *ERROR PROCESSING COMMAND*";
-      await Matrix.sendMessage(m.from, { text: " ", contextInfo: { externalAdReply: { title: `👋hy ${m.pushName}`, body: errorMessage, thumbnailUrl: "", mediaType: 1, renderLargerThumbnail: false, sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb", } } }, { quoted: m });
+      if (error.message.includes("not authorized") || error.message.includes("401")) {
+        errorMessage += "Possible reasons:*• Bot is not an admin Bot doesn't have permission to view group info Group link has changed";
+      } else if (error.message.includes("403")) {
+        errorMessage += "The bot has been removed from admin position*";
+      } else if (error.message.includes("404")) {
+        errorMessage += "Group not found or bot is not in the group*";
+      }
+
+      await Matrix.sendMessage(m.from, {
+        text: " ",
+        contextInfo: {
+          externalAdReply: {
+            title: `👋hy ${m.pushName}`,
+            body: errorMessage,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            mediaType: 1,
+            renderLargerThumbnail: false,
+            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
+          }
+        }
+      }, { quoted: m });
     }
   }
 };
 
 export default gcEvent;
-
