@@ -1,4 +1,3 @@
-
 import config from '../config.cjs';
 
 const linkgc = async (m, gss) => {
@@ -9,77 +8,22 @@ const linkgc = async (m, gss) => {
     const validCommands = ['invite', 'link'];
 
     if (!validCommands.includes(cmd)) return;
+
     if (!m.isGroup) {
       let responseMessage = "*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS.*";
-      return await gss.sendMessage(m.from, {
-        text: " ",
-        contextInfo: {
-          externalAdReply: {
-            title: `👋hy ${m.pushName}`,
-            body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
-            mediaType: 1,
-            renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
-          }
-        }
-      }, { quoted: m });
-    }
-
-    const groupMetadata = await gss.groupMetadata(m.from);
-    const botNumber = await gss.decodeJid(gss.user.id);
-    const isBotAdmins = groupMetadata.participants.find(p => p.id === botNumber)?.admin;
-
-    if (!verifGroupe) {
-      let responseMessage = "*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND.*";
-      return await gss.sendMessage(m.from, {
-        text: " ",
-        contextInfo: {
-          externalAdReply: {
-            title: `👋hy ${m.pushName}`,
-            body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
-            mediaType: 1,
-            renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
-          }
-        }
-      }, { quoted: m });
+      return await gss.sendMessage(m.from, { text: " ", contextInfo: { externalAdReply: { title: `👋hy ${m.pushName}`, body: responseMessage, thumbnailUrl: "", mediaType: 1, renderLargerThumbnail: false, sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb", } } }, { quoted: m });
     }
 
     const response = await gss.groupInviteCode(m.from);
+    const groupMetadata = await gss.groupMetadata(m.from);
     let responseMessage = `https://chat.whatsapp.com/${response}\n\nGroup Link: ${groupMetadata.subject}`;
-    await gss.sendMessage(m.from, {
-      text: responseMessage,
-      detectLink: true,
-      contextInfo: {
-        externalAdReply: {
-          title: `👋hy ${m.pushName}`,
-          body: responseMessage,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
-          mediaType: 1,
-          renderLargerThumbnail: false,
-          sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
-        }
-      }
-    }, { quoted: m });
+    await gss.sendMessage(m.from, { text: responseMessage, contextInfo: { externalAdReply: { title: `👋hy ${m.pushName}`, body: responseMessage, thumbnailUrl: "", mediaType: 1, renderLargerThumbnail: false, sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb", } } }, { quoted: m });
   } catch (error) {
     console.error('Error:', error);
     let responseMessage = 'An error occurred while processing the command.';
-    await gss.sendMessage(m.from, {
-      text: " ",
-      contextInfo: {
-        externalAdReply: {
-          title: `👋hy ${m.pushName}`,
-          body: responseMessage,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
-          mediaType: 1,
-          renderLargerThumbnail: false,
-          sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
-        }
-      }
-    }, { quoted: m });
+    await gss.sendMessage(m.from, { text: " ", contextInfo: { externalAdReply: { title: `👋hy ${m.pushName}`, body: responseMessage, thumbnailUrl: "", mediaType: 1, renderLargerThumbnail: false, sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb", } } }, { quoted: m });
   }
 };
 
 export default linkgc;
+
