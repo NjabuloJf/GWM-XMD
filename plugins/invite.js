@@ -10,7 +10,7 @@ const invite = async (m, gss) => {
 
     if (!validCommands.includes(cmd)) return;
     if (!m.isGroup) {
-      let responseMessage = "*🚫 THIS COMMAND CAN ONLY BE USED IN GROUPS*";
+      let responseMessage = "BE USED IN GROUPS";
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
@@ -31,7 +31,7 @@ const invite = async (m, gss) => {
     const isBotAdmins = groupMetadata.participants.find(p => p.id === botNumber)?.admin;
 
     if (!isBotAdmins) {
-      let responseMessage = "*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND.*";
+      let responseMessage = "ADMIN TO USE THIS COMMAND";
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
@@ -48,7 +48,7 @@ const invite = async (m, gss) => {
     }
 
     if (!text) {
-      let responseMessage = `*📛 ENTER THE NUMBER YOU WANT TO INVITE TO THE GROUP*\n\nExample:\n*${prefix + cmd}* 923427582273`;
+      let responseMessage = `Example: .923427582273`;
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
@@ -65,7 +65,7 @@ const invite = async (m, gss) => {
     }
 
     if (text.includes('+')) {
-      let responseMessage = `*📛 ENTER THE NUMBER TOGETHER WITHOUT *+*`;
+      let responseMessage = `ENTER THE NUMBER TOGETHER WITHOUT *+*`;
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
@@ -82,7 +82,7 @@ const invite = async (m, gss) => {
     }
 
     if (isNaN(text)) {
-      let responseMessage = `*📛 ENTER ONLY THE NUMBERS PLUS YOUR COUNTRY CODE WITHOUT SPACES`;
+      let responseMessage = `COUNTRY CODE WITHOUT SPACES`;
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
@@ -115,7 +115,7 @@ const invite = async (m, gss) => {
       }
     });
 
-    let responseMessage = `*☑ AN INVITE LINK IS SENT TO THE USER.*`;
+    let responseMessage = `INVITE LINK IS SENT TO THE USER`;
     await gss.sendMessage(m.from, {
       text: " ",
       contextInfo: {
