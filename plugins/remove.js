@@ -1,4 +1,3 @@
-
 import config from '../config.cjs';
 
 const kick = async (m, gss) => {
@@ -18,8 +17,8 @@ const kick = async (m, gss) => {
 
     const groupMetadata = await gss.groupMetadata(m.from);
     const participants = groupMetadata.participants;
-    const botAdmin = participants.find(p => p.id === botNumber && p.admin);
-    const senderAdmin = participants.find(p => p.id === m.sender && p.admin);
+    const botAdmin = participants.find(p => p.id === botNumber)?.admin;
+    const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
 
     if (!botAdmin) {
       let responseMessage = "I need admin permissions to use this command.";
@@ -37,7 +36,7 @@ const kick = async (m, gss) => {
 
     if (users.length === 0) {
       let responseMessage = "Please mention or quote a user to kick.";
-      return await gss.sendMessage(m.from, { text: responseMessage }, { quoted: m });
+      return await gss.sendMessage(m.from, text: responseMessage }, { quoted: m });
     }
 
     const validUsers = users.filter(Boolean);
