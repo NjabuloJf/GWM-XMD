@@ -1,25 +1,24 @@
+
 import fs from 'fs';
 import acrcloud from 'acrcloud';
 import config from '../config.cjs';
 
-
 const acr = new acrcloud({
-host: 'identify-eu-west-1.acrcloud.com',
-access_key: '716b4ddfa557144ce0a459344fe0c2c9',
-access_secret: 'Lz75UbI8g6AzkLRQgTgHyBlaQq9YT5wonr3xhFkf'
+  host: 'identify-eu-west-1.acrcloud.com',
+  access_key: '716b4ddfa557144ce0a459344fe0c2c9',
+  access_secret: 'Lz75UbI8g6AzkLRQgTgHyBlaQq9YT5wonr3xhFkf'
 });
 
 const shazam = async (m, gss) => {
   try {
     const prefix = config.PREFIX;
-const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-const text = m.body.slice(prefix.length + cmd.length).trim();
-
+    const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+    const text = m.body.slice(prefix.length + cmd.length).trim();
     const validCommands = ['shazam', 'find', 'whatmusic'];
-    if (!validCommands.includes(cmd)) return;
-    
-    const quoted = m.quoted || {}; 
 
+    if (!validCommands.includes(cmd)) return;
+
+    const quoted = m.quoted || {};
     if (!quoted || (quoted.mtype !== 'audioMessage' && quoted.mtype !== 'videoMessage')) {
       return m.reply('You asked about music. Please provide a quoted audio or video message for identification.');
     }
@@ -29,35 +28,81 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
       const media = await m.quoted.download();
       const filePath = `./${Date.now()}.mp3`;
       fs.writeFileSync(filePath, media);
-
-      m.reply('Identifying the music, please wait...');
-
+      const responseMessage = 'Identifying the music, please wait...';
+      await gss.sendMessage(m.from, {
+        text: " ",
+        contextInfo: {
+          externalAdReply: {
+            title: `👋hy ${m.pushName}`,
+            body: responseMessage,
+            thumbnailUrl: "",
+            mediaType: 1,
+            renderLargerThumbnail: false,
+            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
+          }
+        }
+      });
       const res = await acr.identify(fs.readFileSync(filePath));
       const { code, msg } = res.status;
-
       if (code !== 0) {
         throw new Error(msg);
       }
 
       const { title, artists, album, genres, release_date } = res.metadata.music[0];
-      const txt = `𝚁𝙴𝚂𝚄𝙻𝚃 
-      • 📌 *TITLE*: ${title}
-      • 👨‍🎤 𝙰𝚁𝚃𝙸𝚂𝚃: ${artists ? artists.map(v => v.name).join(', ') : 'NOT FOUND'}
-      • 💾 𝙰𝙻𝙱𝚄𝙼: ${album ? album.name : 'NOT FOUND'}
-      • 🌐 𝙶𝙴𝙽𝚁𝙴: ${genres ? genres.map(v => v.name).join(', ') : 'NOT FOUND'}
-      • 📆 RELEASE DATE: ${release_date || 'NOT FOUND'}
-      `.trim();
-
+      const txt = ` 📌 *TITLE*: ${title} •
+👨‍🎤 𝙰𝚁𝚃𝙸𝚂𝚃: ${artists ? artists.map(v => v.name).join(', ') : 'NOT FOUND'} • 
+💾 𝙰𝙻𝙱𝚄𝙼: ${album ? album.name : 'NOT FOUND'} • 
+🌐 𝙶𝙴𝙽𝚁𝙴: ${genres ? genres.map(v => v.name).join(', ') : 'NOT FOUND'} • 
+📆 RELEASE DATE: ${release_date || 'NOT FOUND'} `.trim();
       fs.unlinkSync(filePath);
-      m.reply(txt);
+      await gss.sendMessage(m.from, {
+        text: txt,
+        contextInfo: {
+          externalAdReply: {
+            title: `👋hy ${m.pushName}`,
+            body: txt,
+            thumbnailUrl: "",
+            mediaType: 1,
+            renderLargerThumbnail: true,
+            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
+          }
+        }
+      });
     } catch (error) {
       console.error(error);
-      m.reply('An error occurred during music identification.');
+      const errorMessage = 'An error occurred during music identification.';
+      await gss.sendMessage(m.from, {
+        text: " ",
+        contextInfo: {
+          externalAdReply: {
+            title: `👋hy ${m.pushName}`,
+            body: errorMessage,
+            thumbnailUrl: "",
+            mediaType: 1,
+            renderLargerThumbnail: false,
+            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
+          }
+        }
+      });
     }
   } catch (error) {
     console.error('Error:', error);
-    m.reply('An Error Occurred While Processing The Command.');
+    const errorMessage = 'An Error Occurred While Processing The Command.';
+    await gss.sendMessage(m.from, {
+      text: " ",
+      contextInfo: {
+        externalAdReply: {
+          title: `👋hy ${m.pushName}`,
+          body: errorMessage,
+          thumbnailUrl: "",
+          mediaType: 1,
+          renderLargerThumbnail: false,
+          sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
+        }
+      }
+    });
   }
 };
 
 export default shazam;
+
