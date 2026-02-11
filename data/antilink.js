@@ -48,6 +48,7 @@ export const handleAntilink = async (m, sock, logger, isBotAdmins, isAdmins, isC
         return;
       } catch (error) {
         console.error('Error in antilink command:', error);
+        await sock.sendMessage(m.from, { text: 'An error occurred while processing your request.' }, { quoted: m });
       }
     }
 
@@ -85,11 +86,13 @@ export const handleAntilink = async (m, sock, logger, isBotAdmins, isAdmins, isC
               await sock.groupParticipantsUpdate(m.from, [m.sender], 'remove');
             } catch (error) {
               console.error('Error removing user:', error);
+              await sock.sendMessage(m.from, { text: 'Failed to remove user.' }, { quoted: m });
             }
           }, 5000); // 5 seconds delay before kick
         }
       } catch (error) {
         console.error('Error in antilink handler:', error);
+        await sock.sendMessage(m.from, { text: 'An error occurred while processing your request.' }, { quoted: m });
       }
     }
   } catch (error) {
