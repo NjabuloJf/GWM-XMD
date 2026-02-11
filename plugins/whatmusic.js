@@ -35,7 +35,7 @@ const shazam = async (m, gss) => {
           externalAdReply: {
             title: `👋hy ${m.pushName}`,
             body: responseMessage,
-            thumbnailUrl: "",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -56,12 +56,14 @@ const shazam = async (m, gss) => {
 📆 RELEASE DATE: ${release_date || 'NOT FOUND'} `.trim();
       fs.unlinkSync(filePath);
       await gss.sendMessage(m.from, {
-        text: txt,
+        document: { url: 'https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg' },
+         mimetype: 'application/pdf',
+         fileName: `${title} `,
         contextInfo: {
           externalAdReply: {
             title: `👋hy ${m.pushName}`,
-            body: txt,
-            thumbnailUrl: "",
+            body: "Shazamshazam",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
             mediaType: 1,
             renderLargerThumbnail: true,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -70,7 +72,7 @@ const shazam = async (m, gss) => {
       });
     } catch (error) {
       console.error(error);
-      const errorMessage = 'An error occurred during music identification.';
+      const errorMessage = 'An error occurred during';
       await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
@@ -87,7 +89,7 @@ const shazam = async (m, gss) => {
     }
   } catch (error) {
     console.error('Error:', error);
-    const errorMessage = 'An Error Occurred While Processing The Command.';
+    const errorMessage = 'An Error Occurred';
     await gss.sendMessage(m.from, {
       text: " ",
       contextInfo: {
