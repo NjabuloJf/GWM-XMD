@@ -5,8 +5,6 @@ const antilinkSettings = {}; // In-memory database to store antilink settings fo
 
 export const handleAntilink = async (m, sock, logger, isBotAdmins, isAdmins, isCreator) => {
   try {
-    console.log('Handling antilink...');
-
     if (!m || !m.body || !m.from) {
       console.log('Invalid message object');
       return;
@@ -56,7 +54,6 @@ export const handleAntilink = async (m, sock, logger, isBotAdmins, isAdmins, isC
     if (antilinkSettings[m.from]) {
       try {
         if (m.body.match(/(https:\/\/chat.whatsapp.com\/)/gi)) {
-          console.log('Link detected!');
           if (!isBotAdmins) {
             console.log('Bot is not an admin');
             await sock.sendMessage(m.from, { text: `The bot needs to be an admin to remove links.` });
