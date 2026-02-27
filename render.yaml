@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: whatsapp-njabuloelite
+    name: GWM-XMD
     env: node
     plan: free
-    repo: https://github.com/NjabuloJf/whatsapp-njabuloelite
+    repo: https://github.com/NjabuloJf/GWM-XMD
     branch: main
     buildCommand: npm install
     startCommand: npm start
