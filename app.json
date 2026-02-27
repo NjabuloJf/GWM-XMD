@@ -1,9 +1,9 @@
 {
-  "name": "whatsapp-njabuloelite",
-  "description": "whatsapp-njabuloelite Framework by Njabulo Jb",
+  "name": "GWM-XMD",
+  "description": "whatsapp-gwm-xmd Framework by Njabulo Jb",
   "logo": "https://files.catbox.moe/7jt6op.jpg",
   "keywords": ["Njabulo-Jb", "whatsapp-bot", "whatsapp-md-bot"],
-  "repository": "https://github.com/NjabuloJf/whatsapp-njabuloelite",
+  "repository": "https://github.com/NjabuloJf/GWM-XMD",
   "stack": "container",
   "env": { 
   
