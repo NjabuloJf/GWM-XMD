@@ -1,16 +1,16 @@
 {
-  "name": "whatsapp-njabuloelite",
+  "name": "GWM-XMD",
   "version": "10.8.1",
   "description": "A whatsapp bot created by Njabulo Jb",
   "main": "fanajb.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 start fanajb.js --deep-monitoring --attach --name  whatsapp-njabuloelite",
-    "stop": "pm2 stop  whatsapp-njabuloelite",
-    "restart": "pm2 restart  whatsapp-njabuloelite"
+    "start": "pm2 start fanajb.js --deep-monitoring --attach --name  GWM-XMD",
+    "stop": "pm2 stop  GWM-XMD",
+    "restart": "pm2 restart  GWM-XMD"
   },
   "keywords": ["Njabulo-Jb", "whatsapp-bot", "whatsapp md bot"],
-  "author": "whatsapp-njabuloelite",
+  "author": "GWM-XMD",
   "license": "ISC",
   "dependencies": {
     "@whiskeysockets/baileys": "npm:xmd-baileys@latest",
