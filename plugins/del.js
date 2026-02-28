@@ -73,7 +73,7 @@ const deleteMessage = async (m, gss) => {
         contextInfo: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-          newsletterJid: configID_CHANNEL,
+          newsletterJid: config.ID_CHANNEL,
           newsletterName: "╭••➤GWM-XMD",
           serverMessageId: 143,
          },
