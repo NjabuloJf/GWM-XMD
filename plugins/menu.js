@@ -206,7 +206,7 @@ const menu = async (m, Matrix) => {
             },
             message: {
                 contactMessage: {
-                    displayName: "njᥲbᥙᥣo",
+                    displayName: `${m.pushName}`,
                     vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
                 }
             }
@@ -225,7 +225,7 @@ const menu = async (m, Matrix) => {
             },
             message: {
                 contactMessage: {
-                    displayName: "njᥲbᥙᥣo",
+                    displayName: `${m.pushName}`,
                     vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
                 }
             }
