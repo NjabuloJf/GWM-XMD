@@ -210,11 +210,10 @@ const menu = async (m, Matrix) => {
                 }
             }
         } }); 
-    const randomAudioUrl = "https://files.catbox.moe/rzm1op.mp3",
-
+    
     // Send audio after sending the menu
     await Matrix.sendMessage(m.from, {
-     audio: { url: randomAudioUrl },
+     audio: fs.readFileSync('./public/menuvid.mp4'),
        mimetype: 'audio/mpeg',
         ptt: true, // Send as a voice note
          }, { quoted: {
