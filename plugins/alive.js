@@ -14,29 +14,24 @@ const alive = async (m, Matrix) => {
 
   if (!['alive', 'uptime', 'runtime'].includes(cmd)) return;
 
- 
+  const str = `*🤖 Bot Status: Online*\n*⏳ Uptime: ${timeString}*`;
 
   await Matrix.sendMessage(m.from, {
+    video: fs.readFileSync('./media/fana.mp4'),
+    caption: str,
     contextInfo: {
-     text: "  ",
-         contextInfo: {
-         isForwarded: true,
+     forwardingScore: 999,
+      mentionedJid: [m.sender],
+      isForwarded: true,
           forwardedNewsletterMessageInfo: {
           newsletterJid: config.ID_CHANNEL,
           newsletterName: "╭••➤GWM-XMD",
-          serverMessageId: 143,
-         },
-          forwardingScore: 999,
-        externalAdReply: {
-          title: "I am GWM-XMD for assistant ui",
-          body: `Uptime: ${timeString}`,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
-          mediaType: 1,
-          renderLargerThumbnail: true,
-          sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
-        }
+          serverMessageId: 143,        
       }
-    }, { quoted: m });
+    }
+  }, {
+    quoted: m
+  });
 };
 
 export default alive;
