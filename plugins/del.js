@@ -14,7 +14,7 @@ const deleteMessage = async (m, gss) => {
       if (!isCreator) {
         let responseMessage = "THIS IS AN OWNER COMMAND";
         return await gss.sendMessage(m.from, {
-          text: " .",
+          text: "  ",
           contextInfo: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
@@ -38,9 +38,8 @@ const deleteMessage = async (m, gss) => {
       if (!m.quoted) {
         let responseMessage = '✳️ Reply to the message you want to delete';
         return await gss.sendMessage(m.from, {
-          text: " .",
+          text: "  ",
           contextInfo: {
-            contextInfo: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
           newsletterJid: '120363345407274799@newsletter',
@@ -70,9 +69,8 @@ const deleteMessage = async (m, gss) => {
 
       let responseMessage = 'Message deleted successfully!';
       await gss.sendMessage(m.from, {
-        text: " .",
+        text: "  ",
         contextInfo: {
-          contextInfo: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
           newsletterJid: '120363345407274799@newsletter',
@@ -95,9 +93,8 @@ const deleteMessage = async (m, gss) => {
     console.error('Error deleting message:', error);
     let responseMessage = 'An error occurred while trying to delete the message.';
     await gss.sendMessage(m.from, {
-      text: " .",
+      text: "  ",
       contextInfo: {
-        contextInfo: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
           newsletterJid: '120363345407274799@newsletter',
