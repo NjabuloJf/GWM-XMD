@@ -24,6 +24,7 @@ const config = {
   DESCRIPTION: process.env.DESCRIPTION || "njabulo",
   OWNER_NAME: process.env.OWNER_NAME || "XD JB",
   OWNER_NUMBER: process.env.OWNER_NUMBER || "26778659691",
+  ID_CHANNEL: process.env._CHANNEL || "120363399999197102@newsletter",
   GEMINI_KEY: process.env.GEMINI_KEY || "AIzaSyCUPaxfIdZawsKZKqCqJcC-GWiQPCXKTDc",
   WELCOME: process.env.WELCOME !== undefined ? process.env.WELCOME === 'true' : true, 
   
