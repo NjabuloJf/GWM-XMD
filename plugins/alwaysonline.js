@@ -23,10 +23,13 @@ const alwaysonlineCommand = async (m, Matrix) => {
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
-        forwardedNewsletterMessageInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
           newsletterJid: config.ID_CHANNEL,
           newsletterName: "╭••➤GWM-XMD",
           serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
             title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
@@ -41,10 +44,13 @@ const alwaysonlineCommand = async (m, Matrix) => {
       await Matrix.sendMessage(m.from, {
         text: ' ',
         contextInfo: {
-        forwardedNewsletterMessageInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
           newsletterJid: config.ID_CHANNEL,
           newsletterName: "╭••➤GWM-XMD",
           serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
             title: "I am GWM-XMD for assistant ui",
             body: responseMessage,

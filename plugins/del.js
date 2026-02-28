@@ -71,7 +71,7 @@ const deleteMessage = async (m, gss) => {
       await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
-          externalAdReply: {
+
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
           newsletterJid: config.ID_CHANNEL,
@@ -79,6 +79,7 @@ const deleteMessage = async (m, gss) => {
           serverMessageId: 143,
          },
           forwardingScore: 999,
+                    externalAdReply: {
             title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
             thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
