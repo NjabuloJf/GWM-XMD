@@ -10,30 +10,38 @@ const anticallcommand = async (m, Matrix) => {
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
   if (cmd === 'anticall') {
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+    if (!isCreator) return m.reply("⚠️only owner use bot");
 
     let responseMessage;
     if (text === 'on') {
       config.REJECT_CALL = true;
-      responseMessage = "Anti-Call has been enabled.";
+      responseMessage = "Anti-Call has been enabled✅";
     } else if (text === 'off') {
       config.REJECT_CALL = false;
-      responseMessage = "Anti-Call has been disabled.";
+      responseMessage = "Anti-Call has been disabled❎";
     } else {
-      responseMessage = "Usage:- anticall on or off";
+      responseMessage = "Usage:- anticall on or off🔄";
     }
 
     try {
       await Matrix.sendMessage(m.from, {
-        text: " ",
-        contextInfo: {
+        document: { url: "https://files.catbox.moe/qtvynm.jpg" }, 
+         mimetype: 'application/pdf',
+         fileName: "GWM-XMD",
+         contextInfo: {
+         isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });
@@ -42,13 +50,19 @@ const anticallcommand = async (m, Matrix) => {
       await Matrix.sendMessage(m.from, {
         text: ' ',
         contextInfo: {
+                  isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
-            body: 'Error processing your request.',
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            title: "I am GWM-XMD for assistant ui",
+            body: '❌Error processing your request.',
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });
