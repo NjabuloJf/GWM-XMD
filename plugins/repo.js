@@ -37,14 +37,17 @@ const repo = async (m, gss) => {
       const repoData = response.data;
 
       // Format the repository information
-      const formattedInfo = ` *══════════════*
-*GWM-XMD REPOSITORY INFO* 
-*Total* Stars: ${repoData.stargazers_count}
-*Total* Forks: ${repoData.forks_count}
-*Owner: njabulojb.co*
-*Updated:* ${new Date(repoData.updated_at).toLocaleDateString()}
-*CREATED:* ${new Date(repoData.created_at).toLocaleDateString()}
-*¦═══════════════*
+      const formattedInfo = `*╭❖  ⚡  ❖╮*
+  *𝐆𝐖𝐌-𝐗𝐌𝐃*
+*╰❖  ⚡  ❖╯*
+*╭─❖*
+*┋ GWM-XMD REPOSITORY INFO* 
+*┋ Total* Stars: ${repoData.stargazers_count}
+*┋ Total* Forks: ${repoData.forks_count}
+*┋ Owner: njabulojb.co*
+*┋ Updated:* ${new Date(repoData.updated_at).toLocaleDateString()}
+*┋ CREATED:* ${new Date(repoData.created_at).toLocaleDateString()}
+*╰─❖*
 
 *______________________*
  Reply with a number to choose an action:
@@ -53,10 +56,10 @@ const repo = async (m, gss) => {
 3️⃣ Ping Bot 
 4️⃣ Repo Alive Audio 
 *_____________________*
-*¦════════¦*
+*╭─❖*
 *⿻│①◦ Get more bot for GWM-XMD*
 *⿻│②◦ Visit njabulobot.vercel.app*
-*════════>*
+*╰─❖*
 `;
 
       
@@ -64,9 +67,7 @@ const repo = async (m, gss) => {
       await gss.sendMessage(
         m.from,
         {
-         document: { url: repoData.html_url },
-         mimetype: 'application/pdf',
-         fileName:  `⭐ ${repoData.stargazers_count} Stars | 🍴 ${repoData.forks_count} Forks`,       
+        video: fs.readFileSync('./public/menuvid.mp4'),       
          caption: formattedInfo,
          contextInfo: {
          mentionedJid: [m.sender],
@@ -82,7 +83,7 @@ const repo = async (m, gss) => {
             mediaType: 1,
             previewType: 0,
             thumbnailUrl: repoData.owner.avatar_url,
-            renderLargerThumbnail: true,
+            renderLargerThumbnail: false,
           },
         },
         }, { quoted: m });
