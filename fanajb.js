@@ -626,8 +626,8 @@ async function sendConnectMessage(Matrix) {
             title: " ⇆ Message bot active↻ ",
             mediaType: 1,
             previewType: 0,
-            thumbnailUrl: "https://files.catbox.moe/qtvynm.jpg",
-            renderLargerThumbnail: true,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
+            renderLargerThumbnail: false,
             },
             },
             };
@@ -823,7 +823,7 @@ async function init() {
             const sessionLoaded = await loadGiftedSession();
             
             if (sessionLoaded) {
-                console.log(chalk.green("✅ Gifted session loaded successfully!"));
+                console.log(chalk.green("✅ BWM-XMD session loaded successfully!"));
                 await start();
             } else {
                 console.log(chalk.red("❌ Failed to load Gifted session, falling back to QR code."));
