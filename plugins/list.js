@@ -1,4 +1,3 @@
-
 import moment from 'moment-timezone';
 import fs from 'fs';
 import os from 'os';
@@ -44,6 +43,7 @@ const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
 const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
 const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
 let pushwish = "";
+
 if (time2 < "05:00:00") {
   pushwish = `Good Morning 🌄`;
 } else if (time2 < "11:00:00") {
@@ -63,84 +63,197 @@ const menu = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const mode = config.MODE === 'public' ? 'public' : 'private';
   const pref = config.PREFIX;
-  const validCommands = ['fullmenu', 'menu', 'listcmd'];
+
+  const validCommands = ['list', 'help', 'menu'];
 
   if (validCommands.includes(cmd)) {
-    const str = `*╭ׂ─ׂ┄『•ɴᴊᴀʙᴜʟᴏᴊʙ ᴇʟɪᴛᴇ•』┴*
-*│╭ׂ─ׂ┄─ׅ─ׂ┄* 
-*┴│▢◦name: njabulo.elite.app*
-*⿻│▢◦prefix: [ ${prefix} ]* 
-*⿻│▢◦mode: ${mode}*
-*⿻│▢◦baileys: Multi.Device.co*
-*┬│▢◦version:* ^4.8.c
-*│┕─ׂ┄─ׅ─ׂ┄*
-*├┅┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ┄|*
-*│╭ׂ─ׂ┄─ׅ─ׂ┄*
-*┴│①◦Owner.menu*
-*⿻│②◦Main.menu*
-*⿻│③◦Search.menu*
-*⿻│④◦Group.menu*
-*⿻│⑤◦Tools.menu*
-*⿻│⑥◦AI.menu*
-*⿻│⑦◦Converter.menu* 
-*⿻│⑧◦Download.menu*
-*⿻│*
-*⿻│①◦ *visit*
-*⿻│get* njabulobot.vercel.app
-*┬│②◦reply menu type like .ai.menu*
-*│┕─ׂ┄─ׅ─ׂ┄*
-*╰─┄─ׅ─ׂ┄─ׂ┄─ׅ─ׂ─ׂ┄┴*`;
+    const mainMenu = `
+╭━━━〔 *${config.BOT_NAME}* 〕━━━┈⊷
+┃★╭──────────────
+┃★│ Owner : *${config.OWNER_NAME}*
+┃★│ Instgram : *https://www.instagram.com/quantum_.vybe?igsh=MTlwOXN5a2sycnA2bA==*
+┃★│ User : *${m.pushName}*
+┃★│ Baileys : *Multi Device*
+┃★│ Type : *NodeJs*
+┃★│ Mode : *${mode}*
+┃★│ Platform : *${os.platform()}*
+┃★│ Prefix : [${prefix}]
+┃★│ Version : *3.1.0*
+┃★╰──────────────
+╰━━━━━━━━━━━━━━━┈⊷
 
-    // Check if MENU_IMAGE exists in config and is not empty
-    let menuImage;
-    if (config.MENU_IMAGE && config.MENU_IMAGE.trim() !== '') {
-      try {
-        // Try to fetch the image from URL
-        const response = await axios.get(config.MENU_IMAGE, { responseType: 'arraybuffer' });
-        menuImage = Buffer.from(response.data, 'binary');
-      } catch (error) {
-        console.error('Error fetching menu image from URL, falling back to local image:', error);
-        menuImage = fs.readFileSync('./njabulo/fana.jpg');
+> ${pushwish} *${m.pushName}*!
+
+╭━━〔 *Download Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• apk
+┃◈┃• facebook
+┃◈┃• mediafire
+┃◈┃• pinterestdl
+┃◈┃• gitclone
+┃◈┃• gdrive
+┃◈┃• insta
+┃◈┃• ytmp3
+┃◈┃• ytmp4
+┃◈┃• play
+┃◈┃• song
+┃◈┃• video
+┃◈┃• ytmp3doc
+┃◈┃• ytmp4doc
+┃◈┃• tiktok
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *Converter Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• attp
+┃◈┃• attp2
+┃◈┃• attp3
+┃◈┃• ebinary
+┃◈┃• dbinary
+┃◈┃• emojimix
+┃◈┃• mp3
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *AI Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• ai
+┃◈┃• bug
+┃◈┃• report
+┃◈┃• gpt
+┃◈┃• dalle
+┃◈┃• remini
+┃◈┃• gemini
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *Tools Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• calculator
+┃◈┃• tempmail
+┃◈┃• checkmail
+┃◈┃• trt
+┃◈┃• tts
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *Group Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• linkgroup
+┃◈┃• setppgc
+┃◈┃• setname
+┃◈┃• setdesc
+┃◈┃• group
+┃◈┃• gcsetting
+┃◈┃• welcome
+┃◈┃• add
+┃◈┃• kick
+┃◈┃• hidetag
+┃◈┃• tagall
+┃◈┃• antilink
+┃◈┃• antitoxic
+┃◈┃• promote
+┃◈┃• demote
+┃◈┃• getbio
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *Search Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• play
+┃◈┃• yts
+┃◈┃• imdb
+┃◈┃• google
+┃◈┃• gimage
+┃◈┃• pinterest
+┃◈┃• wallpaper
+┃◈┃• wikimedia
+┃◈┃• ytsearch
+┃◈┃• ringtone
+┃◈┃• lyrics
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *Main Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• ping
+┃◈┃• alive
+┃◈┃• owner
+┃◈┃• menu
+┃◈┃• infobot
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *Owner Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• join
+┃◈┃• leave
+┃◈┃• block
+┃◈┃• unblock
+┃◈┃• setppbot
+┃◈┃• anticall
+┃◈┃• setstatus
+┃◈┃• setnamebot
+┃◈┃• autotyping
+┃◈┃• alwaysonline
+┃◈┃• autoread
+┃◈┃• autosview
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+╭━━〔 *Stalk Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• truecaller
+┃◈┃• instastalk
+┃◈┃• githubstalk
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+
+> *Use ${prefix} followed by the command name*
+`;
+
+    // Function to get menu image
+    const getMenuImage = async () => {
+      if (config.MENU_IMAGE && config.MENU_IMAGE.trim() !== '') {
+        try {
+          const response = await axios.get(config.MENU_IMAGE, { responseType: 'arraybuffer' });
+          return Buffer.from(response.data, 'binary');
+        } catch (error) {
+          console.error('Error fetching menu image from URL, falling back to local image:', error);
+          return fs.readFileSync('./media/carltech.jpeg');
+        }
+      } else {
+        return fs.readFileSync('./media/carltech.jpeg');
       }
-    } else {
-      // Use local image if MENU_IMAGE is not configured
-      menuImage = fs.readFileSync('./njabulo/fana.jpg');
-    }
+    };
 
-    // Send the menu message
-    await Matrix.sendMessage(m.from, {
-      image: menuImage,
-      caption: str,
-       contextInfo: {
-           mentionedJid: [m.sender],
-           externalAdReply: {
-            title: "NjabuloJb Elite (MENU)",
-            body: "Mmmm it's you really 😘😍💋",
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
-            mediaType: 1,
-            renderLargerThumbnail: false, 
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
+    const menuImage = await getMenuImage();
+
+    const sentMessage = await Matrix.sendMessage(m.from, {
+      video: fs.readFileSync('./media/fana.mp4'),
+      caption: mainMenu,
+      contextInfo: {
+        mentionedJid: [m.sender],
+        forwardingScore: 999,
+         isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,       
         }
       }
-    }, { quoted: m });
+    }, {
+      quoted: m
+    });
 
+    // Send audio after sending the menu
     await Matrix.sendMessage(m.from, {
-      audio: { url: 'https://files.catbox.moe/6x0rb7.mp3' },
-       mimetype: 'audio/mpeg',
-       ptt: true, // Send as a voice note
-       contextInfo: {
-           mentionedJid: [m.sender],
-           externalAdReply: {
-            title: "🦈Song of tje year",
-            body: "l really love papi😘😍💋",
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
-            mediaType: 1,
-            renderLargerThumbnail: false, 
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
-        }
-      }
+      audio: { url: 'https://github.com/XdTechPro/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' },
+      mimetype: 'audio/mp4',
+      ptt: true
     }, { quoted: m });
   }
 };
 
-export default menu; 
+export default menu;
