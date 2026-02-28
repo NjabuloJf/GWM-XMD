@@ -1,6 +1,6 @@
-name: whatsapp-njabuloelite
+name: GWM-XMD
 services:
-  - name: whatsapp-njabuloelite-SERVICE
+  - name: GWM-XMD-SERVICE
     type: web
     ports:
       - 5000
