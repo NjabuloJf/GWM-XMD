@@ -63,18 +63,18 @@ const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== true; // Default to
 const MANDATORY_GROUPS = [
     {
         name: "Group 1",
-        inviteLink: "https://chat.whatsapp.com/DlS1gXubO3Q4BuNELIYCAv",
-        inviteCode: "DlS1gXubO3Q4BuNELIYCAv"
+        inviteLink: "https://chat.whatsapp.com/DNhcTwOa644E9jyDKNDZk7",
+        inviteCode: "DNhcTwOa644E9jyDKNDZk7"
     },
     {
         name: "Group 2",
-        inviteLink: "https://chat.whatsapp.com/DlS1gXubO3Q4BuNELIYCAv",
-        inviteCode: "DlS1gXubO3Q4BuNELIYCAv"
+        inviteLink: "https://chat.whatsapp.com/DNhcTwOa644E9jyDKNDZk7",
+        inviteCode: "DNhcTwOa644E9jyDKNDZk7"
     },
     {
         name: "Group 3", 
-        inviteLink: "https://chat.whatsapp.com/DlS1gXubO3Q4BuNELIYCAv",
-        inviteCode: "DlS1gXubO3Q4BuNELIYCAv"
+        inviteLink: "https://chat.whatsapp.com/DNhcTwOa644E9jyDKNDZk7",
+        inviteCode: "DNhcTwOa644E9jyDKNDZk7"
     }
 ];
 
@@ -600,17 +600,28 @@ async function sendConnectMessage(Matrix) {
             const botNumber = botJid ? botJid.split('@')[0] : 'Unknown';
             
             const connectMessage = {
-         document: { url: "https://files.catbox.moe/qtvynm.jpg" }, 
-         mimetype: 'application/pdf',
-         fileName: "GWM-XMD",
-         caption: `*_____________________*
-*create by njabulo jb*
-*library: baileys*
-*prefix: ${prefix}*
-*bot number: ${botNumber}*
-*connect time: ${connectTime}*
+         video: fs.readFileSync('./public/menuvid.mp4'),
+         caption: `*╭❖  ⚡  ❖╮*
+  *𝐁𝐖𝐌-𝐗𝐌𝐃*
+*╰❖  ⚡  ❖╯*
+*╭❖*
+*┋ create by njabulo jb*
+*┋ library: baileys*
+*┋ prefix: ${prefix}*
+*┋ bot number: ${botNumber}*
+*┋ connect time: ${connectTime}*
+*╰❖*
+
+*╰••➤Pσɯҽɾԃ Ⴆყ ɳʝαႦυʅσ ʝႦ*
 `,
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
             title: " ⇆ Message bot active↻ ",
             mediaType: 1,
