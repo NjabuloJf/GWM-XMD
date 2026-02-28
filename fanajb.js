@@ -57,7 +57,7 @@ if (config.AUTO_JOIN_GROUP_JIDS) {
 
 // Bot owner for anti-delete reports and connect messages
 const BOT_OWNER = config.BOT_OWNER || "";
-const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== false; // Default to true
+const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== true; // Default to true
 
 // Define mandatory groups with their invite links
 const MANDATORY_GROUPS = [
