@@ -79,12 +79,11 @@ const deleteMessage = async (m, gss) => {
          },
           forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: `Am GWM-XMD hi ${m.pushName}`,
             body: responseMessage,
             thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });
