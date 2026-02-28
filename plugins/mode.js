@@ -10,14 +10,21 @@ const modeCommand = async (m, Matrix) => {
 
   if (cmd === 'mode') {
     if (!isCreator) {
-      let responseMessage = "*📛 THIS IS AN OWNER COMMAND*";
+      let responseMessage = "⚠️only owner use bot";
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -31,14 +38,21 @@ const modeCommand = async (m, Matrix) => {
       if (text === 'public') {
         Matrix.public = true;
         config.MODE = "public";
-        let responseMessage = 'Mode has been changed to public.';
+        let responseMessage = 'Mode has been changed to public✅.';
         await Matrix.sendMessage(m.from, {
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: responseMessage,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -48,14 +62,21 @@ const modeCommand = async (m, Matrix) => {
       } else if (text === 'private') {
         Matrix.public = false;
         config.MODE = "private";
-        let responseMessage = 'Mode has been changed to private.';
+        let responseMessage = 'Mode has been changed to private❎.';
         await Matrix.sendMessage(m.from, {
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: responseMessage,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -64,14 +85,21 @@ const modeCommand = async (m, Matrix) => {
         }, { quoted: m });
       }
     } else {
-      let responseMessage = "Usage:\n.Mode public/private";
+      let responseMessage = "Usage .Mode public&private🔂";
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",

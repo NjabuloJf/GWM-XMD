@@ -12,14 +12,21 @@ const anticallCommand = async (m, Matrix) => {
   // Only valid command is 'setstatusmsg'
   if (cmd === 'setstatusmsg') {
     if (!isCreator) {
-      let responseMessage = "*📛 THIS IS AN OWNER COMMAND*";
+      let responseMessage = "THIS IS AN OWNER COMMAND";
       return await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -33,17 +40,24 @@ const anticallCommand = async (m, Matrix) => {
       config.STATUS_READ_MSG = text; // Set custom reply message
       responseMessage = `Custom reply message has been set to: "${text}"`;
     } else {
-      responseMessage = `Usage: *${prefix}setstatusmsg <message>* to set a custom reply message.`;
+      responseMessage = `Usage: ${prefix}setstatusmsg <message> to set a custom reply message.`;
     }
 
     try {
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -55,10 +69,17 @@ const anticallCommand = async (m, Matrix) => {
       await Matrix.sendMessage(m.from, {
         text: ' ',
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: 'Error processing your request.',
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",

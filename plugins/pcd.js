@@ -14,14 +14,21 @@ const paircode = async (m, Matrix) => {
     // Extract number from message
     const args = m.body.slice(prefix.length).trim().split(' ').slice(1);
     if (args.length === 0) {
-      let responseMessage = `❌ *Usage:* ${prefix}paircode <number>\n*Example:* ${prefix}paircode 712345678\n*Note:* Don't include +254 or country code`;
+      let responseMessage = `👀 Usage: ${prefix}paircode Example 267`;
       return await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -35,14 +42,21 @@ const paircode = async (m, Matrix) => {
     if (number.startsWith('+')) number = number.slice(1);
     if (number.startsWith('254')) number = number.slice(3);
     if (!/^\d{9,}$/.test(number)) {
-      let responseMessage = `❌ Invalid number format. Please provide 9+ digits without country code.\n*Example:* 712345678`;
+      let responseMessage = `❌ Please provide 9+ digits Example:* 712345678`;
       return await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -55,14 +69,21 @@ const paircode = async (m, Matrix) => {
     const requestData = { number: `254${number}` };
 
     // Send request to API
-    let responseMessage = '⏳ *Requesting pair code...*';
+    let responseMessage = '⏳ Requesting pair code...';
     await Matrix.sendMessage(m.from, {
       text: " ",
       contextInfo: {
+      isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
         externalAdReply: {
-          title: `👋hy ${m.pushName}`,
+          title: "I am GWM-XMD for assistant ui",
           body: responseMessage,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
           sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -78,14 +99,21 @@ const paircode = async (m, Matrix) => {
     // Handle response
     if (response.data && response.data.pairCode) {
       const pairCode = response.data.pairCode;
-      responseMessage = `✅  *Pair Code:* ${pairCode}`;
+      responseMessage = `✅  Pair Code: ${pairCode}`;
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -93,14 +121,21 @@ const paircode = async (m, Matrix) => {
         }
       }, { quoted: m });
     } else if (response.data && response.data.error) {
-      responseMessage = `❌ *Error:* ${response.data.error}Please try again with a different number.`;
+      responseMessage = `❌ Error: ${response.data.error}Please try again with a different number.`;
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -130,10 +165,17 @@ const paircode = async (m, Matrix) => {
     await Matrix.sendMessage(m.from, {
       text: " ",
       contextInfo: {
+      isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
         externalAdReply: {
-          title: `👋hy ${m.pushName}`,
+          title: "I am GWM-XMD for assistant ui",
           body: errorMessage,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
           sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",

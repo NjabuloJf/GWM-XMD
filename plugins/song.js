@@ -7,7 +7,7 @@ import path from "path";
 import { spawn } from "child_process";
 import moment from "moment-timezone";
 
-const song = async (m, gss) => {
+const play = async (m, gss) => {
   const prefix = config.PREFIX;
   const body = m.body || "";
   const cmd = body.startsWith(prefix) ? body.slice(prefix.length).trim().split(/\s+/)[0]?.toLowerCase() : "";
@@ -112,6 +112,13 @@ const song = async (m, gss) => {
         mimetype: 'audio/mpeg',
         fileName,
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
             title: " ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻ ",
             mediaType: 1,

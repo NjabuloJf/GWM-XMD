@@ -242,7 +242,7 @@ const quotes = async (m, Matrix) => {
       caption += `📚 *Source:* ${selectedQuote.source}\n`;
     }
     
-    caption += `_💭 Wisdom shared by Buddy-XTR_`;
+    caption += `_💭 Wisdom shared by BWM XMD_`;
     
     // Send message with image
     const imagePath = './media/quotes.jpg';
@@ -252,12 +252,13 @@ const quotes = async (m, Matrix) => {
         image: fs.readFileSync(imagePath),
         caption: caption,
         contextInfo: {
-          forwardingScore: 999,
-          isForwarded: true,
+isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363313938933929@newsletter',
-            newsletterName: "Buddy-XTR Quotes",
-            serverMessageId: 999
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           }
         }
       }, {
@@ -278,7 +279,7 @@ const quotes = async (m, Matrix) => {
     // Simple error fallback
     try {
       await Matrix.sendMessage(m.from, {
-        text: `💭 *Quote Failed!*\n\nSometimes silence speaks volumes, but here's a quick one:\n\n"Even the wisest need reminders." - Buddy-XTR\n\n_Try: /quote [life/love/motivation/success/wisdom/funny/friendship/work/time]_`,
+        text: `💭 *Quote Failed!*\n\nSometimes silence speaks volumes, but here's a quick one:\n\n"Even the wisest need reminders." - BWM-XMD\n\n_Try: /quote [life/love/motivation/success/wisdom/funny/friendship/work/time]_`,
       }, {
         quoted: m
       });

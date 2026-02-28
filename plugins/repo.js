@@ -38,7 +38,7 @@ const repo = async (m, gss) => {
 
       // Format the repository information
       const formattedInfo = ` *══════════════*
-*📌 WHATSAPP BOT REPO INFO* 
+*GWM-XMD REPOSITORY INFO* 
 *Total* Stars: ${repoData.stargazers_count}
 *Total* Forks: ${repoData.forks_count}
 *Owner: njabulojb.co*
@@ -54,8 +54,8 @@ const repo = async (m, gss) => {
 4️⃣ Repo Alive Audio 
 *_____________________*
 *¦════════¦*
-*⿻│①◦ get more bot for Njabulo Jb*
-*⿻│②◦ visit njabulobot.vercel.app*
+*⿻│①◦ Get more bot for GWM-XMD*
+*⿻│②◦ Visit njabulobot.vercel.app*
 *════════>*
 `;
 
@@ -70,6 +70,13 @@ const repo = async (m, gss) => {
          caption: formattedInfo,
          contextInfo: {
          mentionedJid: [m.sender],
+         isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
             title: `${repoData.name} Repository`,
             mediaType: 1,

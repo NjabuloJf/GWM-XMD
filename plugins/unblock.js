@@ -11,7 +11,7 @@ const unblock = async (m, gss) => {
     const validCommands = ['unblock'];
 
     if (!validCommands.includes(cmd)) return;
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+    if (!isCreator) return m.reply("THIS IS AN OWNER COMMAND");
 
     let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
 
@@ -20,10 +20,17 @@ const unblock = async (m, gss) => {
         m.reply({
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: `Unblocked ${users.split('@')[0]} successfully.`,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -35,10 +42,17 @@ const unblock = async (m, gss) => {
         m.reply({
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: `Failed to unblock user: ${err}`,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -51,10 +65,17 @@ const unblock = async (m, gss) => {
     m.reply({
       text: ' ',
       contextInfo: {
+      isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
         externalAdReply: {
-          title: `👋hy ${m.pushName}`,
+          title: "I am GWM-XMD for assistant ui",
           body: 'An error occurred while processing the command.',
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
           sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
