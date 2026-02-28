@@ -68,7 +68,7 @@ const menu = async (m, Matrix) => {
 
   if (validCommands.includes(cmd)) {
     const mainMenu = `*╭❖  ⚡  ❖╮*
-  *𝐁𝐖𝐌-𝐗𝐌𝐃*
+  *𝐆𝐖𝐌-𝐗𝐌𝐃*
 *╰❖  ⚡  ❖╯*
 *╭─❖*
 *┋👤 Use:* ${m.pushName}
