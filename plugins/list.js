@@ -213,25 +213,8 @@ const menu = async (m, Matrix) => {
 > *Use ${prefix} followed by the command name*
 `;
 
-    // Function to get menu image
-    const getMenuImage = async () => {
-      if (config.MENU_IMAGE && config.MENU_IMAGE.trim() !== '') {
-        try {
-          const response = await axios.get(config.MENU_IMAGE, { responseType: 'arraybuffer' });
-          return Buffer.from(response.data, 'binary');
-        } catch (error) {
-          console.error('Error fetching menu image from URL, falling back to local image:', error);
-          return fs.readFileSync('./media/carltech.jpeg');
-        }
-      } else {
-        return fs.readFileSync('./media/carltech.jpeg');
-      }
-    };
-
-    const menuImage = await getMenuImage();
-
-    const sentMessage = await Matrix.sendMessage(m.from, {
-      video: fs.readFileSync('./media/fana.mp4'),
+    await Matrix.sendMessage(m.from, {
+      video: fs.readFileSync('./public/watermark-2026-02-28-210025142.mp4'),
       caption: mainMenu,
       contextInfo: {
         mentionedJid: [m.sender],
