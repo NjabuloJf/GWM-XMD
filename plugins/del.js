@@ -12,21 +12,21 @@ const deleteMessage = async (m, gss) => {
 
     if (validCommands.includes(cmd)) {
       if (!isCreator) {
-        let responseMessage = "THIS IS AN OWNER COMMAND";
+        let responseMessage = "⚠️only owner use bot";
         return await gss.sendMessage(m.from, {
-          text: "  ",
+          text: " ",
           contextInfo: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363345407274799@newsletter',
+          newsletterJid: config.ID_CHANNEL,
           newsletterName: "╭••➤GWM-XMD",
           serverMessageId: 143,
          },
           forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: responseMessage,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -36,21 +36,21 @@ const deleteMessage = async (m, gss) => {
       }
 
       if (!m.quoted) {
-        let responseMessage = '✳️ Reply to the message you want to delete';
+        let responseMessage = '🚮Reply to the message you want to delete';
         return await gss.sendMessage(m.from, {
-          text: "  ",
+          text: " ",
           contextInfo: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363345407274799@newsletter',
+          newsletterJid: config.ID_CHANNEL,
           newsletterName: "╭••➤GWM-XMD",
           serverMessageId: 143,
          },
           forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: responseMessage,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -67,10 +67,11 @@ const deleteMessage = async (m, gss) => {
 
       await gss.sendMessage(m.from, { delete: key });
 
-      let responseMessage = 'Message deleted successfully!';
+      let responseMessage = 'Message deleted successfully!✅';
       await gss.sendMessage(m.from, {
-        text: "  ",
+        text: " ",
         contextInfo: {
+          externalAdReply: {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
           newsletterJid: config.ID_CHANNEL,
@@ -78,33 +79,33 @@ const deleteMessage = async (m, gss) => {
           serverMessageId: 143,
          },
           forwardingScore: 999,
-          externalAdReply: {
-            title: `Am GWM-XMD hi ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
+            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });
     }
   } catch (error) {
     console.error('Error deleting message:', error);
-    let responseMessage = 'An error occurred while trying to delete the message.';
+    let responseMessage = '❌An error occurred while trying to delete the message.';
     await gss.sendMessage(m.from, {
-      text: "  ",
+      text: " ",
       contextInfo: {
-          isForwarded: true,
+      isForwarded: true,
           forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363345407274799@newsletter',
+          newsletterJid: config.ID_CHANNEL,
           newsletterName: "╭••➤GWM-XMD",
           serverMessageId: 143,
          },
           forwardingScore: 999,
         externalAdReply: {
-          title: `👋hy ${m.pushName}`,
+          title: "I am GWM-XMD for assistant ui",
           body: responseMessage,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
           sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",

@@ -8,43 +8,49 @@ const alwaysonlineCommand = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
   if (cmd === 'alwaysonline') {
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+    if (!isCreator) return m.reply("⚠️only owner use bot");
     let responseMessage;
     if (text === 'on') {
       config.ALWAYS_ONLINE = true;
-      responseMessage = "Always Online has been enabled.";
+      responseMessage = "Always Online has been enabled✅";
     } else if (text === 'off') {
       config.ALWAYS_ONLINE = false;
-      responseMessage = "Always Online has been disabled.";
+      responseMessage = "Always Online has been disabled❎";
     } else {
-      responseMessage = "Usage:- alwaysonline on or off";
+      responseMessage = "Usage:- alwaysonline on or off🔄";
     }
     try {
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });
     } catch (error) {
-      console.error("Error processing your request:", error);
+      console.error("❌Error processing your request:", error);
       await Matrix.sendMessage(m.from, {
         text: ' ',
         contextInfo: {
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
-            body: 'Error processing your request.',
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            title: "I am GWM-XMD for assistant ui",
+            body: responseMessage,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });

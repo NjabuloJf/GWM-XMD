@@ -13,7 +13,7 @@ const groupSetting = async (m, gss) => {
     const validCommands = ['group'];
 
     if (!validCommands.includes(cmd)) return;
-    if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*");
+    if (!m.isGroup) return m.reply("⚠️error am work in group only");
 
     const groupMetadata = await gss.groupMetadata(m.from);
     const participants = groupMetadata.participants;
@@ -21,8 +21,8 @@ const groupSetting = async (m, gss) => {
     const botAdmin = participants.find(p => p.id === botNumber)?.admin;
     const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
 
-    if (!botAdmin) return m.reply("*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND*");
-    if (!senderAdmin) return m.reply("*📛 YOU MUST BE AN ADMIN TO USE THIS COMMAND*");
+    if (!botAdmin) return m.reply("🔄only amdim can use");
+    if (!senderAdmin) return m.reply("🦈you must only amdim");
 
     const args = m.body.slice(prefix.length + cmd.length).trim().split(/\s+/);
     if (args.length < 1) return m.reply(`Please specify a setting (open/close) and optionally a time.\n\nExample:\n*${prefix + cmd} open* or *${prefix + cmd} open 04:00 PM*`);
@@ -37,13 +37,19 @@ const groupSetting = async (m, gss) => {
         return m.reply({
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
-              body: "Group successfully closed.",
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              title: "I am GWM-XMD for assistant ui",
+              body: "Group successfully closed✅.",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
-              sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
             }
           }
         });
@@ -53,9 +59,9 @@ const groupSetting = async (m, gss) => {
           text: " ",
           contextInfo: {
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
-              body: "Group successfully opened.",
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              title: "I am GWM-XMD for assistant ui",
+              body: "Group successfully opened✅.",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -66,10 +72,17 @@ const groupSetting = async (m, gss) => {
         return m.reply({
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
-              body: `Example: ${prefix + cmd} open or *${prefix + cmd} close*`,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              title: "I am GWM-XMD for assistant ui",
+              body: `Example: ${prefix + cmd} open✅ or *${prefix + cmd} close❎`,
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -84,10 +97,17 @@ const groupSetting = async (m, gss) => {
       return m.reply({
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
-            body: `Invalid time format. Use HH:mm AM/PM format.`,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            title: "I am GWM-XMD for assistant ui",
+            body: `Invalid time format. Use HH:mm AM/PM format⏲️.`,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -115,10 +135,17 @@ const groupSetting = async (m, gss) => {
           await gss.sendMessage(m.from, {
             text: " ",
             contextInfo: {
+            isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
               externalAdReply: {
-                title: `👋hy ${m.pushName}`,
-                body: "Group successfully closed.",
-                thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+                title: "I am GWM-XMD for assistant ui",
+                body: "Group successfully closed.✅",
+                thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
                 mediaType: 1,
                 renderLargerThumbnail: false,
                 sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -130,10 +157,17 @@ const groupSetting = async (m, gss) => {
           await gss.sendMessage(m.from, {
             text: " ",
             contextInfo: {
+            isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
               externalAdReply: {
-                title: `👋hy ${m.pushName}`,
-                body: "Group successfully opened.",
-                thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+                title: "I am GWM-XMD for assistant ui",
+                body: "Group successfully opened✅.",
+                thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
                 mediaType: 1,
                 renderLargerThumbnail: false,
                 sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -146,10 +180,17 @@ const groupSetting = async (m, gss) => {
         await gss.sendMessage(m.from, {
           text: ' ',
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
-              body: 'An error occurred while updating the group setting.',
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              title: "I am GWM-XMD for assistant ui",
+              body: 'An error occurred while group⚠️.',
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -162,10 +203,17 @@ const groupSetting = async (m, gss) => {
     m.reply({
       text: ` `,
       contextInfo: {
+      isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
         externalAdReply: {
-          title: `👋hy ${m.pushName}`,
-          body: `Group will be set to "${groupSetting}" at ${time} IST.`,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+          title: "I am GWM-XMD for assistant ui",
+          body: `Group will be set to "${groupSetting}" at ${time} IST⏲️.`,
+          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
           sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -177,10 +225,17 @@ const groupSetting = async (m, gss) => {
     m.reply({
       text: ' ',
       contextInfo: {
+      isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
         externalAdReply: {
-          title: `👋hy ${m.pushName}`,
-          body: 'An error occurred while processing the command.',
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+          title: "I am GWM-XMD for assistant ui",
+          body: 'An error occurred while processing the command❌.',
+          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
           sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",

@@ -8,30 +8,36 @@ const autoblockCommand = async (m, Matrix) => {
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
   if (cmd === 'autoblock') {
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+    if (!isCreator) return m.reply("⚠️only owner use bot");
 
     let responseMessage;
     if (text === 'on') {
       config.AUTO_BLOCK = true;
-      responseMessage = "Auto-Block has been enabled.";
+      responseMessage = "Auto-Block has been enabled✅.";
     } else if (text === 'off') {
       config.AUTO_BLOCK = false;
-      responseMessage = "Auto-Block has been disabled.";
+      responseMessage = "Auto-Block has been disabled❎.";
     } else {
-      responseMessage = "Usage: autoblock on or off";
+      responseMessage = "Usage: autoblock on or off🔄";
     }
 
     try {
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpga",
             mediaType: 1,
             renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });
@@ -40,13 +46,19 @@ const autoblockCommand = async (m, Matrix) => {
       await Matrix.sendMessage(m.from, {
         text: ' ',
         contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
-            body: 'Error processing your request.',
+            title: "I am GWM-XMD for assistant ui",
+            body: '❌Error processing your request.',
             thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
-            sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
           }
         }
       }, { quoted: m });

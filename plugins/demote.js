@@ -10,14 +10,21 @@ const demote = async (m, gss) => {
 
     if (!validCommands.includes(cmd)) return;
     if (!m.isGroup) {
-      let responseMessage = "*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS*";
+      let responseMessage = "⚠️only group to work";
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -33,14 +40,21 @@ const demote = async (m, gss) => {
     const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
 
     if (!botAdmin) {
-      let responseMessage = "*📛 BOT MUST BE AN ADMIN TO USE THIS COMMAND*";
+      let responseMessage = "🙄only amdim or bot use";
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -50,14 +64,21 @@ const demote = async (m, gss) => {
     }
 
     if (!senderAdmin) {
-      let responseMessage = "*📛 YOU MUST BE AN ADMIN TO USE THIS COMMAND*";
+      let responseMessage = "⚠️only amdim use this";
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -71,14 +92,21 @@ const demote = async (m, gss) => {
     const users = m.mentionedJid.length > 0 ? m.mentionedJid : text.replace(/[^0-9]/g, '').length > 0 ? [text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'] : [];
 
     if (users.length === 0) {
-      let responseMessage = "*📛 PLEASE MENTION OR QUOTE A USER TO DEMOTE*";
+      let responseMessage = "😢please mention or quote a use demote";
       return await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -91,14 +119,21 @@ const demote = async (m, gss) => {
     await gss.groupParticipantsUpdate(m.from, validUsers, 'demote')
       .then(() => {
         const demotedNames = validUsers.map(user => `@${user.split("@")[0]}`);
-        let responseMessage = `*USERS ${demotedNames} DEMOTED SUCCESSFULLY IN THE GROUP ${groupMetadata.subject}*`;
+        let responseMessage = `🙌use ${demotedNames} demoted successfully ${groupMetadata.subject}*`;
         gss.sendMessage(m.from, {
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: responseMessage,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -107,14 +142,21 @@ const demote = async (m, gss) => {
         }, { quoted: m });
       })
       .catch(() => {
-        let responseMessage = 'Failed to demote user(s) in the group.';
+        let responseMessage = '❌Failed to demote user(s) in the group.';
         gss.sendMessage(m.from, {
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
-              title: `👋hy ${m.pushName}`,
+              title: "I am GWM-XMD for assistant ui",
               body: responseMessage,
-              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+              thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
               mediaType: 1,
               renderLargerThumbnail: false,
               sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -124,14 +166,21 @@ const demote = async (m, gss) => {
       });
   } catch (error) {
     console.error('Error:', error);
-    let responseMessage = 'An error occurred while processing the command.';
+    let responseMessage = '🤒An error occurred while processing the command.';
     await gss.sendMessage(m.from, {
       text: " ",
       contextInfo: {
+      isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
         externalAdReply: {
-          title: `👋hy ${m.pushName}`,
+          title: "I am GWM-XMD for assistant ui",
           body: responseMessage,
-          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+          thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
           mediaType: 1,
           renderLargerThumbnail: false,
           sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",

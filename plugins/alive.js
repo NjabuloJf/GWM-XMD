@@ -18,9 +18,7 @@ const alive = async (m, Matrix) => {
 
   await Matrix.sendMessage(m.from, {
     contextInfo: {
-     document: { url: "https://files.catbox.moe/qtvynm.jpg" }, 
-         mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-         fileName: "GWM-XMD", 
+     text: "  ",
          contextInfo: {
          isForwarded: true,
           forwardedNewsletterMessageInfo: {

@@ -25,9 +25,7 @@ const anticallcommand = async (m, Matrix) => {
 
     try {
       await Matrix.sendMessage(m.from, {
-        document: { url: "https://files.catbox.moe/qtvynm.jpg" }, 
-         mimetype: 'application/docx',
-         fileName: "GWM-XMD",
+        text: "  ",
          contextInfo: {
          isForwarded: true,
           forwardedNewsletterMessageInfo: {

@@ -11,27 +11,34 @@ const anticallCommand = async (m, Matrix) => {
   const validCommands = ['autostatus', 'autosview', 'autostatusview'];
 
   if (validCommands.includes(cmd)){
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+    if (!isCreator) return m.reply("⚠️only owner use bot");
 
     let responseMessage;
     if (text === 'on') {
       config.AUTO_STATUS_SEEN = true;
-      responseMessage = "AUTO STATUS SEEN has been enabled.";
+      responseMessage = "AUTO STATUS SEEN has been enabled✅.";
     } else if (text === 'off') {
       config.AUTO_STATUS_SEEN = false;
-      responseMessage = "AUTO STATUS SEEN has been disabled.";
+      responseMessage = "AUTO STATUS SEEN has been disabled❎.";
     } else {
-      responseMessage = `Usage:- *${prefix + cmd} ON or off:* Enable AUTO STATUS VIEW\n- *${prefix + cmd} off:* Disable AUTO STATUS SEEN`;
+      responseMessage = `Usage:- ${prefix + cmd} ON or off🔄`;
     }
 
     try {
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
+            title: "I am GWM-XMD for assistant ui",
             body: responseMessage,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
@@ -43,10 +50,17 @@ const anticallCommand = async (m, Matrix) => {
       await Matrix.sendMessage(m.from, {
         text: ' ',
         contextInfo: {
+        isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy ${m.pushName}`,
-            body: 'Error processing your request.',
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
+            title: "I am GWM-XMD for assistant ui",
+            body: '❌Error processing your request.',
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
             mediaType: 1,
             renderLargerThumbnail: false,
             sourceUrl: "https://github.com/NjabuloJf/Njabulo-Jb",
