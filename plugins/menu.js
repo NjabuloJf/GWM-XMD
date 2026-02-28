@@ -186,7 +186,7 @@ const menu = async (m, Matrix) => {
 `;
 
     await Matrix.sendMessage(m.from, {
-      video: fs.readFileSync('./public/watermark-2026-02-28-210025100.mp4'),
+      video: fs.readFileSync('./public/menuvid.mp4'),
       caption: mainMenu,
       contextInfo: {
         mentionedJid: [m.sender],
