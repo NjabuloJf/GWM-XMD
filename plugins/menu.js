@@ -67,10 +67,9 @@ const menu = async (m, Matrix) => {
   const validCommands = ['list', 'help', 'menu'];
 
   if (validCommands.includes(cmd)) {
-    const mainMenu = `
-*╭❖ ⚡ ❖╮*
- *BWM XMÐ*
-*╰❖ ⚡ ❖╯*
+    const mainMenu = `*╭❖  ⚡  ❖╮*
+  *𝐁𝐖𝐌-𝐗𝐌𝐃*
+*╰❖  ⚡  ❖╯*
 *╭─❖*
 *┋👤 Use:* ${m.pushName}
 *┋🔢 Prefix:* [${prefix}]
@@ -178,12 +177,12 @@ const menu = async (m, Matrix) => {
 ┋• truecaller
 ┋• instastalk
 ┋• githubstalk
-┋___________________________
+┋_____________
 ┊ Am BWM XMÐ assistant ui
-╰┬──────────⊷⳹
+╰┬─────────⊷⳹
 ┌┤ℹ️
-┊╰────────────────⊷𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭
-╰──────────────────⊷
+┊╰───────────⊷𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭
+╰─────────────⊷
 `;
 
     await Matrix.sendMessage(m.from, {
@@ -199,14 +198,38 @@ const menu = async (m, Matrix) => {
           serverMessageId: 143,       
         }
       }
-    }, { quoted: m });
+         }, { quoted: {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: "njᥲbᥙᥣo",
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
+                }
+            }
+        } });    
 
     // Send audio after sending the menu
     await Matrix.sendMessage(m.from, {
       audio: { url: 'https://github.com/XdTechPro/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' },
       mimetype: 'audio/mp4',
       ptt: true
-    }, { quoted: m });
+         }, { quoted: {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: "njᥲbᥙᥣo",
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
+                }
+            }
+        } });
   }
 };
 
