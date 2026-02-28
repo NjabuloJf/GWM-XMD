@@ -16,6 +16,13 @@ const deleteMessage = async (m, gss) => {
         return await gss.sendMessage(m.from, {
           text: " ",
           contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363345407274799@newsletter',
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
               title: `👋hy ${m.pushName}`,
               body: responseMessage,
@@ -33,6 +40,14 @@ const deleteMessage = async (m, gss) => {
         return await gss.sendMessage(m.from, {
           text: " ",
           contextInfo: {
+            contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363345407274799@newsletter',
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
             externalAdReply: {
               title: `👋hy ${m.pushName}`,
               body: responseMessage,
@@ -57,6 +72,14 @@ const deleteMessage = async (m, gss) => {
       await gss.sendMessage(m.from, {
         text: " ",
         contextInfo: {
+          contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363345407274799@newsletter',
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
             title: `👋hy ${m.pushName}`,
             body: responseMessage,
@@ -74,6 +97,14 @@ const deleteMessage = async (m, gss) => {
     await gss.sendMessage(m.from, {
       text: " ",
       contextInfo: {
+        contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363345407274799@newsletter',
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
         externalAdReply: {
           title: `👋hy ${m.pushName}`,
           body: responseMessage,
