@@ -37,7 +37,7 @@ const seconds = Math.floor(uptime % 60); // Calculate seconds
 
 // Uptime
 const uptimeMessage = `*I am alive now since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
-const runMessage = `* ${day} Day ${hours} Hour ${minutes} Minutes ${seconds} Seconds*`;
+const runMessage = ` ${day} Day ${hours} Hour ${minutes} Minutes ${seconds} Seconds`;
 
 const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
 const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
