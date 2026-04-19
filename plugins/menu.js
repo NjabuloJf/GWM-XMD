@@ -150,7 +150,7 @@ const menu = async (m, Matrix) => {
     
     // Send audio after sending the menu
     await Matrix.sendMessage(m.from, {
-     audio: fs.readFileSync('./public/menuvid.mp3'),
+     audio: fs.readFileSync('./public/menuamp3.mp3'),
        mimetype: 'audio/mpeg',
         ptt: true, // Send as a voice note
          }, { quoted: {
