@@ -15,8 +15,10 @@ const repo = async (m, gss) => {
 *Stars:* ${data.stargazers_count}
 *Forks:* ${data.forks_count}
 *Description:* ${data.description}
+*Repo Link:* ${data.html_url}
       `;
       await gss.sendMessage(m.from, { text: msg });
+      await gss.sendMessage(m.from, { react: { text: "👍", key: m.key } });
     } catch (error) {
       console.error(error);
       await gss.sendMessage(m.from, { text: "Error fetching repo info 😕" });
@@ -25,4 +27,5 @@ const repo = async (m, gss) => {
 }
 
 export default repo;
+
 
