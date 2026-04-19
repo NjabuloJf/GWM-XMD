@@ -37,7 +37,7 @@ const seconds = Math.floor(uptime % 60); // Calculate seconds
 
 // Uptime
 const uptimeMessage = `*I am alive now since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
-const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
+const runMessage = `${day} Day ${hours} Hour ${minutes} Minutes ${seconds} Seconds`;
 
 const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
 const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
@@ -83,29 +83,26 @@ const menu = async (m, Matrix) => {
 
 *📋 MENU OPTIONS*
 
-*1.* 🌐 OUR WEB
 
-*2.* 📢 UPDATES
+*1.* 📢 UPDATES
 
-*3.* 🤖 AI MENU
+*2.* 🤖 AI MENU
 
-*4.* 🎨 EPHOTO MENU
+*3.* 🎨 EPHOTO MENU
 
-*5.* 📥 DOWNLOAD MENU
+*4.* 📥 DOWNLOAD MENU
 
-*6.* 👨‍👨‍👦‍👦 GROUP MENU
+*5.* 👨‍👨‍👦‍👦 GROUP MENU
 
-*7.* ⚙️ SETTINGS MENU
+*6.* ⚙️ SETTINGS MENU
 
-*8.* 😂 FUN MENU
+*7.* 😂 FUN MENU
 
-*9.* 🌍 GENERAL MENU
+*8.* 🌍 GENERAL MENU
 
-*10.* ⚽ SPORTS MENU
+*9.* 🔍 STALKER MENU
 
-*11.* 🔍 STALKER MENU
-
-*12.* 🖼️ STICKER MENU
+*10.* 🖼️ STICKER MENU
 
 *┊ Am GWM XMÐ assistant ui*
 └┬─────────❖
@@ -153,7 +150,7 @@ const menu = async (m, Matrix) => {
     
     // Send audio after sending the menu
     await Matrix.sendMessage(m.from, {
-     audio: fs.readFileSync('./public/menuvid.mp4'),
+     audio: fs.readFileSync('./public/menuvid.mp3'),
        mimetype: 'audio/mpeg',
         ptt: true, // Send as a voice note
          }, { quoted: {
