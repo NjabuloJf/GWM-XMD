@@ -108,16 +108,18 @@ const menu = async (m, Matrix) => {
 *12.* 🖼️ STICKER MENU
 
 *┊ Am GWM XMÐ assistant ui*
-╰┬─────────⊷⳹
+└┬─────────❖
 *┌┤(Replay with name 1 to 12)*
+┊▬▬▬▬▬▬▬▬▬▬
 ┊tanks for use *GWM-XMD*
 ┊designed owner is *Njabulo Jb*
+┊▬▬▬▬▬▬▬▬▬▬
 ┊more information click 🔗 
 ┊
-*╰─────────────⊷*
+*└────────┈❖*
 `;    
       await Matrix.sendMessage(m.from, {
-      video: fs.readFileSync('./public/menuvid.mp4'),
+      video: fs.readFileSync('./public/menuvidei.mp4'),
         mimetype: 'video/mp4', 
         ptv: true 
       });
