@@ -5,7 +5,7 @@ import axios from 'axios';
 import config from '../config.cjs';
 import { pathToFileURL } from 'url';
 
-const menu = async (m, Matrix) => {
+const mo = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX;
     const body = m.body || "";
