@@ -14,7 +14,7 @@ const son = async (m, gss) => {
   const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(" ")[0].toLowerCase() : "";
 
-  if (cmd !== "play") return;
+  if (cmd !== "son") return;
 
   const arg = m.body.slice(prefix.length + 3).trim().split(" ");
   try {
