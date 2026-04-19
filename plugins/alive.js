@@ -58,7 +58,7 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-const menu = async (m, Matrix) => {
+const alive = async (m, Matrix) => {
   const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const mode = config.MODE === 'public' ? 'public' : 'private';
