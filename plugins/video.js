@@ -17,14 +17,22 @@ const video = async (m, gss) => {
   const arg = m.body.slice(prefix.length + 3).trim().split(" ");
   try {
     if (!arg[0]) {
-      return await gss.sendMessage(m.from, {
-        text: 'Please provide a song name or keyword.',
+      return await gss.sendMessage(m.from, {        
+            text: " ",
         contextInfo: {
-          isForwarded: true,
+        isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363399999197102@newsletter',
-            newsletterName: "╭••➤®Njabulo Jb",
-            serverMessageId: 143,
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
+          externalAdReply: {
+            title: "I am GWM-XMD for assistant ui",
+            body: "Please provide a video name",
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
+            mediaType: 1,
+            renderLargerThumbnail: false,
           },
         },
       }, { quoted: m });
@@ -32,14 +40,22 @@ const video = async (m, gss) => {
     const query = arg.join(' ');
     const search = await yts(query);
     if (!search || !search.videos || !search.videos[0]) {
-      return await gss.sendMessage(m.from, {
-        text: 'No results found for your query.',
+      return await gss.sendMessage(m.from, {      
+        text: " ",
         contextInfo: {
-          isForwarded: true,
+        isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363399999197102@newsletter',
-            newsletterName: "╭••➤®Njabulo Jb",
-            serverMessageId: 143,
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
+          externalAdReply: {
+            title: "I am GWM-XMD for assistant ui",
+            body: "No results found for your query", 
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
+            mediaType: 1,
+            renderLargerThumbnail: false,
           },
         },
       }, { quoted: m });
@@ -75,7 +91,7 @@ const video = async (m, gss) => {
           message: {
             messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
             interactiveMessage: {
-              body: { text: `*𝐆𝐖𝐌-𝐗𝐌𝐃 𝐒𝐎𝐍𝐆*\n🔍 Search Results for: ${query}` },
+              body: { text: `*𝐆𝐖𝐌-𝐗𝐌𝐃 𝐕𝐈𝐃𝐄𝐎*\n🔍 Search Results for: ${query}` },
               
               carouselMessage: { cards },
             },
@@ -92,12 +108,12 @@ const video = async (m, gss) => {
     try {
       const response = await axios.get(apiURL);
       if (response.status !== 200) {
-        await gss.sendMessage(m.from, { text: 'Failed to retrieve the MP3 download link. Please try again later.' }, { quoted: m });
+        await gss.sendMessage(m.from, { text: 'Failed to retrieve the Mp4 download link. Please try again later.' }, { quoted: m });
         return;
       }
       const data = response.data;
       if (!data.downloadLink) {
-        await gss.sendMessage(m.from, { text: 'Failed to retrieve the MP3 download link.' }, { quoted: m });
+        await gss.sendMessage(m.from, { text: 'Failed to retrieve the Mp4 download link.' }, { quoted: m });
         return;
       }
       const safeTitle = firstVideo.title.replace(/[\\/:*?"<>|]/g, '');
