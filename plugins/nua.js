@@ -19,13 +19,21 @@ const play = async (m, gss) => {
   try {
     if (!arg[0]) {
       return await gss.sendMessage(m.from, {
-        text: 'Please provide a song name or keyword.',
+        text: " ",
         contextInfo: {
-          isForwarded: true,
+        isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363399999197102@newsletter',
-            newsletterName: "╭••➤®Njabulo Jb",
-            serverMessageId: 143,
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
+          externalAdReply: {
+            title: "I am GWM-XMD for assistant ui",
+            body: "Please provide a song name" ,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
+            mediaType: 1,
+            renderLargerThumbnail: false,
           },
         },
       }, { quoted: m });
@@ -34,13 +42,21 @@ const play = async (m, gss) => {
     const search = await yts(query);
     if (!search || !search.videos || !search.videos[0]) {
       return await gss.sendMessage(m.from, {
-        text: 'No results found for your query.',
+       text: " ",
         contextInfo: {
-          isForwarded: true,
+        isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363399999197102@newsletter',
-            newsletterName: "╭••➤®Njabulo Jb",
-            serverMessageId: 143,
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
+          externalAdReply: {
+            title: "I am GWM-XMD for assistant ui",
+            body: "No results found for your query" ,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg",
+            mediaType: 1,
+            renderLargerThumbnail: false,
           },
         },
       }, { quoted: m });
