@@ -77,7 +77,7 @@ const play = async (m, gss) => {
             messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
             interactiveMessage: {
               body: { text: `*𝐆𝐖𝐌-𝐗𝐌𝐃 𝐒𝐎𝐍𝐆*\n🔍 Search Results for: ${query}` },
-              footer: { text: `📂 Found ${search.videos.length} results` },
+              
               carouselMessage: { cards },
             },
           },
@@ -112,7 +112,7 @@ const play = async (m, gss) => {
             title: " ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻ ",
             mediaType: 1,
             previewType: 0,
-            thumbnailUrl: video.thumbnail, 
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg", 
             renderLargerThumbnail: true,
           },
         },
