@@ -9,11 +9,11 @@ import path from "path";
 import { spawn } from "child_process";
 import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
-const nua = async (m, gss) => {
+const play = async (m, gss) => {
   const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(" ")[0].toLowerCase() : "";
 
-  if (cmd !== "nua") return;
+  if (cmd !== "play") return;
 
   const arg = m.body.slice(prefix.length + 3).trim().split(" ");
   try {
@@ -76,7 +76,7 @@ const nua = async (m, gss) => {
           message: {
             messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
             interactiveMessage: {
-              body: { text: `🔍 Search Results for: ${query}` },
+              body: { text: `*𝐆𝐖𝐌-𝐗𝐌𝐃 𝐒𝐎𝐍𝐆*\n🔍 Search Results for: ${query}` },
               footer: { text: `📂 Found ${search.videos.length} results` },
               carouselMessage: { cards },
             },
@@ -112,7 +112,7 @@ const nua = async (m, gss) => {
             title: " ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻ ",
             mediaType: 1,
             previewType: 0,
-            thumbnailUrl: "https://files.catbox.moe/vddrok.jpg",
+            thumbnailUrl: video.thumbnail, 
             renderLargerThumbnail: true,
           },
         },
@@ -127,7 +127,7 @@ const nua = async (m, gss) => {
   }
 }
 
-export default nua;
+export default play;
 
 
 
