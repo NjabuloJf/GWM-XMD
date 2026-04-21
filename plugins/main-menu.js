@@ -232,11 +232,7 @@ try {
     }
   );
 
-  await Matrix.relayMessage(m.from, {
-      video: fs.readFileSync('./public/menuvidei.mp4'),
-        mimetype: 'video/mp4', 
-        ptv: true 
-      });
+  
   
   const sentMessage = await Matrix.relayMessage(m.from, message.message, { messageId: message.key.id });
   
