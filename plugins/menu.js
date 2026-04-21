@@ -110,8 +110,6 @@ const menu = async (m, Matrix) => {
 └┬───────────❖ 
 ┌┤ _choose to use cmd [Gai]  or (menu-ai)_
 ┊▬▬▬▬▬▬▬▬▬▬
-┊tanks for use *GWM-XMD 2026*
-┊▬▬▬▬▬▬▬▬▬▬
 *└─────────────┈❖*
 `;    
       await Matrix.sendMessage(m.from, {
@@ -121,7 +119,7 @@ const menu = async (m, Matrix) => {
       });
 
     await Matrix.sendMessage(m.from, {
-      video: fs.readFileSync('./public/menuvid.mp4'),
+      image: fs.readFileSync('./public/fanaa.jpg'),
       caption: mainMenu,
       contextInfo: {
         mentionedJid: [m.sender],
@@ -149,7 +147,7 @@ const menu = async (m, Matrix) => {
     
     // Send audio after sending the menu
     await Matrix.sendMessage(m.from, {
-     audio: fs.readFileSync('./public/menuamp3.mp3'),
+     voice: fs.readFileSync('./public/menuamp3.mp3'),
        mimetype: 'audio/mp3',
         ptt: true, // Send as a voice note
          }, { quoted: {
