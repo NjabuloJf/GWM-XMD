@@ -87,24 +87,24 @@ const menu = async (m, Matrix) => {
 > <(type) *[Gai]* _to see commands ai assistant ui_
 
 *2^.* 📥 DOWNLOAD MENU
-> <(type)> [Gdownload] _to see search mp4 & mp4_
+> <(type)> *[Gdownload]* _to see search mp4 & mp4_
 
 *3^.* 👨‍👨‍👦‍👦 GROUP MENU
-> <(type)> [Ggroup] _to see cmd group control_
+> <(type)> *[Ggroup]* _to see cmd group control_
 
 *4^.* ⚙️ SETTINGS MENU
-> <(type)> [Gsettings] _to see more commands control bot_
+> <(type)> *[Gsettings]* _to see more commands control bot_
 *5^.* 😂 OWNER MENU
-> <(type)>  [Gowner] _to protect bot and whatsApp_
+> <(type)>  *[Gowner]* _to protect bot and whatsApp_
 
 *6^.* 🌍 GENERAL MENU
-> <(type)> [General] _to see main menu commands_
+> <(type)> *[General]* _to see main menu commands_
 
 *7^* 📃MENU COMMANDS 
-> <(type)> [Gmenu] _to see page menu commands_
+> <(type)> *[Gmenu]* _to see page menu commands_
 
 *8^* 📑 MAIN MENU 
-> <(type) > [Gmain] _to see other cmd plugins_
+> <(type) > *[Gmain]* _to see other cmd plugins_
 
 *┊ Am GWM XMÐ assistant ui*
 └┬───────────❖ 
@@ -150,7 +150,7 @@ const menu = async (m, Matrix) => {
     // Send audio after sending the menu
     await Matrix.sendMessage(m.from, {
      audio: fs.readFileSync('./public/menuamp3.mp3'),
-       mimetype: 'audio/mpeg',
+       mimetype: 'audio/mp3',
         ptt: true, // Send as a voice note
          }, { quoted: {
             key: {
