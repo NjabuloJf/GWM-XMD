@@ -21,6 +21,7 @@ const config = {
   MODE: process.env.MODE || "public",
   BOT_NAME: process.env.BOT_NAME || "GWM-XMD",
   MENU_IMAGE: process.env.MENU_IMAGE || "https://files.catbox.moe/vy8uyv.jpg",
+  URL_CHANNEL: process.env.URL_CHANNEL || "https://whatsapp.com/channel/0029VbCZ6JNLY6dBhDfmCY1K", 
   DESCRIPTION: process.env.DESCRIPTION || "njabulo",
   OWNER_NAME: process.env.OWNER_NAME || "XD JB",
   OWNER_NUMBER: process.env.OWNER_NUMBER || "26778659691",
