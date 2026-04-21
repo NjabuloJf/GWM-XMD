@@ -181,7 +181,7 @@ const gmain = async (m, Matrix) => {
           name: "cta_url",
           buttonParamsJson: JSON.stringify({
             display_text: "Join WhatsApp channel 📢",
-            url: `${repoInfo.url}/fork`
+            url: config.URL_CHANNEL
           }),           
         },
       ],
