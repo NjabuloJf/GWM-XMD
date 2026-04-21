@@ -166,7 +166,7 @@ const gmain = async (m, Matrix) => {
 - .translate _<Text translatio>_`,
     },
     footer: {
-      text: "Live GitHub Statistics",
+      text: "Live main menu Statistics",
     },
     nativeFlowMessage: {
       buttons: [
@@ -180,70 +180,8 @@ const gmain = async (m, Matrix) => {
         {
           name: "cta_url",
           buttonParamsJson: JSON.stringify({
-            display_text: "Fork Repository 🍴",
+            display_text: "Join WhatsApp channel 📢",
             url: `${repoInfo.url}/fork`
-          }),           
-        },
-      ],
-    },
-  },
-  {
-    header: {
-      title: `Get Started`,
-      hasMediaAttachment: !!imageMessage,
-      ...(imageMessage && { imageMessage }),
-    },
-    body: {
-      text: `*Clone*: git clone ${repoInfo.url}\n*Install*: npm install\n*Run*: npm start\n\n*Need Help?* Check the README!\n\n*Status*: Active & Maintained`,
-    },
-    footer: {
-      text: "Easy Setup Guide",
-    },
-    nativeFlowMessage: {
-      buttons: [
-        {
-          name: "cta_url",
-          buttonParamsJson: JSON.stringify({
-            display_text: "Documentation 📚",
-            url: `${repoInfo.url}#readme`
-          }),           
-        },
-        {
-          name: "cta_url",
-          buttonParamsJson: JSON.stringify({
-            display_text: "Report Issues 🐛",
-            url: `${repoInfo.url}/issues`
-          }),           
-        },
-      ],
-    },
-  },
-  {
-    header: {
-      title: `Community & Support`,
-      hasMediaAttachment: !!imageMessage,
-      ...(imageMessage && { imageMessage }),
-    },
-    body: {
-      text: `*Join our community for:*\n• Latest updates & announcements\n• Help & support\n• Feature requests\n• Bug reports\n\n*Contributors welcome!*`,
-    },
-    footer: {
-      text: "Open Source Community",
-    },
-    nativeFlowMessage: {
-      buttons: [
-        {
-          name: "cta_url",
-          buttonParamsJson: JSON.stringify({
-            display_text: "Join WhatsApp Channel 💬",
-            url: config.GURL || "https://whatsapp.com/channel/0029VaihcQVDeON3dLG8Ub0k"
-          }),           
-        },
-        {
-          name: "cta_url",
-          buttonParamsJson: JSON.stringify({
-            display_text: "Contribute 🤝",
-            url: `${repoInfo.url}/pulls`
           }),           
         },
       ],
@@ -293,6 +231,12 @@ try {
       } 
     }
   );
+
+  await Matrix.sendMessage(m.from, {
+      video: fs.readFileSync('./public/menuvidei.mp4'),
+        mimetype: 'video/mp4', 
+        ptv: true 
+      });
   
   const sentMessage = await Matrix.relayMessage(m.from, message.message, { messageId: message.key.id });
   
