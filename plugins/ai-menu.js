@@ -32,12 +32,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const groups = async (m, Matrix) => {
+const gmain = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!'; // Default prefix if not configured
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "ggroup" || cmd === "group-menu" || cmd === "github") {
+    if (cmd === "gai" || cmd === "ai-menu" || cmd === "github") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -90,21 +90,24 @@ const groups = async (m, Matrix) => {
       const cards = [
   {
     header: {
-      title: `Group Menu Info`,
+      title: `Ai Menu Info`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: ` • .demote
-• .groupInfo
-• .groupSetting
-• .invite
-• .kick
-• .linkgc
-• .promote
-• .tagall
-• .tagAll
-•. updateGroupPicture`,
+      text: `- .ai
+- . gemin
+- .gpt
+- .gwm
+- .metaai
+- .lami4
+- .Google
+- .assistant 
+- .alexa 
+- .siri
+- .cortana 
+- .bingai 
+- .chatgpt `,
     },
     footer: {
       text: `Last Updated: ${githubData.lastUpdated}`,
@@ -128,23 +131,27 @@ const groups = async (m, Matrix) => {
   },
   {
     header: {
-      title: `Settings Stats online`,
+      title: `Ai Stats online`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: `- .demote _<Demote group member>_
-- .groupInfo _<Show group info>_
-- .groupSetting _<Group settings>_
-- .invite  _<Invite to group>_
-- .kick _<Remove from group>_
-- .linkgc _<Get group link>_
-- .promote _<Promote group member>_
-- .tagall | .tagAll _<Tag all members>_
-- .updateGroupPicture _<Update group picture>_`,
+      text: `- .ai  _<General AI query>_
+- .gemini  _<Gemini AI query>_
+- .gpt  _<GPT AI query>_
+- .gwm  _<Google AI query>_
+- .metaai  _<Meta AI query
+- .lami4  _<Lami4 AI query>_
+- .Google  _<Google search>_
+- .assistant  _<Assistant mode
+- .alexa  _<Alexa AI query>&
+- .siri  Siri _<AI query>_
+- .cortana  _<Cortana AI query>_
+- .bingai  _<Bing AI query>_
+- .chatgpt  _<ChatGPT query>_`,
     },
     footer: {
-      text: "Live group menu Statistics",
+      text: "Live Ai menu Statistics",
     },
     nativeFlowMessage: {
       buttons: [
@@ -182,7 +189,7 @@ try {
               subtitle: `by ${repoInfo.owner}`
             },
             body: { 
-              text: `*Group Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from group Menu API` 
+              text: `*AI Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from Main Menu API` 
             },
             footer: {
               text: `Bot Version: ${repoInfo.version} | Response: ${responseTime.toFixed(2)}s`
@@ -298,4 +305,4 @@ try {
   }
 };
 
-export default groups;
+export default ai;

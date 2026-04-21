@@ -32,12 +32,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const groups = async (m, Matrix) => {
+const downloads = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!'; // Default prefix if not configured
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "ggroup" || cmd === "group-menu" || cmd === "github") {
+    if (cmd === "gdownload" || cmd === "download-menu" || cmd === "github") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -90,21 +90,17 @@ const groups = async (m, Matrix) => {
       const cards = [
   {
     header: {
-      title: `Group Menu Info`,
+      title: `Download Menu Info`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: ` • .demote
-• .groupInfo
-• .groupSetting
-• .invite
-• .kick
-• .linkgc
-• .promote
-• .tagall
-• .tagAll
-•. updateGroupPicture`,
+      text: `• .instagram
+• .play
+• .tiktok
+• .video
+• .Lyrics
+• .shazam `,
     },
     footer: {
       text: `Last Updated: ${githubData.lastUpdated}`,
@@ -128,23 +124,20 @@ const groups = async (m, Matrix) => {
   },
   {
     header: {
-      title: `Settings Stats online`,
+      title: `download menu Stats online`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: `- .demote _<Demote group member>_
-- .groupInfo _<Show group info>_
-- .groupSetting _<Group settings>_
-- .invite  _<Invite to group>_
-- .kick _<Remove from group>_
-- .linkgc _<Get group link>_
-- .promote _<Promote group member>_
-- .tagall | .tagAll _<Tag all members>_
-- .updateGroupPicture _<Update group picture>_`,
+      text: `- .play _<YouTube download>_
+- .instagram _<IG video download>_
+- .tiktok _<TikTok download>_
+- .video _<Video download link>_
+- .lyrics _<Song lyrics (when available)>_
+- .shazam _<Identify song info>_`,
     },
     footer: {
-      text: "Live group menu Statistics",
+      text: "Live download menu Statistics",
     },
     nativeFlowMessage: {
       buttons: [
@@ -182,7 +175,7 @@ try {
               subtitle: `by ${repoInfo.owner}`
             },
             body: { 
-              text: `*Group Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from group Menu API` 
+              text: `*Download menu Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from download Menu API` 
             },
             footer: {
               text: `Bot Version: ${repoInfo.version} | Response: ${responseTime.toFixed(2)}s`
@@ -298,4 +291,4 @@ try {
   }
 };
 
-export default groups;
+export default downloads;

@@ -32,12 +32,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const groups = async (m, Matrix) => {
+const settings = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!'; // Default prefix if not configured
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "ggroup" || cmd === "group-menu" || cmd === "github") {
+    if (cmd === "gsettings" || cmd === "settings-menu" || cmd === "github") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -90,21 +90,19 @@ const groups = async (m, Matrix) => {
       const cards = [
   {
     header: {
-      title: `Group Menu Info`,
+      title: `Settings Menu Info`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: ` • .demote
-• .groupInfo
-• .groupSetting
-• .invite
-• .kick
-• .linkgc
-• .promote
-• .tagall
-• .tagAll
-•. updateGroupPicture`,
+      text: `• .restartBot
+•. update
+• .setDescription
+• .setGroupName
+• .setProfilePicture
+• .setprefix
+• .owner
+• .report`,
     },
     footer: {
       text: `Last Updated: ${githubData.lastUpdated}`,
@@ -133,18 +131,17 @@ const groups = async (m, Matrix) => {
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: `- .demote _<Demote group member>_
-- .groupInfo _<Show group info>_
-- .groupSetting _<Group settings>_
-- .invite  _<Invite to group>_
-- .kick _<Remove from group>_
-- .linkgc _<Get group link>_
-- .promote _<Promote group member>_
-- .tagall | .tagAll _<Tag all members>_
-- .updateGroupPicture _<Update group picture>_`,
+      text: `- .restartBot _<Restart the bot<_
+- .update _<Check for updates>&
+- .setDescription _<Set group description>_
+- .setGroupName _<Change group name>_
+- .setProfilePicture _<Update profile picture>_
+- .setprefix _<Change bot prefix>_
+- .owner _<Show owner info>_
+- .report _<Report an issue>_`,
     },
     footer: {
-      text: "Live group menu Statistics",
+      text: "Live settings menu Statistics",
     },
     nativeFlowMessage: {
       buttons: [
@@ -182,7 +179,7 @@ try {
               subtitle: `by ${repoInfo.owner}`
             },
             body: { 
-              text: `*Group Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from group Menu API` 
+              text: `*settings Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from settings Menu API` 
             },
             footer: {
               text: `Bot Version: ${repoInfo.version} | Response: ${responseTime.toFixed(2)}s`
@@ -298,4 +295,4 @@ try {
   }
 };
 
-export default groups;
+export default settings;

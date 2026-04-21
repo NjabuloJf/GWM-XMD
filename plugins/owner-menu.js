@@ -32,12 +32,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const groups = async (m, Matrix) => {
+const owners = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!'; // Default prefix if not configured
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "ggroup" || cmd === "group-menu" || cmd === "github") {
+    if (cmd === "gowner" || cmd === "owner-menu" || cmd === "github") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -90,21 +90,23 @@ const groups = async (m, Matrix) => {
       const cards = [
   {
     header: {
-      title: `Group Menu Info`,
+      title: `Owner Menu Info`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: ` • .demote
-• .groupInfo
-• .groupSetting
-• .invite
-• .kick
-• .linkgc
-• .promote
-• .tagall
-• .tagAll
-•. updateGroupPicture`,
+      text: `• .anticall
+• .autoblock
+• .autoread
+• .alwaysonline
+• .autoreact
+• .autorecording
+• .autotyping
+• .joinGroup
+• .leaveGroup
+• .mode
+• .unblock
+• .ownerContact`,
     },
     footer: {
       text: `Last Updated: ${githubData.lastUpdated}`,
@@ -128,23 +130,26 @@ const groups = async (m, Matrix) => {
   },
   {
     header: {
-      title: `Settings Stats online`,
+      title: `owner Stats online`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text: `- .demote _<Demote group member>_
-- .groupInfo _<Show group info>_
-- .groupSetting _<Group settings>_
-- .invite  _<Invite to group>_
-- .kick _<Remove from group>_
-- .linkgc _<Get group link>_
-- .promote _<Promote group member>_
-- .tagall | .tagAll _<Tag all members>_
-- .updateGroupPicture _<Update group picture>_`,
+      text: `- .anticall _<Toggle anti-call feature>_
+- .autoblock _<Toggle auto-block>_
+- .autoread _<Toggle auto-read>_
+- .alwaysonline _<Show always online>_
+- .autoreact _<Toggle auto-react>_
+- .autorecording _<Toggle auto-recording>_
+- .autotyping _<Toggle auto-typing>_
+- .joinGroup _<Join a group>_
+- .leaveGroup _<Leave a group>_
+- .mode _<Change bot mode>_
+- .unblock _<Unblock a user>_
+- .ownerContact  _<Show owner contact>_`,
     },
     footer: {
-      text: "Live group menu Statistics",
+      text: "Live owner menu Statistics",
     },
     nativeFlowMessage: {
       buttons: [
@@ -182,7 +187,7 @@ try {
               subtitle: `by ${repoInfo.owner}`
             },
             body: { 
-              text: `*Group Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from group Menu API` 
+              text: `*OwnerInformation & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from Main Menu API` 
             },
             footer: {
               text: `Bot Version: ${repoInfo.version} | Response: ${responseTime.toFixed(2)}s`
@@ -298,4 +303,4 @@ try {
   }
 };
 
-export default groups;
+export default owners;
