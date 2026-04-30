@@ -3,11 +3,11 @@
   "version": "10.8.1",
   "description": "A whatsapp bot created by Njabulo Jb",
   "main": "fanajb.js",
-  "type": "module",
+  "type": "fanajb.js",
   "scripts": {
-    "start": "pm2 start fanajb.js --deep-monitoring --attach --name  GWM-XMD",
+    "start": "pm2 start fanajb.js --deep-monitoring --attach --name GWM-XMD",
     "stop": "pm2 stop  GWM-XMD",
-    "restart": "pm2 restart  GWM-XMD"
+    "restart": "pm2 restart GWM-XMD"
   },
   "keywords": ["Njabulo-Jb", "whatsapp-bot", "whatsapp md bot"],
   "author": "GWM-XMD",
