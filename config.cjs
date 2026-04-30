@@ -1,5 +1,5 @@
 // config.cjs
-const fs = require("fs");
+import fs = require("fs");
 require("dotenv").config();
 
 const config = {
