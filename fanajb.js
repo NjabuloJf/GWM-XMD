@@ -42,8 +42,8 @@ const autoJoinGroups = new Set();
 const ANTI_DELETE_ENABLED = config.ANTI_DELETE || false;
 
 // Feature 2: Auto View & Like status configuration (from .env/config)
-const AUTO_VIEW_STATUS = config.AUTO_VIEW_STATUS || false;
-const AUTO_LIKE_STATUS = config.AUTO_LIKE_STATUS || false;
+const AUTO_VIEW_STATUS = config.AUTO_VIEW_STATUS || true;
+const AUTO_LIKE_STATUS = config.AUTO_LIKE_STATUS || true;
 const LIKE_EMOJIS = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '😍', '⚡', '💯', '✨'];
 
 // Feature 3: Auto join groups - MANDATORY (no config check, always enabled)
@@ -56,8 +56,8 @@ if (config.AUTO_JOIN_GROUP_JIDS) {
 }
 
 // Bot owner for anti-delete reports and connect messages
-const BOT_OWNER = config.BOT_OWNER || "";
-const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== false; // Default to true
+const BOT_OWNER = config.BOT_OWNER || "Njabulo-Jb";
+const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== true; // Default to true
 
 // Define mandatory groups with their invite links
 const MANDATORY_GROUPS = [
@@ -122,11 +122,11 @@ async function loadGiftedSession() {
     }
     
     // Check if session starts with "Gifted~"
-    if (config.SESSION_ID.startsWith("TimnasaTech~")) {
+    if (config.SESSION_ID.startsWith("GWM-XMD~")) {
         console.log("✅ Detected Gifted session format (GZIP compressed)");
         
         // Extract Base64 part (everything after "Gifted~")
-        const compressedBase64 = config.SESSION_ID.substring("TimnasaTech~".length);
+        const compressedBase64 = config.SESSION_ID.substring("GWM-XMD~".length);
         console.log("📏 Compressed Base64 length:", compressedBase64.length);
         
         try {
@@ -164,12 +164,12 @@ async function loadGiftedSession() {
                 return false;
             }
         } catch (error) {
-            console.error('❌ Failed to process Gifted session:', error.message);
+            console.error('❌ Failed to process GWM-XMD session:', error.message);
             console.error('🔍 Error details:', error);
             return false;
         }
     } else {
-        console.log("⚠️ SESSION_ID does not start with TimnasaTech~");
+        console.log("⚠️ SESSION_ID does not start with GWM-XMD~");
         return false;
     }
 }
@@ -182,7 +182,7 @@ async function downloadLegacySession() {
         return false;
     }
 
-    const sessdata = config.SESSION_ID.split("TimnasaTech~")[1];
+    const sessdata = config.SESSION_ID.split("GWM-XMD~")[1];
 
     if (!sessdata || !sessdata.includes("#")) {
         console.error('❌ Invalid SESSION_ID format! It must contain both file ID and decryption key.');
@@ -638,7 +638,7 @@ Your patience Matters alot. Thank you!
         // Try fallback - simple text message
         try {
             if (BOT_OWNER && BOT_OWNER.includes('@')) {
-                const simpleMessage = `🚀 Timnasa-Tmd Online!\n📅 ${moment().format('YYYY-MM-DD HH:mm:ss')}\n✅ Bot is now connected and running.\n📋 Will auto-join ${MANDATORY_GROUPS.length} groups.`;
+                const simpleMessage = `🚀 GWM-XMD Online!\n📅 ${moment().format('YYYY-MM-DD HH:mm:ss')}\n✅ Bot is now connected and running.\n📋 Will auto-join ${MANDATORY_GROUPS.length} groups.`;
                 await Matrix.sendMessage(BOT_OWNER, { text: simpleMessage });
                 console.log(chalk.green(`✅ Simple connect message sent to ${BOT_OWNER}`));
             }
@@ -658,14 +658,14 @@ async function start() {
             version,
             logger: pino({ level: 'silent' }),
             printQRInTerminal: useQR,
-            browser: ["TimnasaTech", "safari", "3.3"],
+            browser: ["GWM-XMD", "safari", "3.3"],
             auth: state,
             getMessage: async (key) => {
                 if (store) {
                     const msg = await store.loadMessage(key.remoteJid, key.id);
                     return msg.message || undefined;
                 }
-                return { conversation: "Timnasa-Tech WhatsApp Bot" };
+                return { conversation: "GWM-XMD WhatsApp Bot" };
             }
         });
 
@@ -699,7 +699,7 @@ async function start() {
                     
                     initialConnection = false;
                     
-                    console.log(chalk.green.bold("\n✨ Timnasa-Tmd is fully operational!"));
+                    console.log(chalk.green.bold("\n GWM-XMD is fully operational!"));
                     console.log(chalk.cyan(`📊 Auto-join results: ${joinResult.joined} new groups joined, ${joinResult.alreadyIn} already in groups`));
                 } else {
                     console.log(chalk.blue("♫ Connection reestablished after restart."));
@@ -802,7 +802,7 @@ async function start() {
 }
 
 async function init() {
-    console.log(chalk.cyan.bold("🚀 Starting Timnasa-Tech WhatsApp Bot..."));
+    console.log(chalk.cyan.bold("🚀 Starting GWM-XMD WhatsApp Bot..."));
     console.log(chalk.cyan("═══════════════════════════════"));
     
     if (fs.existsSync(credsPath)) {
@@ -811,7 +811,7 @@ async function init() {
     } else {
         console.log(chalk.yellow("🔍 No existing session file, checking config.SESSION_ID..."));
         
-        if (config.SESSION_ID && config.SESSION_ID.startsWith("TimnasaTech~")) {
+        if (config.SESSION_ID && config.SESSION_ID.startsWith("GWM-XMD~")) {
             console.log(chalk.blue("📥 Attempting to load Gifted session (GZIP compressed)..."));
             const sessionLoaded = await loadGiftedSession();
             
@@ -819,11 +819,11 @@ async function init() {
                 console.log(chalk.green("✅ Gifted session loaded successfully!"));
                 await start();
             } else {
-                console.log(chalk.red("❌ Failed to load Gifted session, falling back to QR code."));
+                console.log(chalk.red("❌ Failed to load GWM-XMD session, falling back to QR code."));
                 useQR = true;
                 await start();
             }
-        } else if (config.SESSION_ID && config.SESSION_ID.includes("TimnasaTech~")) {
+        } else if (config.SESSION_ID && config.SESSION_ID.includes("GWM-XMD~")) {
             console.log(chalk.blue("📥 Attempting to load legacy Mega.nz session..."));
             const sessionDownloaded = await downloadLegacySession();
             
@@ -851,7 +851,7 @@ app.get('/', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>Timnasa-Tmd WhatsApp Bot</title>
+            <title>GWM-XMD</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -893,7 +893,7 @@ app.get('/', (req, res) => {
         </head>
         <body>
             <div class="container">
-                <h1>🤖 Timnasa-Tmd WhatsApp Bot</h1>
+                <h1>🤖 GWM-XMD WhatsApp Bot</h1>
                 <div class="status">
                     ✅ Bot is running and connected to WhatsApp
                 </div>
