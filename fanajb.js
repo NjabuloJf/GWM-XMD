@@ -602,11 +602,7 @@ async function sendConnectMessage(Matrix) {
             const connectTime = moment().format('YYYY-MM-DD HH:mm:ss');
             const botNumber = botJid ? botJid.split('@')[0] : 'Unknown';
             
-            const connectMessage = {
-                image: { 
-                    url: "https://files.catbox.moe/qtvynm.jpg" 
-                }, 
-                caption: `
+            const connectMessage `
 ╭──────────━⊷ ⁠⁠⁠⁠
 ║ ᴛɪᴍɴᴀsᴀ ᴄᴏɴɴᴇᴄᴛᴇᴅ
 ╰──────────━⊷
@@ -616,19 +612,38 @@ async function sendConnectMessage(Matrix) {
 ║ 𝕴𝖌𝖓𝖎𝖙𝖎𝖔𝖓: *${ᴘʀᴇғɪx}*
 ║ 𝕭𝖔𝖙 𝕹𝖚𝖒𝖇𝖊𝖗: ${ʙᴏᴛɴᴜᴍʙᴇʀ}
 ║ 𝕮𝖔𝖓𝖓𝖊𝖈𝖙 𝕿𝖎𝖒𝖊: ${ᴄᴏɴɴᴇᴄᴛᴛɪᴍᴇ}
-╰──────────━⊷
-|•| 🫴 pair : https://timnasa-detested.onrender.com/
+╰──────────━⊷`;
 
-🚀 *Timnasa Timothy Online!*
-This is Timnasa-Tmd 2026 preview,
-Some commands are still Under development,
-Your patience Matters alot. Thank you!
 
-🤖 Ready to serve!
-`
-            };
+      Matrix.sendMessage(target, {
+      image: fs.readFileSync('./public/fanaa.jpg'),
+      caption: connectMessage,
+      contextInfo: {
+        mentionedJid: [m.sender],
+        forwardingScore: 999,
+         isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,       
+        }
+      }
+         }, { quoted: {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: `${m.pushName}`,
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
+                }
+            }
+        } }); 
+          
             
-            await Matrix.sendMessage(targetJid, connectMessage);
+            
             console.log(chalk.green(`✅ Connect message sent successfully to ${targetJid}`));
         } else {
             console.log(chalk.yellow("⚠️ Could not determine where to send connect message"));
