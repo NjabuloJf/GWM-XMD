@@ -849,68 +849,386 @@ init();
 
 app.get('/', (req, res) => {
     res.send(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Buddy-XTR WhatsApp Bot</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: white;
-                    text-align: center;
-                    padding: 50px;
-                }
-                .container {
-                    background: rgba(255, 255, 255, 0.1);
-                    padding: 30px;
-                    border-radius: 15px;
-                    backdrop-filter: blur(10px);
-                    max-width: 800px;
-                    margin: 0 auto;
-                }
-                h1 {
-                    font-size: 3em;
-                    margin-bottom: 20px;
-                }
-                .status {
-                    font-size: 1.2em;
-                    margin: 20px 0;
-                    padding: 15px;
-                    background: rgba(0, 0, 0, 0.2);
-                    border-radius: 10px;
-                }
-                .features {
-                    text-align: left;
-                    margin: 30px 0;
-                }
-                .feature {
-                    margin: 10px 0;
-                    padding: 10px;
-                    background: rgba(255, 255, 255, 0.1);
-                    border-radius: 5px;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>🤖 Buddy-XTR WhatsApp Bot</h1>
-                <div class="status">
-                    ✅ Bot is running and connected to WhatsApp
-                </div>
-                <div class="features">
-                    <h3>✨ Active Features:</h3>
-                    <div class="feature">✅ Auto-Join Groups (Mandatory)</div>
-                    <div class="feature">${ANTI_DELETE_ENABLED ? '✅' : '❌'} Anti-Delete Message Recovery</div>
-                    <div class="feature">${AUTO_VIEW_STATUS ? '✅' : '❌'} Auto-View Status</div>
-                    <div class="feature">${AUTO_LIKE_STATUS ? '✅' : '❌'} Auto-Like Status</div>
-                    <div class="feature">${config.AUTO_REACT ? '✅' : '❌'} Auto-React to Messages</div>
-                </div>
-                <p>🚀 Server running on port ${PORT}</p>
-                <p>📅 ${new Date().toLocaleString()}</p>
-            </div>
-        </body>
-        </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buddy-XTR WhatsApp Bot</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* ---------- Background (more future / cool) ---------- */
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 50px 15px;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 45%),
+                  radial-gradient(circle at 80% 0%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 55%),
+                  linear-gradient(135deg, #2f2bff 0%, #7c3aed 35%, #06b6d4 100%);
+      background-size: 200% 200%;
+      animation: bgShift 10s ease-in-out infinite;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Particles-ish overlay */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.7) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 60% 90%, rgba(255,255,255,0.5) 0 2px, transparent 3px);
+      background-size: 240px 240px;
+      filter: blur(0.2px);
+      animation: floaty 7s linear infinite;
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* ---------- Layout ---------- */
+    .container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.10);
+      padding: 28px 22px;
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      max-width: 980px;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .topbar {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .brand h1 {
+      font-size: 2.6em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .brand .sub {
+      margin-top: 8px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95em;
+    }
+
+    /* ---------- Status ---------- */
+    .status {
+      font-size: 1.15em;
+      margin: 18px 0 8px;
+      padding: 14px 16px;
+      background: rgba(0, 0, 0, 0.20);
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .status .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 18px rgba(34,197,94,0.9);
+    }
+
+    /* ---------- Button Groups / Profile ---------- */
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      cursor: default;
+      transition: 0.25s ease;
+      user-select: none;
+    }
+
+    .pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .pill i {
+      font-size: 1.05em;
+    }
+
+    .pill .small {
+      font-size: 0.9em;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .btn-power {
+      background: linear-gradient(135deg, rgba(239,68,68,0.35), rgba(245,158,11,0.25));
+    }
+
+    .btn-channel {
+      background: linear-gradient(135deg, rgba(34,197,94,0.25), rgba(6,182,212,0.25));
+    }
+
+    .btn-profile {
+      background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(236,72,153,0.25));
+    }
+
+    /* ---------- Content ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 860px) {
+      .grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+      }
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      text-align: left;
+      font-size: 1.2em;
+    }
+
+    .features {
+      text-align: left;
+      margin: 0;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .feature {
+      margin: 10px 0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature i {
+      width: 20px;
+      text-align: center;
+      opacity: 0.95;
+    }
+
+    /* ---------- Right Panel ---------- */
+    .side {
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      text-align: left;
+    }
+
+    .meta-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.18);
+    }
+    .meta-line:last-child { border-bottom: none; }
+
+    .meta-line .k {
+      color: rgba(255,255,255,0.85);
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .meta-line .v {
+      font-weight: bold;
+      color: white;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .link-ish {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.16);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+    .link-ish:hover { transform: translateY(-2px); }
+
+    .powered {
+      color: rgba(255,255,255,0.9);
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="particles"></div>
+
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <h1>🤖 Buddy-XTR WhatsApp Bot</h1>
+        <div class="sub">⚡ Real-time status • sleek UI • powered experience</div>
+      </div>
+
+      <!-- Profile / Channel / Power Button Group -->
+      <div class="actions">
+        <div class="pill btn-profile">
+          <i class="fa-solid fa-user-circle"></i>
+          <div class="small">
+            Profile<br><span style="opacity:.9;font-weight:700;">Buddy-XTR</span>
+          </div>
+        </div>
+
+        <div class="pill btn-channel">
+          <i class="fa-solid fa-broadcast-tower"></i>
+          <div class="small">
+            Channel<br><span style="opacity:.9;font-weight:700;">Updates</span>
+          </div>
+        </div>
+
+        <div class="pill btn-power">
+          <i class="fa-solid fa-power-off"></i>
+          <div class="small">
+            Power<br><span style="opacity:.9;font-weight:700;">On</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>
+      ✅ Bot is running and connected to WhatsApp
+    </div>
+
+    <div class="grid">
+      <div>
+        <h3>✨ Active Features</h3>
+        <div class="features">
+          <div class="feature">
+            <i class="fa-solid fa-circle-check" style="color:#22c55e;"></i>
+            <span>✅ Auto-Join Groups (Mandatory)</span>
+          </div>
+
+          <div class="feature">
+            <i class="fa-solid fa-shield-halved" style="color: ${ANTI_DELETE_ENABLED ? '#22c55e' : '#f97316'};"></i>
+            <span>${ANTI_DELETE_ENABLED ? '✅ Anti-Delete Message Recovery' : '❌ Anti-Delete Message Recovery'}</span>
+          </div>
+
+          <div class="feature">
+            <i class="fa-solid fa-eye" style="color: ${AUTO_VIEW_STATUS ? '#22c55e' : '#f97316'};"></i>
+            <span>${AUTO_VIEW_STATUS ? '✅ Auto-View Status' : '❌ Auto-View Status'}</span>
+          </div>
+
+          <div class="feature">
+            <i class="fa-solid fa-thumbs-up" style="color: ${AUTO_LIKE_STATUS ? '#22c55e' : '#f97316'};"></i>
+            <span>${AUTO_LIKE_STATUS ? '✅ Auto-Like Status' : '❌ Auto-Like Status'}</span>
+          </div>
+
+          <div class="feature">
+            <i class="fa-solid fa-bolt" style="color: ${config.AUTO_REACT ? '#22c55e' : '#f97316'};"></i>
+            <span>${config.AUTO_REACT ? '✅ Auto-React to Messages' : '❌ Auto-React to Messages'}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side">
+        <h3>📡 System</h3>
+
+        <div class="meta-line">
+          <div class="k"><i class="fa-solid fa-server"></i> Server</div>
+          <div class="v">${PORT}</div>
+        </div>
+
+        <div class="meta-line">
+          <div class="k"><i class="fa-solid fa-calendar-days"></i> Date</div>
+          <div class="v">${new Date().toLocaleString()}</div>
+        </div>
+
+        <div class="meta-line">
+          <div class="k"><i class="fa-solid fa-wifi"></i> Channel</div>
+          <div class="v">Buddy-XTR Updates</div>
+        </div>
+
+        <div class="meta-line">
+          <div class="k"><i class="fa-solid fa-plug-circle-check"></i> Status</div>
+          <div class="v">Connected</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="powered">
+        Power by <i class="fa-solid fa-user-pen"></i> Njabulo-Jb
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div class="link-ish" onclick="alert('Support: Contact the admin for help.')">
+          <i class="fa-solid fa-headset"></i> Support
+        </div>
+        <div class="link-ish" onclick="alert('Issue: Report bugs with screenshots/logs.')">
+          <i class="fa-solid fa-bug"></i> Issue
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
     `);
 });
 
