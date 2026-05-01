@@ -57,7 +57,7 @@ if (config.AUTO_JOIN_GROUP_JIDS) {
 
 // Bot owner for anti-delete reports and connect messages
 const BOT_OWNER = config.BOT_OWNER || "";
-const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== false; // Default to true
+const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== true; // Default to true
 
 // Define mandatory groups with their invite links
 const MANDATORY_GROUPS = [
@@ -123,11 +123,11 @@ async function loadGiftedSession() {
     }
     
     // Check if session starts with "Gifted~"
-    if (config.SESSION_ID.startsWith("Buddy~")) {
+    if (config.SESSION_ID.startsWith("GWM-XMD~")) {
         console.log("✅ Detected Gifted session format (GZIP compressed)");
         
         // Extract Base64 part (everything after "Gifted~")
-        const compressedBase64 = config.SESSION_ID.substring("Buddy~".length);
+        const compressedBase64 = config.SESSION_ID.substring("GWM-XMD~".length);
         console.log("📏 Compressed Base64 length:", compressedBase64.length);
         
         try {
@@ -170,7 +170,7 @@ async function loadGiftedSession() {
             return false;
         }
     } else {
-        console.log("⚠️ SESSION_ID does not start with Buddy~");
+        console.log("⚠️ SESSION_ID does not start with GWM-XMD~");
         return false;
     }
 }
@@ -183,7 +183,7 @@ async function downloadLegacySession() {
         return false;
     }
 
-    const sessdata = config.SESSION_ID.split("Buddy~")[1];
+    const sessdata = config.SESSION_ID.split("GWM-XMD~")[1];
 
     if (!sessdata || !sessdata.includes("#")) {
         console.error('❌ Invalid SESSION_ID format! It must contain both file ID and decryption key.');
@@ -659,7 +659,7 @@ async function start() {
             version,
             logger: pino({ level: 'silent' }),
             printQRInTerminal: useQR,
-            browser: ["Buddy-XTR", "safari", "3.3"],
+            browser: ["Njabulo-Jb", "safari", "3.3"],
             auth: state,
             getMessage: async (key) => {
                 if (store) {
@@ -812,7 +812,7 @@ async function init() {
     } else {
         console.log(chalk.yellow("🔍 No existing session file, checking config.SESSION_ID..."));
         
-        if (config.SESSION_ID && config.SESSION_ID.startsWith("Buddy~")) {
+        if (config.SESSION_ID && config.SESSION_ID.startsWith("GWM-XMD~")) {
             console.log(chalk.blue("📥 Attempting to load Gifted session (GZIP compressed)..."));
             const sessionLoaded = await loadGiftedSession();
             
@@ -824,7 +824,7 @@ async function init() {
                 useQR = true;
                 await start();
             }
-        } else if (config.SESSION_ID && config.SESSION_ID.includes("Buddy~")) {
+        } else if (config.SESSION_ID && config.SESSION_ID.includes("GWM-XMD~")) {
             console.log(chalk.blue("📥 Attempting to load legacy Mega.nz session..."));
             const sessionDownloaded = await downloadLegacySession();
             
