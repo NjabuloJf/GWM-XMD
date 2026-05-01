@@ -145,24 +145,7 @@ const menu = async (m, Matrix) => {
             }
         } }); 
     
-    // Send audio after sending the menu
-    await Matrix.sendMessage(m.from, {
-     voice: fs.readFileSync('./public/menuamp3.mp3'),
-       mimetype: 'audio/mp3',
-        ptt: true, // Send as a voice note
-         }, { quoted: {
-            key: {
-                fromMe: false,
-                participant: `0@s.whatsapp.net`,
-                remoteJid: "status@broadcast"
-            },
-            message: {
-                contactMessage: {
-                    displayName: `${m.pushName}`,
-                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
-                }
-            }
-        } });
+    
   }
 };
 
