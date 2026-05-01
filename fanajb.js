@@ -1,32 +1,29 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import baileys from '@whiskeysockets/baileys'
-const {
-  makeWASocket,
-  Browsers,
-  fetchLatestBaileysVersion,
-  DisconnectReason,
-  useMultiFileAuthState
-} = baileys;
-
+import {
+    makeWASocket,
+    Browsers,
+    fetchLatestBaileysVersion,
+    DisconnectReason,
+    useMultiFileAuthState,
+} from '@whiskeysockets/baileys';
 import { Handler, Callupdate, GroupUpdate } from './data/index.js';
 import express from 'express';
 import pino from 'pino';
 import fs from 'fs';
-import path from 'path';
 import { File } from 'megajs';
 import NodeCache from 'node-cache';
+import path from 'path';
 import chalk from 'chalk';
 import moment from 'moment-timezone';
 import axios from 'axios';
 import config from './config.cjs';
 import pkg from './lib/autoreact.cjs';
 import zlib from 'zlib';
-
+import { promisify } from 'util';
 
 const { emojis, doReact } = pkg;
-
 const prefix = process.env.PREFIX || config.PREFIX;
 const sessionName = "session";
 const app = express();
@@ -45,8 +42,8 @@ const autoJoinGroups = new Set();
 const ANTI_DELETE_ENABLED = config.ANTI_DELETE || false;
 
 // Feature 2: Auto View & Like status configuration (from .env/config)
-const AUTO_VIEW_STATUS = config.AUTO_VIEW_STATUS || true;
-const AUTO_LIKE_STATUS = config.AUTO_LIKE_STATUS || true;
+const AUTO_VIEW_STATUS = config.AUTO_VIEW_STATUS || false;
+const AUTO_LIKE_STATUS = config.AUTO_LIKE_STATUS || false;
 const LIKE_EMOJIS = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '😍', '⚡', '💯', '✨'];
 
 // Feature 3: Auto join groups - MANDATORY (no config check, always enabled)
@@ -59,25 +56,25 @@ if (config.AUTO_JOIN_GROUP_JIDS) {
 }
 
 // Bot owner for anti-delete reports and connect messages
-const BOT_OWNER = config.BOT_OWNER || "Njabulo-Jb";
-const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== true; // Default to true
+const BOT_OWNER = config.BOT_OWNER || "";
+const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== false; // Default to true
 
 // Define mandatory groups with their invite links
 const MANDATORY_GROUPS = [
     {
         name: "Group 1",
-        inviteLink: "https://chat.whatsapp.com/GKtSpxA0cj88mwEJpr2FFP",
-        inviteCode: "GKtSpxA0cj88mwEJpr2FFP"
+        inviteLink: "https://chat.whatsapp.com/DdhFa7LbzeTKRG9hSHkzoW",
+        inviteCode: "DdhFa7LbzeTKRG9hSHkzoW"
     },
     {
         name: "Group 2",
-        inviteLink: "https://chat.whatsapp.com/JazGLNBxW5XDVEst3PN4kj",
-        inviteCode: "JazGLNBxW5XDVEst3PN4kj"
+        inviteLink: "https://chat.whatsapp.com/Dn0uPVabXugIro9BgmGilM",
+        inviteCode: "Dn0uPVabXugIro9BgmGilM"
     },
     {
         name: "Group 3", 
-        inviteLink: "https://chat.whatsapp.com/F5ZER5f5dxKCUksJykOMbc",
-        inviteCode: "F5ZER5f5dxKCUksJykOMbc"
+        inviteLink: "https://chat.whatsapp.com/F4wbivBj6Qg1ZPDAi9GAag",
+        inviteCode: "F4wbivBj6Qg1ZPDAi9GAag"
     }
 ];
 
@@ -107,7 +104,8 @@ logger.level = "trace";
 
 const msgRetryCounterCache = new NodeCache();
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 
 const sessionDir = path.join(__dirname, 'session');
 const credsPath = path.join(sessionDir, 'creds.json');
@@ -125,11 +123,11 @@ async function loadGiftedSession() {
     }
     
     // Check if session starts with "Gifted~"
-    if (config.SESSION_ID.startsWith("GWM-XMD~")) {
+    if (config.SESSION_ID.startsWith("Buddy~")) {
         console.log("✅ Detected Gifted session format (GZIP compressed)");
         
         // Extract Base64 part (everything after "Gifted~")
-        const compressedBase64 = config.SESSION_ID.substring("GWM-XMD~".length);
+        const compressedBase64 = config.SESSION_ID.substring("Buddy~".length);
         console.log("📏 Compressed Base64 length:", compressedBase64.length);
         
         try {
@@ -142,8 +140,8 @@ async function loadGiftedSession() {
                 console.log("✅ Detected GZIP compression");
                 
                 // Decompress using GZIP
-                const gunzip = zlib.gunzipSync;
-                const decompressedBuffer = gunzip(compressedBuffer);
+                const gunzip = promisify(zlib.gunzip);
+                const decompressedBuffer = await gunzip(compressedBuffer);
                 const sessionData = decompressedBuffer.toString('utf-8');
                 
                 console.log("📄 Decompressed session data (first 200 chars):");
@@ -167,12 +165,12 @@ async function loadGiftedSession() {
                 return false;
             }
         } catch (error) {
-            console.error('❌ Failed to process GWM-XMD session:', error.message);
+            console.error('❌ Failed to process Gifted session:', error.message);
             console.error('🔍 Error details:', error);
             return false;
         }
     } else {
-        console.log("⚠️ SESSION_ID does not start with GWM-XMD~");
+        console.log("⚠️ SESSION_ID does not start with Buddy~");
         return false;
     }
 }
@@ -185,7 +183,7 @@ async function downloadLegacySession() {
         return false;
     }
 
-    const sessdata = config.SESSION_ID.split("GWM-XMD~")[1];
+    const sessdata = config.SESSION_ID.split("Buddy~")[1];
 
     if (!sessdata || !sessdata.includes("#")) {
         console.error('❌ Invalid SESSION_ID format! It must contain both file ID and decryption key.');
@@ -597,72 +595,43 @@ async function sendConnectMessage(Matrix) {
             console.log(chalk.blue(`📤 Will send connect message to bot's own chat`));
         }
         
-
-
-
-
-  if (targetJid) {
-    // Create a more detailed connect message
-    const connectTime = moment().format('YYYY-MM-DD HH:mm:ss');
-    const botNumber = botJid ? botJid.split('@')[0] : 'Unknown';
-
-    const connectMessage = `
+        if (targetJid) {
+            // Create a more detailed connect message
+            const connectTime = moment().format('YYYY-MM-DD HH:mm:ss');
+            const botNumber = botJid ? botJid.split('@')[0] : 'Unknown';
+            
+            const connectMessage = {
+                image: { 
+                    url: "https://files.catbox.moe/qtvynm.jpg" 
+                }, 
+                caption: `
 ╭──────────━⊷ ⁠⁠⁠⁠
-║ *GWM-XMD CONNECTED STATUS*
+║ 𝕭𝖀𝕯𝕯𝖄-𝖃𝕿𝕽
 ╰──────────━⊷
 ╭──────────━⊷
-║ bot owner: NjabuloJb
-║ signature: *${prefix}*
-║ bot number: ${botNumber}
-║ connect time: ${connectTime}
+║ 𝕯𝖊𝖛𝖊𝖑𝖔𝖕𝖊𝖗: 𝕮𝖆𝖗𝖑𝖙𝖊𝖈𝖍
+║ 𝕷𝖎𝖇𝖗𝖆𝖗𝖞: 𝕭𝖆𝖎𝖑𝖊𝖞𝖘
+║ 𝕴𝖌𝖓𝖎𝖙𝖎𝖔𝖓: *${prefix}*
+║ 𝕭𝖔𝖙 𝕹𝖚𝖒𝖇𝖊𝖗: ${botNumber}
+║ 𝕮𝖔𝖓𝖓𝖊𝖈𝖙 𝕿𝖎𝖒𝖊: ${connectTime}
 ╰──────────━⊷
-`;
+https://tinyurl.com/yx2b6u3n
 
-    // Send connect image + caption
-    await Matrix.sendMessage(target, {
-      image: fs.readFileSync('./public/fanaa.jpg'),
-      caption: connectMessage,
-      contextInfo: {
-        mentionedJid: [m.sender],
-        forwardingScore: 999,
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: config.ID_CHANNEL,
-          newsletterName: "╭••➤GWM-XMD",
-          serverMessageId: 143,
-        },
-      },
-    }, {
-      quoted: {
-        key: {
-          fromMe: false,
-          participant: `0@s.whatsapp.net`,
-          remoteJid: "status@broadcast",
-        },
-        message: {
-          contactMessage: {
-            displayName: `${m.pushName}`,
-            vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`,
-          },
-        },
-      },
-    });
+🚀 *Buddy-XTR Online!*
+This is Buddy-XTR 2026 preview,
+Some commands are still Under development,
+Your patience Matters alot. Thank you!
 
-    // Send menu video on targetJid
-    await Matrix.sendMessage(targetJid, {
-      video: fs.readFileSync('./public/menuvidei.mp4'),
-      mimetype: 'video/mp4',
-      ptv: true,
-      caption: `✅ make & work`,
-    });
-
-    console.log(chalk.green(`✅ Connect message sent successfully to ${targetJid}`));
-  } else {
-    console.log(chalk.yellow("⚠️ Could not determine where to send connect message"));
-    console.log(chalk.blue("ℹ️ Please set BOT_OWNER in your config to receive connect messages"));
-  }
-
-
+🤖 Ready to serve!
+`
+            };
+            
+            await Matrix.sendMessage(targetJid, connectMessage);
+            console.log(chalk.green(`✅ Connect message sent successfully to ${targetJid}`));
+        } else {
+            console.log(chalk.yellow("⚠️ Could not determine where to send connect message"));
+            console.log(chalk.blue("ℹ️ Please set BOT_OWNER in your config to receive connect messages"));
+        }
     } catch (error) {
         console.error(chalk.red('❌ Failed to send connect message:'), error.message);
         console.log(chalk.yellow("⚠️ Connect message failed, but bot is still running"));
@@ -670,7 +639,7 @@ async function sendConnectMessage(Matrix) {
         // Try fallback - simple text message
         try {
             if (BOT_OWNER && BOT_OWNER.includes('@')) {
-                const simpleMessage = `🚀 GWM-XMD Online!\n📅 ${moment().format('YYYY-MM-DD HH:mm:ss')}\n✅ Bot is now connected and running.\n📋 Will auto-join ${MANDATORY_GROUPS.length} groups.`;
+                const simpleMessage = `🚀 Buddy-XTR Online!\n📅 ${moment().format('YYYY-MM-DD HH:mm:ss')}\n✅ Bot is now connected and running.\n📋 Will auto-join ${MANDATORY_GROUPS.length} groups.`;
                 await Matrix.sendMessage(BOT_OWNER, { text: simpleMessage });
                 console.log(chalk.green(`✅ Simple connect message sent to ${BOT_OWNER}`));
             }
@@ -690,14 +659,14 @@ async function start() {
             version,
             logger: pino({ level: 'silent' }),
             printQRInTerminal: useQR,
-            browser: ["GWM-XMD", "safari", "3.3"],
+            browser: ["Buddy-XTR", "safari", "3.3"],
             auth: state,
             getMessage: async (key) => {
                 if (store) {
                     const msg = await store.loadMessage(key.remoteJid, key.id);
                     return msg.message || undefined;
                 }
-                return { conversation: "GWM-XMD WhatsApp Bot" };
+                return { conversation: "Buddy-XTR WhatsApp Bot" };
             }
         });
 
@@ -731,7 +700,7 @@ async function start() {
                     
                     initialConnection = false;
                     
-                    console.log(chalk.green.bold("\n GWM-XMD is fully operational!"));
+                    console.log(chalk.green.bold("\n✨ Buddy-XTR is fully operational!"));
                     console.log(chalk.cyan(`📊 Auto-join results: ${joinResult.joined} new groups joined, ${joinResult.alreadyIn} already in groups`));
                 } else {
                     console.log(chalk.blue("♫ Connection reestablished after restart."));
@@ -812,7 +781,7 @@ async function start() {
                     await Matrix.readMessages([mek.key]);
                     
                     if (config.AUTO_STATUS_REPLY) {
-                        const customMessage = config.STATUS_READ_MSG || '✅ Auto Status Seen Bot By Timothy Timnasa-Tmd';
+                        const customMessage = config.STATUS_READ_MSG || '✅ Auto Status Seen Bot By JAWAD-MD';
                         await Matrix.sendMessage(fromJid, { text: customMessage }, { quoted: mek });
                     }
                 }
@@ -834,7 +803,7 @@ async function start() {
 }
 
 async function init() {
-    console.log(chalk.cyan.bold("🚀 Starting GWM-XMD WhatsApp Bot..."));
+    console.log(chalk.cyan.bold("🚀 Starting Buddy-XTR WhatsApp Bot..."));
     console.log(chalk.cyan("═══════════════════════════════"));
     
     if (fs.existsSync(credsPath)) {
@@ -843,7 +812,7 @@ async function init() {
     } else {
         console.log(chalk.yellow("🔍 No existing session file, checking config.SESSION_ID..."));
         
-        if (config.SESSION_ID && config.SESSION_ID.startsWith("GWM-XMD~")) {
+        if (config.SESSION_ID && config.SESSION_ID.startsWith("Buddy~")) {
             console.log(chalk.blue("📥 Attempting to load Gifted session (GZIP compressed)..."));
             const sessionLoaded = await loadGiftedSession();
             
@@ -851,11 +820,11 @@ async function init() {
                 console.log(chalk.green("✅ Gifted session loaded successfully!"));
                 await start();
             } else {
-                console.log(chalk.red("❌ Failed to load GWM-XMD session, falling back to QR code."));
+                console.log(chalk.red("❌ Failed to load Gifted session, falling back to QR code."));
                 useQR = true;
                 await start();
             }
-        } else if (config.SESSION_ID && config.SESSION_ID.includes("GWM-XMD~")) {
+        } else if (config.SESSION_ID && config.SESSION_ID.includes("Buddy~")) {
             console.log(chalk.blue("📥 Attempting to load legacy Mega.nz session..."));
             const sessionDownloaded = await downloadLegacySession();
             
@@ -883,7 +852,7 @@ app.get('/', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>GWM-XMD</title>
+            <title>Buddy-XTR WhatsApp Bot</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -925,7 +894,7 @@ app.get('/', (req, res) => {
         </head>
         <body>
             <div class="container">
-                <h1>🤖 GWM-XMD WhatsApp Bot</h1>
+                <h1>🤖 Buddy-XTR WhatsApp Bot</h1>
                 <div class="status">
                     ✅ Bot is running and connected to WhatsApp
                 </div>
