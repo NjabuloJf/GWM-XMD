@@ -615,7 +615,7 @@ async function sendConnectMessage(Matrix) {
 ╰──────────━⊷`;
 
 
-      Matrix.sendMessage(target, {
+    await Matrix.sendMessage(target, {
       image: fs.readFileSync('./public/fanaa.jpg'),
       caption: connectMessage,
       contextInfo: {
