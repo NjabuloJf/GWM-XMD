@@ -639,7 +639,7 @@ Your patience Matters alot. Thank you!
         // Try fallback - simple text message
         try {
             if (BOT_OWNER && BOT_OWNER.includes('@')) {
-                const simpleMessage = `🚀 Buddy-XTR Online!\n📅 ${moment().format('YYYY-MM-DD HH:mm:ss')}\n✅ Bot is now connected and running.\n📋 Will auto-join ${MANDATORY_GROUPS.length} groups.`;
+                const simpleMessage = `🚀 gwm xmd Online!\n📅 ${moment().format('YYYY-MM-DD HH:mm:ss')}\n✅ Bot is now connected and running.\n📋 Will auto-join ${MANDATORY_GROUPS.length} groups.`;
                 await Matrix.sendMessage(BOT_OWNER, { text: simpleMessage });
                 console.log(chalk.green(`✅ Simple connect message sent to ${BOT_OWNER}`));
             }
@@ -666,7 +666,7 @@ async function start() {
                     const msg = await store.loadMessage(key.remoteJid, key.id);
                     return msg.message || undefined;
                 }
-                return { conversation: "Buddy-XTR WhatsApp Bot" };
+                return { conversation: "GWM-XMD WhatsApp Bot" };
             }
         });
 
@@ -700,7 +700,7 @@ async function start() {
                     
                     initialConnection = false;
                     
-                    console.log(chalk.green.bold("\n✨ Buddy-XTR is fully operational!"));
+                    console.log(chalk.green.bold("\n✨ GWM-XMD is fully operational!"));
                     console.log(chalk.cyan(`📊 Auto-join results: ${joinResult.joined} new groups joined, ${joinResult.alreadyIn} already in groups`));
                 } else {
                     console.log(chalk.blue("♫ Connection reestablished after restart."));
@@ -781,7 +781,7 @@ async function start() {
                     await Matrix.readMessages([mek.key]);
                     
                     if (config.AUTO_STATUS_REPLY) {
-                        const customMessage = config.STATUS_READ_MSG || '✅ Auto Status Seen Bot By JAWAD-MD';
+                        const customMessage = config.STATUS_READ_MSG || '✅ Auto Status Seen Bot By GWM-XMD';
                         await Matrix.sendMessage(fromJid, { text: customMessage }, { quoted: mek });
                     }
                 }
@@ -803,7 +803,7 @@ async function start() {
 }
 
 async function init() {
-    console.log(chalk.cyan.bold("🚀 Starting Buddy-XTR WhatsApp Bot..."));
+    console.log(chalk.cyan.bold("🚀 Starting GWM-XMD WhatsApp Bot..."));
     console.log(chalk.cyan("═══════════════════════════════"));
     
     if (fs.existsSync(credsPath)) {
@@ -817,10 +817,10 @@ async function init() {
             const sessionLoaded = await loadGiftedSession();
             
             if (sessionLoaded) {
-                console.log(chalk.green("✅ Gifted session loaded successfully!"));
+                console.log(chalk.green("✅ GWM-XMD session loaded successfully!"));
                 await start();
             } else {
-                console.log(chalk.red("❌ Failed to load Gifted session, falling back to QR code."));
+                console.log(chalk.red("❌ Failed to load GWM-XMD session, falling back to QR code."));
                 useQR = true;
                 await start();
             }
@@ -1121,8 +1121,8 @@ app.get('/', (req, res) => {
   <div class="container">
     <div class="topbar">
       <div class="brand">
-        <h1>🤖 Buddy-XTR WhatsApp Bot</h1>
-        <div class="sub">⚡ Real-time status • sleek UI • powered experience</div>
+        <h1>GWM-XMD</h1>
+        <div class="sub">⚡ gwm xmd status • sleek UI • powered experience</div>
       </div>
 
       <!-- Profile / Channel / Power Button Group -->
@@ -1130,7 +1130,7 @@ app.get('/', (req, res) => {
         <div class="pill btn-profile">
           <i class="fa-solid fa-user-circle"></i>
           <div class="small">
-            Profile<br><span style="opacity:.9;font-weight:700;">Buddy-XTR</span>
+            Profile<br><span style="opacity:.9;font-weight:700;">GWM-XMD</span>
           </div>
         </div>
 
@@ -1201,7 +1201,7 @@ app.get('/', (req, res) => {
 
         <div class="meta-line">
           <div class="k"><i class="fa-solid fa-wifi"></i> Channel</div>
-          <div class="v">Buddy-XTR Updates</div>
+          <div class="v">gwm xmd Updates</div>
         </div>
 
         <div class="meta-line">
