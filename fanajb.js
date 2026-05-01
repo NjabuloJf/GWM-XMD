@@ -1,13 +1,15 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import {
-    makeWASocket,
-    Browsers,
-    fetchLatestBaileysVersion,
-    DisconnectReason,
-    useMultiFileAuthState,
-} from '@whiskeysockets/baileys';
+import baileys from '@whiskeysockets/baileys'
+const {
+  makeWASocket,
+  Browsers,
+  fetchLatestBaileysVersion,
+  DisconnectReason,
+  useMultiFileAuthState
+} = baileys;
+
 import { Handler, Callupdate, GroupUpdate } from './data/index.js';
 import express from 'express';
 import pino from 'pino';
@@ -21,6 +23,7 @@ import axios from 'axios';
 import config from './config.cjs';
 import pkg from './lib/autoreact.cjs';
 import zlib from 'zlib';
+
 
 const { emojis, doReact } = pkg;
 
