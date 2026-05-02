@@ -1,6 +1,6 @@
 import config from '../config.cjs';
-import pkg from '@whiskeysockets/baileys' 
-import { generateWAMessageContent, generateWAMessageFromContent } = pkg
+import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+
 
 
 
