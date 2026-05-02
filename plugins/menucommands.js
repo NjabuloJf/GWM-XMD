@@ -2,6 +2,8 @@ import config from '../config.cjs';
 import pkg from '@whiskeysockets/baileys' 
 import { generateWAMessageContent, generateWAMessageFromContent } = pkg
 
+
+
 // Function to fetch GitHub repository data
 const fetchGitHubData = async (owner, repo) => {
   try {
@@ -33,12 +35,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const menu+  = async (m, Matrix) => {
+const menucommands = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!'; // Default prefix if not configured
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "gmenu" || cmd === "commands-menu" || cmd === "github") {
+    if (cmd === "gmenu" || cmd === "commands-menu" || cmd === "menucommands") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -304,4 +306,4 @@ try {
   }
 };
 
-export default menu+;
+export default menucommands;
