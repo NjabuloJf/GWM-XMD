@@ -1,5 +1,6 @@
 import config from '../config.cjs';
-import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import pkg from '@whiskeysockets/baileys' 
+import { generateWAMessageContent, generateWAMessageFromContent } = pkg
 
 // Function to fetch GitHub repository data
 const fetchGitHubData = async (owner, repo) => {
