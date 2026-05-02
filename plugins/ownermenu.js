@@ -32,12 +32,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const owners = async (m, Matrix) => {
+const ownermenu = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!'; // Default prefix if not configured
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "gowner" || cmd === "owner-menu" || cmd === "github") {
+    if (cmd === "gowner" || cmd === "owner-menu" || cmd === "ownermenu") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -303,4 +303,4 @@ try {
   }
 };
 
-export default owners;
+export default ownermenu;
