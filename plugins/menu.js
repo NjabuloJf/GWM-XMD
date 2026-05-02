@@ -1,11 +1,10 @@
 import moment from 'moment-timezone';
 import fs from 'fs';
 import os from 'os';
-import pkg from '@whiskeysockets/baileys';
 import config from '../config.cjs';
 import axios from 'axios';
+import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
-import { generateWAMessageContent, generateWAMessageFromContent } = pkg;
 
 const totalMemoryBytes = os.totalmem();
 const freeMemoryBytes = os.freemem();
@@ -57,7 +56,7 @@ const menu = async (m, Matrix) => {
   const mode = config.MODE === 'public' ? 'public' : 'private';
   const pref = config.PREFIX;
 
-  const validCommands = ['list', 'help', 'menu'];
+  const validCommands = ['menu'];
   if (!validCommands.includes(cmd)) return;
 
   const mainMenu = `*┌─❖*
