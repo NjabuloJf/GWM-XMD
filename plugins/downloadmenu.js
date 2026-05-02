@@ -32,7 +32,7 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const download-menu = async (m, Matrix) => {
+const downloadmenu = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!'; // Default prefix if not configured
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
