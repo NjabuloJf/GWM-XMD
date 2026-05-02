@@ -2,7 +2,8 @@ import moment from 'moment-timezone';
 import fs from 'fs';
 import os from 'os';
 import pkg from '@whiskeysockets/baileys';
-import { generateWAMessageFromContent, proto } = pkg;
+import { generateWAMessageContent, generateWAMessageFromContent} = pkg
+
 import config from '../config.cjs';
 import axios from 'axios';
 
