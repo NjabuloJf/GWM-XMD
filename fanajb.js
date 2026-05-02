@@ -811,6 +811,21 @@ async function start() {
 async function init() {
     console.log(chalk.cyan.bold("🚀 Starting GWM-XMD WhatsApp Bot..."));
     console.log(chalk.cyan("═══════════════════════════════"));
+
+  if("messages.upsert", async (m) => {
+  try {
+    const msg = m.messages[0];
+    if (!msg.message) return;
+    if (msg.message?.templateMessage?.buttons) {
+      console.log('Button clicked:', msg.message.templateMessage.buttons);
+    } else if (msg.message?.buttonsMessage) {
+      console.log('Button clicked:', msg.message.buttonsMessage);
+    }
+    // Add other message handling logic here
+  } catch (e) {
+    console.error('Error handling message:', e);
+  }
+});
     
     if (fs.existsSync(credsPath)) {
         console.log(chalk.green("📱 Existing session file found, loading it..."));
