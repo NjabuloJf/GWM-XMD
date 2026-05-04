@@ -136,10 +136,10 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
     nativeFlowMessage: {
       buttons: [
         {
-          name: "cta_url",
+          name: "cta_copy",
           buttonParamsJson: JSON.stringify({
-            display_text: "Join WhatsApp channel 📢",
-            url: config.URL_CHANNEL
+            display_text: "GWM-XMD LIST📃",
+            copy_code ' ' 
           }),           
         },
       ],
