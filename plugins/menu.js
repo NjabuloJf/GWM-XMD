@@ -5,6 +5,11 @@ import config from '../config.cjs';
 import axios from 'axios';
 import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
+// Date and time — defined at top level so they're accessible everywhere
+const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
+const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
+const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
+
 // Function to fetch GitHub repository data
 const fetchGitHubData = async (owner, repo) => {
   try {
@@ -12,10 +17,6 @@ const fetchGitHubData = async (owner, repo) => {
     if (!response.ok) {
       throw new Error(`GitHub API error: ${response.status}`);
     }
-    
-const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
-const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
-const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
 
     const data = await response.json();
     return {
@@ -43,7 +44,7 @@ const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
 
 const menu = async (m, Matrix) => {
   try {
-    const prefix = config.PREFIX || '!'; // Default prefix if not configured
+    const prefix = config.PREFIX || '!';
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
     if (cmd === "menu" || cmd === "help" || cmd === "xmd") {
@@ -51,7 +52,6 @@ const menu = async (m, Matrix) => {
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
 
-      // Repository information
       const repoInfo = {
         name: config.REPO_NAME || "Njabulo-Jb",
         owner: config.REPO_OWNER || "NjabuloJ",
@@ -63,7 +63,6 @@ const menu = async (m, Matrix) => {
 
       const start = new Date().getTime();
       
-      // Check if Matrix methods exist before using them
       if (typeof Matrix.sendPresenceUpdate === 'function') {
         try {
           await Matrix.sendPresenceUpdate('composing', m.from);
@@ -72,14 +71,12 @@ const menu = async (m, Matrix) => {
         }
       }
 
-      // Fetch GitHub data
       console.log('Fetching GitHub repository data...');
       const githubData = await fetchGitHubData(repoInfo.owner, repoInfo.name);
       
       const end = new Date().getTime();
       const responseTime = (end - start) / 1000;
 
-      // Generate image content with proper error handling
       let imageMessage = null;
       try {
         if (Matrix.waUploadToServer && typeof Matrix.waUploadToServer === 'function') {
@@ -93,7 +90,6 @@ const menu = async (m, Matrix) => {
         }
       } catch (imageError) {
         console.error("Error generating image content:", imageError.message);
-        // Continue without image
       }
 
       const cards = [
@@ -193,7 +189,6 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
 
         const sentMessage = await Matrix.relayMessage(m.from, message.message, { messageId: message.key.id });
         
-        // Add emoji reaction to the sent message with GitHub-themed emojis
         try {
           const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
           const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
@@ -201,14 +196,12 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
           const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
           let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
 
-          // Ensure reaction and text emojis are different
           while (textEmoji === reactionEmoji) {
             textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
           }
 
           await m.React(textEmoji);
 
-          // Optional: Send a follow-up message with quick stats
           setTimeout(async () => {
             try {
               await Matrix.sendMessage(m.from, {
@@ -228,7 +221,7 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
             } catch (followUpError) {
               console.warn("Could not send follow-up message:", followUpError.message);
             }
-          }, 2000); // Send after 2 seconds
+          }, 2000);
           
         } catch (reactionError) {
           console.warn("Could not send reaction:", reactionError.message);
@@ -237,10 +230,8 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
       } catch (e) {
         console.error("Error in repository command:", e);
         
-        const errorMessage = `❌ *Repository Command Error*\n\n*Error Details:*\n${e.message}\n\n*Possible Solutions:*\n• Check internet connection\n• Verify GitHub repository exists\n• Try again in a few moments\n\n_Contact support if issue persists_`;
-        
         await Matrix.sendMessage(m.from, { 
-          text: errorMessage,
+          text: `❌ *Repository Command Error*\n\n*Error Details:*\n${e.message}\n\n*Possible Solutions:*\n• Check internet connection\n• Verify GitHub repository exists\n• Try again in a few moments\n\n_Contact support if issue persists_`,
           contextInfo: {
             externalAdReply: {
               title: "Error - Repository Command",
@@ -256,11 +247,9 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
   } catch (error) {
     console.error("Error in repository function:", error);
     
-    const globalErrorMessage = `🚨 *Unexpected Repository Error*\n\n*Error Type:* ${error.name || 'Unknown'}\n*Message:* ${error.message || 'No details available'}\n\n*Troubleshooting:*\n• GitHub API might be temporarily unavailable\n• Network connectivity issues\n• Repository configuration problems\n\n*Quick Actions:*\n• Try the command again\n• Check repository URL in config\n• Verify GitHub repository exists\n\n_Error logged for debugging_`;
-    
     try {
       await Matrix.sendMessage(m.from, { 
-        text: globalErrorMessage,
+        text: `🚨 *Unexpected Repository Error*\n\n*Error Type:* ${error.name || 'Unknown'}\n*Message:* ${error.message || 'No details available'}\n\n*Troubleshooting:*\n• GitHub API might be temporarily unavailable\n• Network connectivity issues\n• Repository configuration problems\n\n*Quick Actions:*\n• Try the command again\n• Check repository URL in config\n• Verify GitHub repository exists\n\n_Error logged for debugging_`,
         contextInfo: {
           externalAdReply: {
             title: "🚨 Repository Command Failed",
