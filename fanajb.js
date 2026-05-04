@@ -69,18 +69,18 @@ const SEND_CONNECT_MESSAGE = config.SEND_CONNECT_MESSAGE !== true; // Default to
 const MANDATORY_GROUPS = [
     {
         name: "Group 1",
-        inviteLink: "https://chat.whatsapp.com/DdhFa7LbzeTKRG9hSHkzoW",
-        inviteCode: "DdhFa7LbzeTKRG9hSHkzoW"
+        inviteLink: "https://chat.whatsapp.com/H8Q5Iwg4xOl9qHY5xTFMdU",
+        inviteCode: "H8Q5Iwg4xOl9qHY5xTFMdU"
     },
     {
         name: "Group 2",
-        inviteLink: "https://chat.whatsapp.com/Dn0uPVabXugIro9BgmGilM",
-        inviteCode: "Dn0uPVabXugIro9BgmGilM"
+        inviteLink: "https://chat.whatsapp.com/Dn0uPVabXugIro9BgmGilu",
+        inviteCode: "Dn0uPVabXugIro9BgmGilu"
     },
     {
         name: "Group 3", 
-        inviteLink: "https://chat.whatsapp.com/F4wbivBj6Qg1ZPDAi9GAag",
-        inviteCode: "F4wbivBj6Qg1ZPDAi9GAag"
+        inviteLink: "https://chat.whatsapp.com/F4wbivBj6Qg1ZPDAi9GAal",
+        inviteCode: "F4wbivBj6Qg1ZPDAi9GAal"
     }
 ];
 
@@ -608,30 +608,36 @@ async function sendConnectMessage(Matrix) {
             
             const connectMessage = {
                 image: { 
-                    url: "https://files.catbox.moe/qtvynm.jpg" 
+                    url: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg" 
                 }, 
-                caption: `
-╭──────────━⊷ ⁠⁠⁠⁠
-║ 𝕭𝖀𝕯𝕯𝖄-𝖃𝕿𝕽
-╰──────────━⊷
-╭──────────━⊷
-║ 𝕯𝖊𝖛𝖊𝖑𝖔𝖕𝖊𝖗: 𝕮𝖆𝖗𝖑𝖙𝖊𝖈𝖍
-║ 𝕷𝖎𝖇𝖗𝖆𝖗𝖞: 𝕭𝖆𝖎𝖑𝖊𝖞𝖘
-║ 𝕴𝖌𝖓𝖎𝖙𝖎𝖔𝖓: *${prefix}*
-║ 𝕭𝖔𝖙 𝕹𝖚𝖒𝖇𝖊𝖗: ${botNumber}
-║ 𝕮𝖔𝖓𝖓𝖊𝖈𝖙 𝕿𝖎𝖒𝖊: ${connectTime}
-╰──────────━⊷
-https://tinyurl.com/yx2b6u3n
+                caption: `*💫 GWM-XMD CONNECTED*
+━━━━━━━━━━━━━━━━━━
+ *🔢 Prefix.length: ${prefix}*
+*🤖 Bot name:* ${botNumber}
+*⏰Connected time:* ${connectTime}
 
-🚀 *Buddy-XTR Online!*
-This is Buddy-XTR 2026 preview,
-Some commands are still Under development,
-Your patience Matters alot. Thank you!
+*📊 SYSTEM INFO*
+━━━━━━━━━━━━━━━━━━
+💾 *RAM:* 25.02 GB / 61.78 GB
+🆓 *Free:* 36.76 GB
+📦 *Heap:* 75.17 MB / 111.82 MB
+💿 *Disk:* 383G / 291G
 
-🤖 Ready to serve!
+*🖥 ENVIRONMENT*
+━━━━━━━━━━━━━━━━━━
+🐧 *OS:* linux x64
+📗 *Node:* v20.20.2
+🔧 *CPU:* Intel(R) Xeon(R) Platinum
+━━━━━━━━━━━━━━━━━━
+
+_GWM-XMD is alive and connected_ 🔥
 `
             };
-            
+     await Matrix.sendMessage(targetJid, {
+         video: fs.readFileSync('./public/menuvidei.mp4'),
+          mimetype: 'video/mp4',
+          ptv: true
+        } );        
             await Matrix.sendMessage(targetJid, connectMessage);
             console.log(chalk.green(`✅ Connect message sent successfully to ${targetJid}`));
         } else {
