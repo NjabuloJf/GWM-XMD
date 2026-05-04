@@ -1,4 +1,8 @@
+mport moment from 'moment-timezone';
+import fs from 'fs';
+import os from 'os';
 import config from '../config.cjs';
+import axios from 'axios';
 import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 // Function to fetch GitHub repository data
@@ -8,6 +12,11 @@ const fetchGitHubData = async (owner, repo) => {
     if (!response.ok) {
       throw new Error(`GitHub API error: ${response.status}`);
     }
+    
+const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
+const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
+const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
+
     const data = await response.json();
     return {
       stars: data.stargazers_count || 0,
@@ -95,9 +104,10 @@ const menu = async (m, Matrix) => {
       ...(imageMessage && { imageMessage }),
     },
     body: {
-      text:`👤 ᴜsᴇ ɴᴀᴍᴇ
-📆 ᴅᴀᴛᴇ
-⌚ ᴛɪᴍᴇ
+      text:`ᴜsᴇʀ ɴᴀᴍᴇ:  ${m.pushName}
+📅ᴅᴀᴛᴇ: ${xdate} 
+⏰ᴛɪᴍᴇ: ${xtime}
+⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars
 
 ᴛᴏᴛᴀʟ ᴄᴏᴍᴍᴀɴᴅs ɢᴡᴍ
 ᴀɪᴍᴇɴᴜ
