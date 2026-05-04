@@ -97,17 +97,17 @@ const menu = async (m, Matrix) => {
       }
 
       const cards = [
- {
-    header: {
-      title: `*ɢᴡᴍ xᴍᴅ ᴍᴇɴᴜᴄᴏᴍᴍᴀɴᴅᴀs*`,
-      hasMediaAttachment: !!imageMessage,
-      ...(imageMessage && { imageMessage }),
-    },
-    body: {
-      text:`ᴜsᴇʀ ɴᴀᴍᴇ:  ${m.pushName}
+        {
+          header: {
+            title: `*ɢᴡᴍ xᴍᴅ ᴍᴇɴᴜᴄᴏᴍᴍᴀɴᴅᴀs*`,
+            hasMediaAttachment: !!imageMessage,
+            ...(imageMessage && { imageMessage }),
+          },
+          body: {
+            text: `ᴜsᴇʀ ɴᴀᴍᴇ:  ${m.pushName}
 📅ᴅᴀᴛᴇ: ${xdate} 
 ⏰ᴛɪᴍᴇ: ${xtime}
-⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars
+⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}
 
 ᴛᴏᴛᴀʟ ᴄᴏᴍᴍᴀɴᴅs ɢᴡᴍ
 ᴀɪᴍᴇɴᴜ
@@ -129,137 +129,133 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
 
 ᴜsᴇ *(ɢ)* & ғᴜʟʟ ɴᴀᴍᴇ ʟɪᴋᴇ *ᴍᴀɪɴᴍᴇɴᴜ*
 ᴛᴏ sᴇᴇ ᴏʟʟ ᴄᴏᴍᴍᴀɴᴅs`,
-    },
-    footer: {
-      text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
-    },
-    nativeFlowMessage: {
-      buttons: [
-        {
-          name: "cta_copy",
-          buttonParamsJson: JSON.stringify({
-            display_text: "GWM-XMD LIST📃",
-            copy_code ' ' 
-          }),           
-        },
-      ],
-    },
-  },
-];
-try {
-  const message = generateWAMessageFromContent(
-    m.from,
-    {
-      viewOnceMessage: {
-        message: {
-          messageContextInfo: {
-            deviceListMetadata: {},
-            deviceListMetadataVersion: 2,
           },
-          interactiveMessage: {
-            header: { 
-              title: `🚀 ${repoInfo.name} Repository`,
-              subtitle: `by ${repoInfo.owner}`
-            },
-            body: { 
-              text: `⭐ ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}\n📊 ʟɪᴠᴇ ᴅᴀᴛᴀ ғʀᴏᴍ ᴍᴇɴᴜᴄᴏᴍᴍᴀɴᴅᴀs` 
-            },
-            footer: {
-              text: ` `
-            },
-            headerType: 1,
-            carouselMessage: { cards },
+          footer: {
+            text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
+          },
+          nativeFlowMessage: {
+            buttons: [
+              {
+                name: "cta_copy",
+                buttonParamsJson: JSON.stringify({
+                  display_text: "GWM-XMD LIST📃",
+                  copy_code: ' '
+                }),
+              },
+            ],
           },
         },
-      },
-    }, 
-    { 
-      quoted: {
-        key: {
-          fromMe: false,
-          participant: `0@s.whatsapp.net`,
-          remoteJid: "status@broadcast"
-        },
-        message: {
-          contactMessage: {
-            displayName: "ɳʝαႦυʅσ ʝႦ",
-            vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
-          }
-        }
-      } 
-    }
-  );
+      ];
 
-  
-  
-  const sentMessage = await Matrix.relayMessage(m.from, message.message, { messageId: message.key.id });
-  
-  // Add emoji reaction to the sent message with GitHub-themed emojis
-  try {
-    const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
-    const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
-
-    const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
-    let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
-
-    // Ensure reaction and text emojis are different
-    while (textEmoji === reactionEmoji) {
-      textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
-    }
-
-    await m.React(textEmoji);
-
-    
-    // Optional: Send a follow-up message with quick stats
-    setTimeout(async () => {
       try {
-        await Matrix.sendMessage(m.from, {
-          text: `📈 *Quick Stats Update*\n⭐ ${githubData.stars} stars • 🍴 ${githubData.forks} forks\n\n_Thank you for checking out the repository!_`,
+        const message = generateWAMessageFromContent(
+          m.from,
+          {
+            viewOnceMessage: {
+              message: {
+                messageContextInfo: {
+                  deviceListMetadata: {},
+                  deviceListMetadataVersion: 2,
+                },
+                interactiveMessage: {
+                  header: { 
+                    title: `🚀 ${repoInfo.name} Repository`,
+                    subtitle: `by ${repoInfo.owner}`
+                  },
+                  body: { 
+                    text: `⭐ ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}\n📊 ʟɪᴠᴇ ᴅᴀᴛᴀ ғʀᴏᴍ ᴍᴇɴᴜᴄᴏᴍᴍᴀɴᴅᴀs` 
+                  },
+                  footer: {
+                    text: ` `
+                  },
+                  headerType: 1,
+                  carouselMessage: { cards },
+                },
+              },
+            },
+          }, 
+          { 
+            quoted: {
+              key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+              },
+              message: {
+                contactMessage: {
+                  displayName: "ɳʝαႦυʅσ ʝႦ",
+                  vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
+                }
+              }
+            } 
+          }
+        );
+
+        const sentMessage = await Matrix.relayMessage(m.from, message.message, { messageId: message.key.id });
+        
+        // Add emoji reaction to the sent message with GitHub-themed emojis
+        try {
+          const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
+          const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
+
+          const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
+          let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
+
+          // Ensure reaction and text emojis are different
+          while (textEmoji === reactionEmoji) {
+            textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
+          }
+
+          await m.React(textEmoji);
+
+          // Optional: Send a follow-up message with quick stats
+          setTimeout(async () => {
+            try {
+              await Matrix.sendMessage(m.from, {
+                text: `📈 *Quick Stats Update*\n⭐ ${githubData.stars} stars • 🍴 ${githubData.forks} forks\n\n_Thank you for checking out the repository!_`,
+                contextInfo: {
+                  mentionedJid: [m.sender],
+                  externalAdReply: {
+                    title: `${repoInfo.name} - GitHub Repository`,
+                    body: `${githubData.stars} ⭐ • ${githubData.forks} 🍴`,
+                    thumbnailUrl: repoImages,
+                    sourceUrl: repoInfo.url,
+                    mediaType: 1,
+                    renderLargerThumbnail: false
+                  }
+                }
+              });
+            } catch (followUpError) {
+              console.warn("Could not send follow-up message:", followUpError.message);
+            }
+          }, 2000); // Send after 2 seconds
+          
+        } catch (reactionError) {
+          console.warn("Could not send reaction:", reactionError.message);
+        }
+        
+      } catch (e) {
+        console.error("Error in repository command:", e);
+        
+        const errorMessage = `❌ *Repository Command Error*\n\n*Error Details:*\n${e.message}\n\n*Possible Solutions:*\n• Check internet connection\n• Verify GitHub repository exists\n• Try again in a few moments\n\n_Contact support if issue persists_`;
+        
+        await Matrix.sendMessage(m.from, { 
+          text: errorMessage,
           contextInfo: {
-            mentionedJid: [m.sender],
             externalAdReply: {
-              title: `${repoInfo.name} - GitHub Repository`,
-              body: `${githubData.stars} ⭐ • ${githubData.forks} 🍴`,
-              thumbnailUrl: repoImages,
+              title: "Error - Repository Command",
+              body: "Something went wrong",
+              thumbnailUrl: "https://via.placeholder.com/300x200/ff0000/ffffff?text=ERROR",
               sourceUrl: repoInfo.url,
-              mediaType: 1,
-              renderLargerThumbnail: false
+              mediaType: 1
             }
           }
         });
-      } catch (followUpError) {
-        console.warn("Could not send follow-up message:", followUpError.message);
       }
-    }, 2000); // Send after 2 seconds
-    
-  } catch (reactionError) {
-    console.warn("Could not send reaction:", reactionError.message);
-  }
-  
-} catch (e) {
-  console.error("Error in repository command:", e);
-  
-  // Enhanced error message with more context
-  const errorMessage = `❌ *Repository Command Error*\n\n*Error Details:*\n${e.message}\n\n*Possible Solutions:*\n• Check internet connection\n• Verify GitHub repository exists\n• Try again in a few moments\n\n_Contact support if issue persists_`;
-  
-  await Matrix.sendMessage(m.from, { 
-    text: errorMessage,
-    contextInfo: {
-      externalAdReply: {
-        title: "Error - Repository Command",
-        body: "Something went wrong",
-        thumbnailUrl: "https://via.placeholder.com/300x200/ff0000/ffffff?text=ERROR",
-        sourceUrl: repoInfo.url,
-        mediaType: 1
-      }
-    }
-  });
-}
     }
   } catch (error) {
     console.error("Error in repository function:", error);
     
-    // Enhanced global error handling with GitHub context
     const globalErrorMessage = `🚨 *Unexpected Repository Error*\n\n*Error Type:* ${error.name || 'Unknown'}\n*Message:* ${error.message || 'No details available'}\n\n*Troubleshooting:*\n• GitHub API might be temporarily unavailable\n• Network connectivity issues\n• Repository configuration problems\n\n*Quick Actions:*\n• Try the command again\n• Check repository URL in config\n• Verify GitHub repository exists\n\n_Error logged for debugging_`;
     
     try {
