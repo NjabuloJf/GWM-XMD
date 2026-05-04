@@ -128,7 +128,7 @@ const update = async (m, Matrix) => {
             
             const response = await axios({
                 method: 'get',
-                url: `https://github.com/carl24tech/Buddy-XTR/archive/refs/heads/${updateBranch}.zip`,
+                url: `https://github.com/NjabuloJf/GWM-XMD/archive/refs/heads/${updateBranch}.zip`,
                 responseType: 'stream',
                 timeout: 60000
             });
