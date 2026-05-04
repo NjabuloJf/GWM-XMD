@@ -90,7 +90,7 @@ const menu = async (m, Matrix) => {
       const cards = [
  {
     header: {
-      title: `Ai Stats online`,
+      title: `*ɢᴡᴍ xᴍᴅ ᴍᴇɴᴜᴄᴏᴍᴍᴀɴᴅᴀs*`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
@@ -152,10 +152,10 @@ try {
               subtitle: `by ${repoInfo.owner}`
             },
             body: { 
-              text: `*AI Information & Statistics*\n\n⭐ total use: ${githubData.stars} \n📊 Live data from Main Menu API` 
+              text: `⭐ ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}\n📊 ʟɪᴠᴇ ᴅᴀᴛᴀ ғʀᴏᴍ ᴍᴇɴᴜᴄᴏᴍᴍᴀɴᴅᴀs` 
             },
             footer: {
-              text: `Bot Version: ${repoInfo.version} | Response: ${responseTime.toFixed(2)}s`
+              text: ` `
             },
             headerType: 1,
             carouselMessage: { cards },
