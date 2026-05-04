@@ -201,26 +201,17 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
 
           await m.React(textEmoji);
 
-          setTimeout(async () => {
+         setTimeout(async () => {
             try {
               await Matrix.sendMessage(m.from, {
-                text: `📈 *Quick Stats Update*\n⭐ ${githubData.stars} stars • 🍴 ${githubData.forks} forks\n\n_Thank you for checking out the repository!_`,
-                contextInfo: {
-                  mentionedJid: [m.sender],
-                  externalAdReply: {
-                    title: `${repoInfo.name} - GitHub Repository`,
-                    body: `${githubData.stars} ⭐ • ${githubData.forks} 🍴`,
-                    thumbnailUrl: repoImages,
-                    sourceUrl: repoInfo.url,
-                    mediaType: 1,
-                    renderLargerThumbnail: false
-                  }
-                }
+                audio: fs.readFileSync('./media/menuaudio.mp3'),
+                mimetype: 'audio/mpeg',
+                ptt: true, // sends as voice note (push-to-talk)
               });
             } catch (followUpError) {
-              console.warn("Could not send follow-up message:", followUpError.message);
+              console.warn("Could not send voice note:", followUpError.message);
             }
-          }, 2000);
+          }, 2000); 
           
         } catch (reactionError) {
           console.warn("Could not send reaction:", reactionError.message);
