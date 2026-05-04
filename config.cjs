@@ -23,7 +23,7 @@ const config = {
   MENU_IMAGE: process.env.MENU_IMAGE || "https://files.catbox.moe/vy8uyv.jpg",
   URL_CHANNEL: process.env.URL_CHANNEL || "https://whatsapp.com/channel/0029VbCZ6JNLY6dBhDfmCY1K", 
   DESCRIPTION: process.env.DESCRIPTION || "njabulo",
-  OWNER_NAME: process.env.OWNER_NAME || "XD JB",
+  OWNER_NAME: process.env.OWNER_NAME || "<\Njabulo Jb Tech../>🚀",
   OWNER_NUMBER: process.env.OWNER_NUMBER || "26777821911",
   ID_CHANNEL: process.env._CHANNEL || "120363424849971461@newsletter",
   GEMINI_KEY: process.env.GEMINI_KEY || "AIzaSyCUPaxfIdZawsKZKqCqJcC-GWiQPCXKTDc",
