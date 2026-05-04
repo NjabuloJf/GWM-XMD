@@ -8,7 +8,6 @@ import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskey
 // Date and time — defined at top level so they're accessible everywhere
 const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
 const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
-const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
 
 // Function to fetch GitHub repository data
 const fetchGitHubData = async (owner, repo) => {
