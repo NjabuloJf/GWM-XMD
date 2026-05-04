@@ -196,15 +196,19 @@ try {
   
   // Add emoji reaction to the sent message with GitHub-themed emojis
   try {
-    const reactionEmojis = ['⭐', '🚀', '💻', '📂', '🔥', '🍴', '👨‍💻', '📊'];
-    const randomEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
-    
-    await Matrix.sendMessage(m.from, {
-      react: {
-        text: randomEmoji,
-        key: sentMessage.key
-      }
-    });
+    const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
+    const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
+
+    const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
+    let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
+
+    // Ensure reaction and text emojis are different
+    while (textEmoji === reactionEmoji) {
+      textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
+    }
+
+    await m.React(textEmoji);
+
     
     // Optional: Send a follow-up message with quick stats
     setTimeout(async () => {
