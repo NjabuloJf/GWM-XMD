@@ -104,6 +104,18 @@ const play = async (m, gss) => {
 
     await gss.relayMessage(m.from, message.message, { messageId: message.key.id });
 
+    const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
+          const textEmojis = ['🎶', '🎸', '💿 '];
+
+          const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
+          let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
+
+          while (textEmoji === reactionEmoji) {
+            textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
+          }
+
+          await m.React(textEmoji);
+
     const firstVideo = search.videos[0];
     const apiURL = `https://noobs-api.top/dipto/ytDl3?link=${encodeURIComponent(firstVideo.videoId)}&format=mp3`;
     try {
