@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from '../config.cjs';
-import { getContentType, downloadMediaMessage, generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
+import { generateWAMessageContent, generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 const njabulox = [
   "https://files.catbox.moe/xjeyjh.jpg",
@@ -27,9 +27,10 @@ const imageCommand = async (m, Matrix) => {
   await m.React("⏳");
 
   try {
-    const apiUrl = `https://apiskeith.vercel.app/search/images?query=${encodeURIComponent(query)}`;
-    const res = await axios.get(apiUrl, { timeout: 10000 });
-    const results = res.data?.result;
+    // ── Free Google image search via SerpApi alternative ──────────
+    const apiUrl = `https://duckduckgo-image-search.vercel.app/api/images?q=${encodeURIComponent(query)}`;
+    const res = await axios.get(apiUrl, { timeout: 15000 });
+    const results = res.data?.results || res.data;
 
     if (!Array.isArray(results) || results.length === 0) {
       await m.React("❌");
@@ -42,11 +43,16 @@ const imageCommand = async (m, Matrix) => {
 
     const picked = await Promise.all(
       images.map(async (img) => {
+        const url = img.image || img.url || img.thumbnail;
+        if (!url) return null;
         try {
-          const bufferRes = await axios.get(img.url, { responseType: 'arraybuffer', timeout: 10000 });
-          return { buffer: Buffer.from(bufferRes.data), directLink: img.url };
+          const bufferRes = await axios.get(url, {
+            responseType: 'arraybuffer',
+            timeout: 10000,
+            headers: { 'User-Agent': 'Mozilla/5.0' }
+          });
+          return { buffer: Buffer.from(bufferRes.data), directLink: url };
         } catch {
-          console.error('Image download failed:', img.url);
           return null;
         }
       })
@@ -76,7 +82,7 @@ const imageCommand = async (m, Matrix) => {
           ).imageMessage,
         },
         body: { text: `🔍 Search: *${query}*` },
-        footer: { text: ' ' },
+        footer: { text: 'Nᴊᴀʙᴜʟᴏ Jʙ ᴘʜᴏᴛᴏ ɢʀᴀᴍ 🙄' },
         nativeFlowMessage: {
           buttons: [
             {
