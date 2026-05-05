@@ -1,5 +1,4 @@
 import { getContentType, downloadMediaMessage } from '@whiskeysockets/baileys';
-import { Sticker, StickerTypes } from 'wa-sticker-formatter';
 import config from '../config.cjs';
 
 const vv = async (m, Matrix) => {
@@ -72,16 +71,7 @@ const vv = async (m, Matrix) => {
         {},
         { logger: console, reuploadRequest: Matrix.updateMediaMessage }
       );
-      const stickerMess = new Sticker(buffer, {
-        pack: 'Njabulo',
-        type: StickerTypes.CROPPED,
-        categories: ['🤩', '🎉'],
-        id: '12345',
-        quality: 70,
-        background: 'transparent',
-      });
-      const stickerBuffer = await stickerMess.toBuffer();
-      message = { sticker: stickerBuffer };
+      message = { sticker: buffer };
 
     } else if (type === 'documentMessage') {
       const buffer = await downloadMediaMessage(
