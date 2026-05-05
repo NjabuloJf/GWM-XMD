@@ -1,5 +1,5 @@
 import { serialize } from '../lib/Serializer.js';
-import config from '../config.js'; // Make sure config is imported
+import config from '../config.cjs';
 
 const antilinkSettings = {}; // In-memory database to store antilink settings for each chat
 
