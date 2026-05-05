@@ -84,7 +84,7 @@ async function handleUserAdd(sock, groupId, metadata, jid, userName, profile, is
    // Send welcome message
    await sock.sendMessage(groupId, {
       image: { url: profile }, 
-      capital: `*🤖 GWM-XMD GROUP MESG*
+      caption: `*🤖 GWM-XMD GROUP MESG*
 ━━━━━━━━━━━━━
 *Hello:* @${userName}!
 *Welcome to: ${metadata.subject}*
