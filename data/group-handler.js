@@ -83,8 +83,24 @@ async function handleUserAdd(sock, groupId, metadata, jid, userName, profile, is
    
    // Send welcome message
    await sock.sendMessage(groupId, {
-      text: `> Hello @${userName}! Welcome to *${metadata.subject}*.\n> You are the ${membersCount}th member.\n> Joined at: ${joinTime} on ${joinDate}
-"`, contextInfo: {
+      image `${url.profile}`;
+      text: `*🤖 GWM-XMD GROUP MESG*
+━━━━━━━━━━━━━
+*Hello:* @${userName}!
+*Welcome to: ${metadata.subject}*
+*You are the:* ${membersCount}th member
+*Joined at:* ${joinTime} on ${joinDate}
+
+*📃 Rules Group™*
+No links allowed 
+No spam allowed 
+Add number available 
+Share group link available 
+
+*💻 More info gwm™*
+Visit gwm-xmd.com
+> Stay tunnel to see more future in group
+━━━━━━━━━━━━━`, contextInfo: {
          mentionedJid: [jid],
          isForwarded: true,
           forwardedNewsletterMessageInfo: {
