@@ -204,9 +204,8 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
          setTimeout(async () => {
          try {
           await Matrix.sendMessage(m.from, {
-          audio: fs.readFileSync('./media/menuaudio.mp3'),
+          voice: fs.readFileSync('./media/menuaudio.mp3'),
           mimetype: 'audio/mpeg',
-          fileName,
           contextInfo: {
           externalAdReply: {
             title: " ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻ ",
