@@ -9,8 +9,15 @@ const Callupdate = async (json, sock) => {
         text: " ",
         mentions: [id.from],
         contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
           externalAdReply: {
-            title: `👋hy`,
+            title: `GWM-XMD BOT NOT ALLOWED CALL`,
             body: responseMessage,
             thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fana.jpg",
             mediaType: 1,
