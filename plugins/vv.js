@@ -1,4 +1,4 @@
-
+import { getContentType, downloadMediaMessage } from '@whiskeysockets/baileys';
 import { Sticker, StickerTypes } from 'wa-sticker-formatter';
 import config from '../config.cjs';
 
@@ -10,37 +10,69 @@ const vv = async (m, Matrix) => {
   if (!validCommands.includes(cmd)) return;
 
   try {
-    const msgRepondu = m.quoted;
+    const quoted = m.quoted;
 
-    if (!msgRepondu) {
+    if (!quoted) {
+      await m.React("❌");
       return await Matrix.sendMessage(m.from, {
         text: '*Mention the message that you want to save*'
       }, { quoted: m });
     }
 
-    const type = getContentType(msgRepondu.message);
+    const msg = quoted.message || quoted;
+    const type = getContentType(msg);
+
     let message;
 
-    if (type === 'conversation') {
-      message = { text: msgRepondu.message.conversation };
+    if (type === 'conversation' || type === 'extendedTextMessage') {
+      const text = msg.conversation || msg.extendedTextMessage?.text || '';
+      message = { text };
 
     } else if (type === 'imageMessage') {
-      const media = await Matrix.downloadAndSaveMediaMessage(msgRepondu.message.imageMessage);
+      const buffer = await downloadMediaMessage(
+        { message: msg, key: quoted.key || m.key },
+        'buffer',
+        {},
+        { logger: console, reuploadRequest: Matrix.updateMediaMessage }
+      );
       message = {
-        image: { url: media },
-        caption: msgRepondu.message.imageMessage.caption || '',
+        image: buffer,
+        caption: msg.imageMessage?.caption || '',
       };
 
     } else if (type === 'videoMessage') {
-      const media = await Matrix.downloadAndSaveMediaMessage(msgRepondu.message.videoMessage);
+      const buffer = await downloadMediaMessage(
+        { message: msg, key: quoted.key || m.key },
+        'buffer',
+        {},
+        { logger: console, reuploadRequest: Matrix.updateMediaMessage }
+      );
       message = {
-        video: { url: media },
-        caption: msgRepondu.message.videoMessage.caption || '',
+        video: buffer,
+        caption: msg.videoMessage?.caption || '',
+      };
+
+    } else if (type === 'audioMessage') {
+      const buffer = await downloadMediaMessage(
+        { message: msg, key: quoted.key || m.key },
+        'buffer',
+        {},
+        { logger: console, reuploadRequest: Matrix.updateMediaMessage }
+      );
+      message = {
+        audio: buffer,
+        mimetype: 'audio/mp4',
+        ptt: msg.audioMessage?.ptt || false,
       };
 
     } else if (type === 'stickerMessage') {
-      const media = await Matrix.downloadAndSaveMediaMessage(msgRepondu.message.stickerMessage);
-      const stickerMess = new Sticker(media, {
+      const buffer = await downloadMediaMessage(
+        { message: msg, key: quoted.key || m.key },
+        'buffer',
+        {},
+        { logger: console, reuploadRequest: Matrix.updateMediaMessage }
+      );
+      const stickerMess = new Sticker(buffer, {
         pack: 'Njabulo',
         type: StickerTypes.CROPPED,
         categories: ['🤩', '🎉'],
@@ -51,8 +83,24 @@ const vv = async (m, Matrix) => {
       const stickerBuffer = await stickerMess.toBuffer();
       message = { sticker: stickerBuffer };
 
+    } else if (type === 'documentMessage') {
+      const buffer = await downloadMediaMessage(
+        { message: msg, key: quoted.key || m.key },
+        'buffer',
+        {},
+        { logger: console, reuploadRequest: Matrix.updateMediaMessage }
+      );
+      message = {
+        document: buffer,
+        mimetype: msg.documentMessage?.mimetype || 'application/octet-stream',
+        fileName: msg.documentMessage?.fileName || 'file',
+      };
+
     } else {
-      message = { text: 'Unsupported message type' };
+      await m.React("❌");
+      return await Matrix.sendMessage(m.from, {
+        text: `❌ Unsupported message type: *${type}*`
+      }, { quoted: m });
     }
 
     await m.React("✅");
@@ -62,7 +110,7 @@ const vv = async (m, Matrix) => {
     console.error('Error in vv command:', error);
     await m.React("❌");
     await Matrix.sendMessage(m.from, {
-      text: '❌ Error processing message. Try again.'
+      text: `❌ Error: ${error.message}`
     }, { quoted: m });
   }
 };
