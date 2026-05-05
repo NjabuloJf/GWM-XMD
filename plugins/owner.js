@@ -1,5 +1,5 @@
 import config from '../config.cjs';
-import { generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
+import { generateWAMessageFromContent, generateWAMessageContent } from '@whiskeysockets/baileys';
 
 const ownerContact = async (m, Matrix) => {
     const { OWNER_NUMBER: ownerNumber, PREFIX: prefix } = config;
@@ -12,13 +12,34 @@ const ownerContact = async (m, Matrix) => {
     if (cmd !== 'owner') return;
 
     try {
-        const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=${ownerNumber}:+${ownerNumber}\nitem1.X-ABLabel:Bot\nEND:VCARD`;
+        // Send vCard contact
+        await Matrix.sendContact(m.from, [ownerNumber], m);
+
+        // Load owner image
+        const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
+        let imageMessage = null;
+
+        try {
+            if (Matrix.waUploadToServer && typeof Matrix.waUploadToServer === 'function') {
+                const imageContent = await generateWAMessageContent(
+                    { image: { url: repoImages } },
+                    { upload: Matrix.waUploadToServer }
+                );
+                imageMessage = imageContent.imageMessage;
+            } else {
+                console.warn("waUploadToServer not available, sending without image");
+            }
+        } catch (imageError) {
+            console.error("Error generating image content:", imageError.message);
+            // Continue without image
+        }
 
         const cards = [
             {
                 header: {
                     title: `*ɢᴡᴍ xᴍᴅ ᴏᴡɴᴇʀ*`,
-                    hasMediaAttachment: false,
+                    hasMediaAttachment: !!imageMessage,
+                    ...(imageMessage && { imageMessage }),
                 },
                 body: {
                     text: `👑 *ᴏᴡɴᴇʀ ɪɴғᴏ*\n\n📛 ɴᴀᴍᴇ: ɳʝαႦυʅσ ʝႦ\n📞 ɴᴜᴍʙᴇʀ: +${ownerNumber}\n\n_ᴄᴏɴᴛᴀᴄᴛ ᴛʜᴇ ᴏᴡɴᴇʀ ᴜsɪɴɢ ᴛʜᴇ ʙᴜᴛᴛᴏɴs ʙᴇʟᴏᴡ_`,
@@ -31,7 +52,7 @@ const ownerContact = async (m, Matrix) => {
                         {
                             name: "cta_url",
                             buttonParamsJson: JSON.stringify({
-                                display_text: "💬 Chat Owner",
+                                display_text: "💬 ᴄʜᴀᴛ ᴏᴡɴᴇʀ",
                                 url: `https://wa.me/${ownerNumber}`,
                                 merchant_url: `https://wa.me/${ownerNumber}`
                             }),
@@ -39,15 +60,39 @@ const ownerContact = async (m, Matrix) => {
                         {
                             name: "cta_copy",
                             buttonParamsJson: JSON.stringify({
-                                display_text: "📋 Copy Number",
+                                display_text: "GWM-XMD OWNER📃",
                                 copy_code: `+${ownerNumber}`
                             }),
                         },
+                    ],
+                },
+            },
+            {
+                header: {
+                    title: `*ɢᴡᴍ xᴍᴅ ʟɪɴᴋs*`,
+                    hasMediaAttachment: !!imageMessage,
+                    ...(imageMessage && { imageMessage }),
+                },
+                body: {
+                    text: `🔗 *ᴜsᴇғᴜʟ ʟɪɴᴋs*\n\n📢 ᴊᴏɪɴ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ\n⭐ sᴜᴘᴘᴏʀᴛ ᴛʜᴇ ʙᴏᴛ`,
+                },
+                footer: {
+                    text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
+                },
+                nativeFlowMessage: {
+                    buttons: [
                         {
-                            name: "quick_reply",
+                            name: "cta_url",
                             buttonParamsJson: JSON.stringify({
-                                display_text: "📞 Get vCard",
-                                id: `${prefix}vcard`
+                                display_text: "📢 ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ",
+                                url: config.URL_CHANNEL
+                            }),
+                        },
+                        {
+                            name: "cta_url",
+                            buttonParamsJson: JSON.stringify({
+                                display_text: "⭐ GitHub Repo",
+                                url: `https://github.com/NjabuloJf/Njabulo-Jb`
                             }),
                         },
                     ],
@@ -91,18 +136,16 @@ const ownerContact = async (m, Matrix) => {
                     message: {
                         contactMessage: {
                             displayName: "ɳʝαႦυʅσ ʝႦ",
-                            vcard: vcard
+                            vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=${ownerNumber}:+${ownerNumber}\nitem1.X-ABLabel:Bot\nEND:VCARD`
                         }
                     }
                 }
             }
         );
 
-        await Matrix.relayMessage(m.from, message.message, { messageId: message.key.id });
+        const sentMessage = await Matrix.relayMessage(m.from, message.message, { messageId: message.key.id });
 
-        const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
-        const randomEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
-        await m.React(randomEmoji);
+        await m.React("✅");
 
     } catch (error) {
         console.error('Error sending owner contact card:', error);
