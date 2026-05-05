@@ -86,6 +86,13 @@ async function handleUserAdd(sock, groupId, metadata, jid, userName, profile, is
       text: `> Hello @${userName}! Welcome to *${metadata.subject}*.\n> You are the ${membersCount}th member.\n> Joined at: ${joinTime} on ${joinDate}
 "`, contextInfo: {
          mentionedJid: [jid],
+         isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
          externalAdReply: {
             title: `👋 Welcome to ${metadata.subject}`,
             mediaType: 1,
@@ -114,6 +121,13 @@ async function handleUserRemove(sock, groupId, metadata, jid, userName, profile,
    await sock.sendMessage(groupId, {
       text: `> Goodbye @${userName} from ${metadata.subject}.\n> We are now ${membersCount} in the group.\n> Left at: ${leaveTime} on ${leaveDate}"`, contextInfo: {
          mentionedJid: [jid],
+         isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+          newsletterJid: config.ID_CHANNEL,
+          newsletterName: "╭••➤GWM-XMD",
+          serverMessageId: 143,
+         },
+          forwardingScore: 999,
          externalAdReply: {
             title: `👋 Goodbye`,
             mediaType: 1,
