@@ -8,7 +8,7 @@ const restartBot = async (m, Matrix) => {
 
   if (cmd === 'restart') {
     try {
-      let responseMessage = 'Proses update BWM_XMD.........';
+      let responseMessage = 'Proses update gwm xmd.........';
       await Matrix.sendMessage(m.from, {
         text: " ",
         contextInfo: {
