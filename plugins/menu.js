@@ -202,12 +202,22 @@ sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
           await m.React(textEmoji);
 
          setTimeout(async () => {
-            try {
-              await Matrix.sendMessage(m.from, {
-                audio: fs.readFileSync('./media/menuaudio.mp3'),
-                mimetype: 'audio/mpeg',
-                ptt: true, // sends as voice note (push-to-talk)
-              });
+         try {
+          await Matrix.sendMessage(m.from, {
+          audio: fs.readFileSync('./media/menuaudio.mp3'),
+          mimetype: 'audio/mpeg',
+          fileName,
+          contextInfo: {
+          externalAdReply: {
+            title: " ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻ ",
+            mediaType: 1,
+            previewType: 0,
+            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg", 
+            renderLargerThumbnail: true,
+          },
+        },
+      }, { quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: "status@broadcast" }, message: { contactMessage: { displayName: "njᥲbᥙᥣo", vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD` } } } });
+
             } catch (followUpError) {
               console.warn("Could not send voice note:", followUpError.message);
             }
