@@ -99,8 +99,8 @@ const status = async (m, Matrix) => {
     const dateTime = getDateTime();
 
     // Bot configuration
-    const botName = config.BOT_NAME || 'Njabulo-AI Bot';
-    const ownerName = config.OWNER_NAME || 'Njabulo';
+    const botName = config.BOT_NAME || 'GWM-XMD';
+    const ownerName = config.OWNER_NAME || 'NjabuloJB';
     const version = config.VERSION || 'v2.0.0';
     const apiStatus = '✅ Online';
     const aiDataStatus = '✅ Active';
@@ -111,7 +111,7 @@ const status = async (m, Matrix) => {
 
     // Create status message
     const statusMessage = `
-┏ *NJABULO-AI STATUS* ┓ 
+┏ *GWM-XMD STATUS* ┓ 
 *┗━━━━━━━━━━━━┈❖*
 
 ┏ *⚡ PERFORMANCE* ┓
