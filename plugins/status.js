@@ -111,46 +111,46 @@ const status = async (m, Matrix) => {
 
     // Create status message
     const statusMessage = `
-╭━━━━━━━━━━━━━━━━━━━━╮
-│   🤖 *NJABULO-AI STATUS*   │
-╰━━━━━━━━━━━━━━━━━━━━╯
+┏ *NJABULO-AI STATUS* ┓ 
+*┗━━━━━━━━━━━━┈❖*
 
-┏━━━━━ *⚡ PERFORMANCE* ━━━━━┓
-┃ 📡 *Ping:* ${ping}ms
-┃ 🔋 *Status:* ${status}
-┃ 📊 *CPU Usage:* ${sysInfo.memPercent}%
-┃ 💾 *Memory:* ${sysInfo.usedMem}GB / ${sysInfo.totalMem}GB
-┃ 🧠 *Free RAM:* ${sysInfo.freeMem}GB
-┗━━━━━━━━━━━━━━━━━━━━━━┛
+┏ *⚡ PERFORMANCE* ┓
+  📡 *Ping:* ${ping}ms
+  🔋 *Status:* ${status}
+  📊 *CPU Usage:* ${sysInfo.memPercent}%
+  💾 *Memory:* ${sysInfo.usedMem}GB / ${sysInfo.totalMem}GB
+*❖* 🧠 *Free RAM:* ${sysInfo.freeMem}GB
+*┗━━━━━━━━━━━━┈❖*
 
-┏━━━━━━ *🌐 API & DATA* ━━━━━━┓
-┃ 🔌 *API Status:* ${apiStatus}
-┃ 🤖 *AI Data:* ${aiDataStatus}
-┃ ☁️ *Platform:* ${sysInfo.platform} (${sysInfo.arch})
-┃ 🖥️ *CPU:* ${sysInfo.cpuModel}
-┃ 🔢 *Cores:* ${sysInfo.cpuCores}
-┃ 📦 *Node.js:* ${sysInfo.nodeVersion}
-┗━━━━━━━━━━━━━━━━━━━━━━┛
+┏ *🌐 API & DATA* ┓
+  🔌 *API Status:* ${apiStatus}
+  🤖 *AI Data:* ${aiDataStatus}
+  ☁️ *Platform:* ${sysInfo.platform} (${sysInfo.arch})
+  🖥️ *CPU:* ${sysInfo.cpuModel}
+  🔢 *Cores:* ${sysInfo.cpuCores}
+*❖* 📦 *Node.js:* ${sysInfo.nodeVersion}
+*┗━━━━━━━━━━━━┈❖*
+ 
 
-┏━━━━━━ *⏰ TIME INFO* ━━━━━━┓
-┃ ⏱️ *Uptime:* ${uptime}
-┃ 📅 *Date:* ${dateTime.date}
-┃ 🕐 *Time:* ${dateTime.time}
-┃ 🌍 *Timezone:* ${dateTime.timezone}
-┗━━━━━━━━━━━━━━━━━━━━━━┛
+┏ *⏰ TIME INFO* ┓
+  ⏱️ *Uptime:* ${uptime}
+  📅 *Date:* ${dateTime.date}
+  🕐 *Time:* ${dateTime.time}
+  🌍 *Timezone:* ${dateTime.timezone}
+*┗━━━━━━━━━━━━┈❖*
 
-┏━━━━━━ *🤖 BOT INFO* ━━━━━━┓
-┃ 📱 *Bot Name:* ${botName}
-┃ 👤 *Owner:* ${ownerName}
-┃ 🏗️ *Base:* fananjabulo
-┃ 🔄 *Version:* ${version}
-┃ 📦 *Update:* ${updateStatus}
-┃ 💯 *Percent:* ${sysInfo.memPercent}%
-┗━━━━━━━━━━━━━━━━━━━━━━┛
+┏ *🤖 BOT INFO* ┓
+  📱 *Bot Name:* ${botName}
+  👤 *Owner:* ${ownerName}
+  🏗️ *Base:* fananjabulo
+  🔄 *Version:* ${version}
+  📦 *Update:* ${updateStatus}
+❖ 💯 *Percent:* ${sysInfo.memPercent}%
+*┗━━━━━━━━━━━━┈❖*
 
-╭━━━━━━━━━━━━━━━━━━━━╮
-│  ⚡ Power by sir NjabuloAI 2026  │
-╰━━━━━━━━━━━━━━━━━━━━╯
+> ⚡ Power by sir NjabuloAI 2026  │
+*┗━━━━━━━━━━━━┈❖*
+
 `.trim();
 
     await m.React("✅");
