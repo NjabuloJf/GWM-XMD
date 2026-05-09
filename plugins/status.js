@@ -194,7 +194,7 @@ const status = async (m, Matrix) => {
               name: "cta_url",
               buttonParamsJson: JSON.stringify({
                 display_text: "🌐 CHANNEL GWM-XMD",
-                url: "https://github.com/NjabuloJf/Njabulo-Jb"
+                url: config.ID_CHANNEL, 
               }),
             },
           ],
@@ -261,7 +261,7 @@ const status = async (m, Matrix) => {
       
       // Fallback simple status message
       await Matrix.sendMessage(m.from, { 
-        text: `✅ *NJABULO AI IS ALIVE!* ✅\n\n⏱️ *Uptime:* ${uptime}\n📡 *Ping:* ${ping}ms\n💾 *Memory:* ${sysInfo.usedMem}GB / ${sysInfo.totalMem}GB\n📊 *Usage:* ${sysInfo.memPercent}%\n\n🟢 *System: Operational*\n🤖 *Bot: Running Smoothly*\n\n_Response time: ${responseTime}s_`,
+        text: `✅ *GWM-XMD AI IS ALIVE!* ✅\n\n⏱️ *Uptime:* ${uptime}\n📡 *Ping:* ${ping}ms\n💾 *Memory:* ${sysInfo.usedMem}GB / ${sysInfo.totalMem}GB\n📊 *Usage:* ${sysInfo.memPercent}%\n\n🟢 *System: Operational*\n🤖 *Bot: Running Smoothly*\n\n_Response time: ${responseTime}s_`,
       });
     }
   } catch (error) {
@@ -269,7 +269,7 @@ const status = async (m, Matrix) => {
     
     try {
       await Matrix.sendMessage(m.from, { 
-        text: `🟢 *NJABULO AI - ALIVE & RUNNING* 🟢\n\n✅ Bot is operational\n✅ Status check completed\n\n_Use !status for detailed info_`,
+        text: `🟢 *GWM-XMD - ALIVE & RUNNING* 🟢\n\n✅ Bot is operational\n✅ Status check completed\n\n_Use !status for detailed info_`,
       });
       await m.React("✅");
     } catch (sendError) {
