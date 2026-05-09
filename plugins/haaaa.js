@@ -81,7 +81,7 @@ const sendSong = async (gss, m, videoId, title, timestamp, views, ago, author, t
 // ─────────────────────────────────────────────────────────────────────────────
 // Main handler
 // ─────────────────────────────────────────────────────────────────────────────
-const play = async (m, gss) => {
+const haaa = async (m, gss) => {
   const prefix = config.PREFIX;
   const body = m.body || "";
 
@@ -115,7 +115,7 @@ const play = async (m, gss) => {
     ? body.slice(prefix.length).split(" ")[0].toLowerCase()
     : "";
 
-  if (cmd !== "play") return;
+  if (cmd !== "haaa") return;
 
   const arg = body.slice(prefix.length + 3).trim().split(" ");
 
@@ -292,4 +292,4 @@ const play = async (m, gss) => {
   }
 };
 
-export default play;
+export default haaa;
