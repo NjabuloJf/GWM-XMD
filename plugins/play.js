@@ -92,7 +92,7 @@ const play = async (m, gss) => {
           message: {
             messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
             interactiveMessage: {
-              body: { text: `*𝐆𝐖𝐌-𝐗𝐌𝐃 𝐒𝐎𝐍𝐆*\n🔍 Search Results for: ${query}` },
+              body: { text: `Search Results for: ${query}` },
               
               carouselMessage: { cards },
             },
@@ -138,9 +138,10 @@ const play = async (m, gss) => {
         contextInfo: {
           externalAdReply: {
             title: " ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻ ",
+            body: video.title,
             mediaType: 1,
             previewType: 0,
-            thumbnailUrl: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg", 
+            thumbnailUrl: video.thumbnail,
             renderLargerThumbnail: true,
           },
         },
