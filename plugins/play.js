@@ -131,6 +131,8 @@ const play = async (m, gss) => {
       }
       const safeTitle = firstVideo.title.replace(/[\\/:*?"<>|]/g, '');
       const fileName = `${safeTitle}.mp3`;
+      
+      
       await gss.sendMessage(m.from, {
         audio: { url: data.downloadLink },
         mimetype: 'audio/mpeg',
@@ -138,10 +140,10 @@ const play = async (m, gss) => {
         contextInfo: {
           externalAdReply: {
             title: " ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻ ",
-            body: video.title,
+            body: firstVideo.title,
             mediaType: 1,
             previewType: 0,
-            thumbnailUrl: video.thumbnail,
+            thumbnailUrl: firstVideo.thumbnail,
             renderLargerThumbnail: true,
           },
         },
