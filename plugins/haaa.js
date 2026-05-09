@@ -10,13 +10,13 @@ import {
   generateWAMessageFromContent,
 } from "@whiskeysockets/baileys";
 
-const play = async (m, gss) => {
+const haa = async (m, gss) => {
   const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix)
     ? m.body.slice(prefix.length).split(" ")[0].toLowerCase()
     : "";
 
-  if (cmd !== "play") return;
+  if (cmd !== "haa") return;
 
   const arg = m.body.slice(prefix.length + 3).trim().split(" ");
 
@@ -258,4 +258,4 @@ const play = async (m, gss) => {
   }
 };
 
-export default play;
+export default haa;
