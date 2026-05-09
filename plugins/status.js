@@ -159,79 +159,41 @@ const status = async (m, Matrix) => {
           ...(imageMessage && { imageMessage }),
         },
         body: {
-          text: `
+          text: `*『ɢᴡᴍ-xᴍᴅ sᴛᴀᴛᴜs ᴏɴʟɪɴᴇ』*
+⏱️ *ᴜᴘᴛɪᴍᴇ:* ${uptime} 
+📡 *ᴘɪɴɢ:* ${ping}ms 
+🔋 *sᴛᴀᴛᴜs:* ${botStatus} 
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     🌟 *NJABULO AI STATUS* 🌟
-┃     ═════════════════════
-┃
-┃  ⏱️ *Uptime:* ${uptime}
-┃  📡 *Ping:* ${ping}ms
-┃  🔋 *Status:* ${botStatus}
-┃
-┃  ━━━━━━━━━━━━━━━━━━━━━━━
-┃
-┃  💻 *SYSTEM INFORMATION*
-┃  ═════════════════════
-┃  💾 *Total RAM:* ${sysInfo.totalMem}GB
-┃  🧠 *Used RAM:* ${sysInfo.usedMem}GB
-┃  📊 *Free RAM:* ${sysInfo.freeMem}GB
-┃  📈 *Usage:* ${sysInfo.memPercent}%
-┃  🖥️ *CPU:* ${sysInfo.cpuModel?.substring(0, 35) || 'Unknown'}
-┃  🔢 *Cores:* ${sysInfo.cpuCores}
-┃  ☁️ *OS:* ${sysInfo.platform} (${sysInfo.arch})
-┃  📦 *Node.js:* ${sysInfo.nodeVersion}
-┃
-┃  ━━━━━━━━━━━━━━━━━━━━━━━━
-┃
-┃  ⏰ *TIME & DATE*
-┃  ═════════════════════
-┃  📅 *Date:* ${dateTime.date}
-┃  🕐 *Time:* ${dateTime.time}
-┃  🌍 *Timezone:* ${dateTime.timezone}
-┃  🕒 *Server:* ${xtime} | ${xdate}
-┃
-┃  ━━━━━━━━━━━━━━━━━━━━━━━
-┃
-┃  🤖 *BOT INFORMATION*
-┃  ═════════════════════
-┃  📱 *Bot Name:* ${botName}
-┃  👤 *Owner:* ${ownerName}
-┃  🔄 *Version:* ${version}
-┃  ✨ *Update:* ${updateStatus}
-┃
-┃  ━━━━━━━━━━━━━━━━━━━━━━━
-┃
-┃  🔌 *SERVICES STATUS*
-┃  ═════════════════════
-┃  🌐 *API:* ${apiStatus}
-┃  🤖 *AI Data:* ${aiDataStatus}
-┃  ⚡ *Response:* ${responseTime}s
-┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+💻 *『sʏsᴛᴇᴍ ɪɴғᴏʀᴍᴀᴛɪᴏɴ』*
+💾 *ᴛᴏᴛᴀʟ ʀᴀᴍ:* ${sysInfo.totalMem}GB
+🧠 *ᴜsᴇᴅ ʀᴀᴍ:* ${sysInfo.usedMem}GB 
+📊 *ғʀᴇᴇ ʀᴀᴍ:*  ${sysInfo.freeMem}GB 
+📈 *ᴜsᴀɢᴇ:* ${sysInfo.memPercent}% 
+🖥️ *ᴄᴘᴜ:* ${sysInfo.cpuModel?.substring(0, 35) || 'Unknown'} 
+🔢 *ᴄᴏʀᴇs:* ${sysInfo.cpuCores} 
+☁️ *ᴏs:* ${sysInfo.platform} (${sysInfo.arch})
+📦 *ɴᴏᴅᴇ.ᴊs:* ${sysInfo.nodeVersion} 
 
-> ⚡ *Njabulo AI — Alive & Running!*
-> 🤖 *Assistant by Sir Njabulo-JB*
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  🟢 *SYSTEM: OPERATIONAL* 🟢
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`,
+⏰ *『ᴛɪᴍᴇ & ᴅᴀᴛᴇ』*
+📅 *ᴅᴀᴛᴇ:* ${dateTime.date}
+🕐 *ᴛɪᴍᴇ:* ${dateTime.time}
+🌍 *ᴛɪᴍᴇᴢᴏɴᴇ:* ${dateTime.timezone}
+🕒 *sᴇʀᴠᴇʀ:* ${xtime} | ${xdate} 
+
+🌐 *『ᴀᴘɪ:』*
+🌐 *ᴀᴘɪ:* ${apiStatus}
+🤖 *ᴀɪ ᴅᴀᴛᴀ:* ${aiDataStatus}
+⚡ *ʀᴇsᴘᴏɴsᴇ:* ${responseTime}s`,
         },
         footer: {
-          text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ ⚡",
+          text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
         },
         nativeFlowMessage: {
           buttons: [
             {
-              name: "cta_copy",
-              buttonParamsJson: JSON.stringify({
-                display_text: "📋 COPY STATUS",
-                copy_code: `Njabulo AI Status\nUptime: ${uptime}\nPing: ${ping}ms\nMemory: ${sysInfo.usedMem}GB/${sysInfo.totalMem}GB\nStatus: Alive & Running ✅`
-              }),
-            },
-            {
               name: "cta_url",
               buttonParamsJson: JSON.stringify({
-                display_text: "🌐 VIEW BOT",
+                display_text: "🌐 CHANNEL GWM-XMD",
                 url: "https://github.com/NjabuloJf/Njabulo-Jb"
               }),
             },
@@ -252,14 +214,14 @@ const status = async (m, Matrix) => {
               },
               interactiveMessage: {
                 header: { 
-                  title: `🚀 NJABULO AI`,
+                  title: `ɢᴡᴍ-xᴍᴅ sᴛᴀᴛᴜs ᴏɴʟɪɴᴇ`,
                   subtitle: `by ${ownerName}`
                 },
                 body: { 
-                  text: `✅ BOT IS ALIVE & RUNNING\n📡 Ping: ${ping}ms\n⏱️ Uptime: ${uptime}\n💾 Memory: ${sysInfo.usedMem}GB/${sysInfo.totalMem}GB` 
+                  text: `ɢᴡᴍ-xᴍᴅ sᴛᴀᴛᴜs ᴏɴʟɪɴᴇ` 
                 },
                 footer: {
-                  text: `🟢 Status: Online | Ping: ${ping}ms | Uptime: ${uptime}`
+                  text: ` `
                 },
                 headerType: 1,
                 carouselMessage: { cards },
