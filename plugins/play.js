@@ -65,7 +65,7 @@ const play = async (m, gss) => {
     const cards = await Promise.all(
       search.videos.slice(0, 5).map(async (video, i) => ({
         header: {
-          title: `*🎧 ${video.title}*`,
+          title: `*🎧 ${video.title}*\n⏱ Duration : ${video.timestamp}\n👁 Views   : ${Number(video.views).toLocaleString()}\n📅 Published: ${video.ago}`,
           hasMediaAttachment: true,
           imageMessage: (await generateWAMessageContent({ image: { url: video.thumbnail } }, { upload: gss.waUploadToServer })).imageMessage,
         },
