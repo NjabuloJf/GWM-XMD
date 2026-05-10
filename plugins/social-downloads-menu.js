@@ -41,12 +41,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const bigtechai = async (m, Matrix) => {
+const socialdownloadsmenu = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!';
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "big.techmenu" || cmd === "big-techmenu") {
+    if (cmd === "social-downloads-menu" || cmd === "social.downloads.menu.menu") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -104,21 +104,41 @@ const bigtechai = async (m, Matrix) => {
 ⏰ᴛɪᴍᴇ: ${xtime}
 ⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}
 
-*『big techai』*
-.ᴍᴇᴛᴀᴀɪ
-.ʟʟᴀᴍᴀ
-.ᴄᴏᴅᴇʟʟᴀᴍᴀ
-.ᴄʜᴀᴛɢᴘᴛ
-.ɢᴘᴛ5
-.ᴅᴀʟʟᴇ
-.ᴄᴏᴘɪʟᴏᴛ
-.ᴄᴏᴅᴇᴡʜɪsᴘᴇʀᴇʀ
-.ᴍsᴅᴇsɪɢɴᴇʀ
-.ᴀᴍᴀᴢᴏɴǫ
-.ᴀʟᴇxᴀ
-.ʙɪxʙʏ
-.ᴇʀɴɪᴇʙᴏᴛ
-.sɪʀɪ`,
+*『Social downloads menu』*
+.ɢɪᴛᴄʟᴏɴᴇ
+.sɴᴀᴄᴋᴅʟ
+.ᴅᴀɪʟʏᴍᴏᴛɪᴏɴᴅʟ
+.ᴘɪɴᴛᴇʀᴇsᴛ
+.ᴛᴡɪᴛᴛᴇʀ
+.sᴘᴏᴛɪғʏ
+.sᴏᴜɴᴅᴄʟᴏᴜᴅ
+.ʟɪᴋᴇᴇ
+.ɢᴏᴏɢʟᴇ
+.ᴡɪᴋɪ
+.ᴅᴇғɪɴᴇ
+.ᴅɪᴄᴛɪᴏɴᴀʀʏ
+.ᴘʟᴀʏsᴛᴏʀᴇ
+.ᴀᴘᴋ
+.ɢɪᴍɢ
+.ʏᴛs
+.ɴᴇᴡs
+.ᴅʀᴀᴍᴀ
+.ᴅʀᴀᴍᴀsᴇᴀʀᴄʜ
+.ᴅʀᴀᴍᴀɪɴғᴏ
+.ʟʏʀɪᴄs
+.ʟʏʀɪᴄsᴀɪ
+.sᴘᴏᴛɪғʏʟʏʀɪᴄs
+.ʀɪɴɢᴛᴏɴᴇ
+.ʙɪʙʟᴇ
+.ᴡᴀɢʀᴏᴜᴘ
+.ᴘʟᴀʏʟɪsᴛ
+.ʜᴇᴀʀᴛʜɪs
+.sʜᴀᴢᴀᴍ
+.ʙʀᴀᴠᴇ
+.ᴜɴsᴘʟᴀsʜ
+.ʜᴀᴘᴘʏᴍᴏᴅ
+.ᴀᴘᴋᴍɪʀʀᴏʀ
+.ғᴍ`,
           },
           footer: {
             text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
@@ -261,4 +281,4 @@ const bigtechai = async (m, Matrix) => {
   }
 };
 
-export default bigtechai;
+export default socialdownloadsmenu;
