@@ -41,12 +41,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const bigtechai = async (m, Matrix) => {
+const musicaudiomenu = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!';
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "big.techmenu" || cmd === "big-techmenu") {
+    if (cmd === "music.audio.menu" || cmd === "music-audio-menu") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -104,21 +104,28 @@ const bigtechai = async (m, Matrix) => {
 ⏰ᴛɪᴍᴇ: ${xtime}
 ⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}
 
-*『big techai』*
-.ᴍᴇᴛᴀᴀɪ
-.ʟʟᴀᴍᴀ
-.ᴄᴏᴅᴇʟʟᴀᴍᴀ
-.ᴄʜᴀᴛɢᴘᴛ
-.ɢᴘᴛ5
-.ᴅᴀʟʟᴇ
-.ᴄᴏᴘɪʟᴏᴛ
-.ᴄᴏᴅᴇᴡʜɪsᴘᴇʀᴇʀ
-.ᴍsᴅᴇsɪɢɴᴇʀ
-.ᴀᴍᴀᴢᴏɴǫ
-.ᴀʟᴇxᴀ
-.ʙɪxʙʏ
-.ᴇʀɴɪᴇʙᴏᴛ
-.sɪʀɪ`,
+*『music audio menu』*
+.sᴜɴᴏ
+.ᴜᴅɪᴏ
+.ʀɪғғᴜsɪᴏɴ
+.sᴏᴜɴᴅʀᴀᴡ
+.ʙᴏᴏᴍʏ
+.ᴀɪᴠᴀ
+.ʟᴏᴜᴅʟʏ
+.ᴍᴜʙᴇʀᴛ
+.sᴛᴀʙʟᴇᴀᴜᴅɪᴏ
+.ᴍᴜsɪᴄɢᴇɴ
+.ᴇʟᴇᴠᴇɴʟᴀʙs
+.ᴘʟᴀʏʜᴛ
+.ᴍᴜʀғᴀɪ
+.ʀᴇsᴇᴍʙʟᴇᴀɪ
+.ʟᴏᴠᴏᴀɪ
+.ᴅᴇsᴄʀɪᴘᴛ
+.ᴀᴅᴏʙᴇᴘᴏᴅᴄᴀsᴛ
+.ᴘᴏᴅᴄᴀsᴛʟᴇ
+.ʀɪᴠᴇʀsɪᴅᴇᴀɪ
+.ᴄʟᴇᴀɴᴠᴏɪᴄᴇ
+.ᴀᴜᴘʜᴏɴɪᴄ`,
           },
           footer: {
             text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
@@ -261,4 +268,4 @@ const bigtechai = async (m, Matrix) => {
   }
 };
 
-export default bigtechai;
+export default musicaudiomenu;
