@@ -41,12 +41,12 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const bigtechai = async (m, Matrix) => {
+const videoeditingmenu = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!';
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-    if (cmd === "big.techmenu" || cmd === "big-techmenu") {
+    if (cmd === "video-editing-menu" || cmd === "video.editing.menu") {
       console.log('Repository command triggered!');
       
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
@@ -104,21 +104,25 @@ const bigtechai = async (m, Matrix) => {
 ⏰ᴛɪᴍᴇ: ${xtime}
 ⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}
 
-*『big techai』*
-.ᴍᴇᴛᴀᴀɪ
-.ʟʟᴀᴍᴀ
-.ᴄᴏᴅᴇʟʟᴀᴍᴀ
-.ᴄʜᴀᴛɢᴘᴛ
-.ɢᴘᴛ5
-.ᴅᴀʟʟᴇ
-.ᴄᴏᴘɪʟᴏᴛ
-.ᴄᴏᴅᴇᴡʜɪsᴘᴇʀᴇʀ
-.ᴍsᴅᴇsɪɢɴᴇʀ
-.ᴀᴍᴀᴢᴏɴǫ
-.ᴀʟᴇxᴀ
-.ʙɪxʙʏ
-.ᴇʀɴɪᴇʙᴏᴛ
-.sɪʀɪ`,
+*『video editing menu』*
+.sᴏʀᴀ
+.ᴘɪᴋᴀ
+.ʀᴜɴᴡᴀʏɢᴇɴ3
+.ʟᴜᴍᴀ
+.ᴋʟɪɴɢ
+.ᴠɪᴅᴜ
+.ʜᴀɪʟᴜᴏ
+.ᴘɪxᴠᴇʀsᴇ
+.sʏɴᴛʜᴇsɪᴀ
+.ʜᴇʏɢᴇɴ
+.ᴅɪᴅ
+.ɢᴇɴᴍᴏ
+.ʜᴀɪᴘᴇʀ
+.ᴋᴀɪʙᴇʀ
+.ᴏᴘᴜsᴄʟɪᴘ
+.ᴋᴀᴘᴡɪɴɢ
+.ᴠᴇᴇᴅᴀɪ
+.ᴄᴏʟᴏssʏᴀɴ`,
           },
           footer: {
             text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
@@ -261,4 +265,4 @@ const bigtechai = async (m, Matrix) => {
   }
 };
 
-export default bigtechai;
+export default videoeditingmenu;
