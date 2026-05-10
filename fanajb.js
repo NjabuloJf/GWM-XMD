@@ -607,9 +607,7 @@ async function sendConnectMessage(Matrix) {
             const botNumber = botJid ? botJid.split('@')[0] : 'Unknown';
             
             const connectMessage = {
-                image: { 
-                    url: "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg" 
-                }, 
+                image: fs.readFileSync('./public/fanaa.jpg'), 
                 caption: `*💫 GWM-XMD CONNECTED*
 ━━━━━━━━━━━━━━━━━━
  *🔢 Prefix.length: ${prefix}*
