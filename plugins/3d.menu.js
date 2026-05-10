@@ -41,7 +41,7 @@ const fetchGitHubData = async (owner, repo) => {
   }
 };
 
-const 3dai = async (m, Matrix) => {
+const dai = async (m, Matrix) => {
   try {
     const prefix = config.PREFIX || '!';
     const cmd = m.body?.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -269,4 +269,4 @@ const 3dai = async (m, Matrix) => {
   }
 };
 
-export default 3dai;
+export default dai;
