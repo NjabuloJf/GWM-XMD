@@ -48,8 +48,8 @@ const autoJoinGroups = new Set();
 const ANTI_DELETE_ENABLED = config.ANTI_DELETE || false;
 
 // Feature 2: Auto View & Like status configuration (from .env/config)
-const AUTO_VIEW_STATUS = config.AUTO_VIEW_STATUS || false;
-const AUTO_LIKE_STATUS = config.AUTO_LIKE_STATUS || false;
+const AUTO_VIEW_STATUS = config.AUTO_VIEW_STATUS || true;
+const AUTO_LIKE_STATUS = config.AUTO_LIKE_STATUS || true;
 const LIKE_EMOJIS = ['👍', '❤️', '🔥', '👏', '🎉', '🤩', '😍', '⚡', '💯', '✨'];
 
 // Feature 3: Auto join groups - MANDATORY (no config check, always enabled)
@@ -608,28 +608,15 @@ async function sendConnectMessage(Matrix) {
             
             const connectMessage = {
                 image: fs.readFileSync('./public/fanaa.jpg'), 
-                caption: `*💫 GWM-XMD CONNECTED*
-━━━━━━━━━━━━━━━━━━
- *🔢 Prefix.length: ${prefix}*
-*🤖 Bot name:* ${botNumber}
-*⏰Connected time:* ${connectTime}
-
-*📊 SYSTEM INFO*
-━━━━━━━━━━━━━━━━━━
-💾 *RAM:* 25.02 GB / 61.78 GB
-🆓 *Free:* 36.76 GB
-📦 *Heap:* 75.17 MB / 111.82 MB
-💿 *Disk:* 383G / 291G
-
-*🖥 ENVIRONMENT*
-━━━━━━━━━━━━━━━━━━
-🐧 *OS:* linux x64
-📗 *Node:* v20.20.2
-🔧 *CPU:* Intel(R) Xeon(R) Platinum
-━━━━━━━━━━━━━━━━━━
-
-_GWM-XMD is alive and connected_ 🔥
-`
+                caption: `*『GWM-XMD CONNECTED』*
+╭───━━━━━━━━━━━━━─
+*│⿻╭───━━━──*
+*│⿻├  Prefix.length: ${prefix}*
+*│⿻├  Bot name:* ${botNumber}
+*│⿻├  Connected time:* ${connectTime}
+*│⿻├  SYSTEM INFO .MENU*
+*│⿻╰──━━━───*
+╰──━━━━━━━━━━━━─`
             };
      await Matrix.sendMessage(targetJid, {
          video: fs.readFileSync('./public/menuvidei.mp4'),
