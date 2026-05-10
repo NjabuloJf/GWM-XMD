@@ -104,7 +104,7 @@ const coloraii = async (m, Matrix) => {
 ⏰ᴛɪᴍᴇ: ${xtime}
 ⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}
 
-*『Coding ai』*
+*『Color ai』*
 .ᴋʜʀᴏᴍᴀ
 .ᴄᴏᴏʟᴏʀs
 .ᴄᴏʟᴏʀʜᴜɴᴛ
