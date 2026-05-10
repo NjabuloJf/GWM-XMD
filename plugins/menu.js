@@ -52,8 +52,8 @@ const menu = async (m, Matrix) => {
       const repoImages = "https://raw.githubusercontent.com/NjabuloJf/Njabulo-Jb/main/public/fanaa.jpg";
 
       const repoInfo = {
-        name: config.REPO_NAME || "Njabulo-Jb",
-        owner: config.REPO_OWNER || "NjabuloJ",
+        name: config.REPO_NAME || "GWM-XMD",
+        owner: config.REPO_OWNER || "NjabuloJf",
         description: config.REPO_DESC || "Advanced WhatsApp Bot with Multiple Features",
         language: config.REPO_LANG || "JavaScript",
         version: config.BOT_VERSION || "1.0.0",
@@ -105,35 +105,25 @@ const menu = async (m, Matrix) => {
 ⭐ᴛᴏᴛᴀʟ ᴜsᴇ: ${githubData.stars}
 
 ᴛᴏᴛᴀʟ ᴄᴏᴍᴍᴀɴᴅs ɢᴡᴍ
-[1].ᴀɪᴍᴇɴᴜ
-▸ᴛʏᴘᴇ: *menu-ai*
-[2].ᴅᴏᴡɴʟᴏᴀᴅᴍᴇɴᴜ
-▸ᴛʏᴘᴇ: *menu-download*
-[3].ɢʀᴏᴜᴘᴍᴇɴᴜ
-▸ᴛʏᴘᴇ: *menu-group*
-[4].sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
-▸ᴛʏᴘᴇ: *menu-settings*
-[5].ᴏᴡɴᴇʀ.ᴍᴇɴᴜ
-▸ᴛʏᴘᴇ: *menu-owner*
-[6].ɢᴇɴᴇʀᴀʟ.ᴍᴇɴᴜ
-▸ᴛʏᴘᴇ: *menu-general*
-[7].ᴍᴇɴᴜ.ᴄᴏᴍᴍᴀɴᴅᴀs
-▸ᴛʏᴘᴇ: *menu-menu*
-[8].ᴍᴀɪɴ.ᴍᴇɴᴜ
-▸ᴛʏᴘᴇ: *main-menu*
-[9].ʙɪɢ.ᴛᴇᴄʜᴍᴇɴᴜ
-[10].ɢᴏᴏɢʟᴇ-ᴀɪ-ғᴀᴍɪʟʏᴍᴇɴᴜ
-[11].ᴄᴏᴅɪɴɢ.ᴍᴇɴᴜ
-[12].ᴍᴜsɪᴄ.ᴀᴜᴅɪᴏ.ᴍᴇɴᴜ
-[13].ɪᴍᴀɢᴇ.ᴅᴇsɪɢɴ.ᴍᴇɴᴜ
-[14].ᴠɪᴅᴇᴏ.ᴇᴅɪᴛɪɴɢ.ᴍᴇɴᴜ
-[15].ᴡʀɪᴛɪɴɢ.sᴇᴀʀᴄʜ.ᴍᴇɴᴜ
-[16].ᴀᴜᴛᴏᴍᴀᴛɪᴏɴ.ᴍᴇɴᴜ
-[17].3ᴅ.ɢᴀᴍᴇ.ᴍᴇɴᴜ
-[18].ᴄᴏʟᴏʀ.ᴀɪ.ᴍᴇɴᴜ
-[19].sᴏᴄɪᴀʟ.ᴅᴏᴡɴʟᴏᴀᴅs.ᴍᴇɴᴜ
-[20].sᴘᴏʀᴛs.ʙᴇᴛᴛɪɴɢ.ᴍᴇɴᴜ
-[21].ᴀɢᴇɴᴛᴀᴜᴛᴏ.ᴍᴇɴᴜ 
+[1].ɢʀᴏᴜᴘᴍᴇɴᴜ
+[2].sᴇᴛᴛɪɴɢsᴍᴇɴᴜ
+[3].ᴏᴡɴᴇʀ.ᴍᴇɴᴜ
+[4].ɢᴇɴᴇʀᴀʟ.ᴍᴇɴᴜ
+[5].ᴍᴇɴᴜ.ᴄᴏᴍᴍᴀɴᴅᴀs
+[6].ᴍᴀɪɴ.ᴍᴇɴᴜ
+[7].ʙɪɢ.ᴛᴇᴄʜᴍᴇɴᴜ
+[8].ɢᴏᴏɢʟᴇ-ᴀɪ-ғᴀᴍɪʟʏᴍᴇɴᴜ
+[9].ᴄᴏᴅɪɴɢ.ᴍᴇɴᴜ
+[10].ᴍᴜsɪᴄ.ᴀᴜᴅɪᴏ.ᴍᴇɴᴜ
+[11].ɪᴍᴀɢᴇ.ᴅᴇsɪɢɴ.ᴍᴇɴᴜ
+[12].ᴠɪᴅᴇᴏ.ᴇᴅɪᴛɪɴɢ.ᴍᴇɴᴜ
+[13].ᴡʀɪᴛɪɴɢ.sᴇᴀʀᴄʜ.ᴍᴇɴᴜ
+[14].ᴀᴜᴛᴏᴍᴀᴛɪᴏɴ.ᴍᴇɴᴜ
+[15].3ᴅ.ɢᴀᴍᴇ.ᴍᴇɴᴜ
+[16].ᴄᴏʟᴏʀ.ᴀɪ.ᴍᴇɴᴜ
+[17].sᴏᴄɪᴀʟ.ᴅᴏᴡɴʟᴏᴀᴅs.ᴍᴇɴᴜ
+[18].sᴘᴏʀᴛs.ʙᴇᴛᴛɪɴɢ.ᴍᴇɴᴜ
+[19].ᴀɢᴇɴᴛᴀᴜᴛᴏ.ᴍᴇɴᴜ 
 
 ᴜsᴇ *(.&-)* & ғᴜʟʟ ɴᴀᴍᴇ ʟɪᴋᴇ *ᴍᴀɪɴ.ᴍᴇɴᴜ*
 ᴛᴏ sᴇᴇ ᴏʟʟ ᴄᴏᴍᴍᴀɴᴅs`,
