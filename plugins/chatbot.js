@@ -274,7 +274,7 @@ const chatbot = async (m, Matrix) => {
       }, { quoted: m });
     }
 
-    await m.React("✅");
+    
     return Matrix.sendMessage(chatId, {
       image: img,
       caption: `🎨 *Generated Image*\n\n📝 Prompt: ${prompt}\n\n🤖 Created by Njabulo-AI`
@@ -298,7 +298,7 @@ const chatbot = async (m, Matrix) => {
       }, { quoted: m });
     }
 
-    await m.React("✅");
+    
     return Matrix.sendMessage(chatId, {
       text: `🧊 *3D Model Description*\n\n${description}\n\n🤖 Njabulo-AI 3D Expert`
     }, { quoted: m });
@@ -316,7 +316,7 @@ const chatbot = async (m, Matrix) => {
       const aiResponse = await callAI(media.prompt, 'You are Njabulo-AI, a helpful image analysis and editing assistant. Be friendly and offer specific help with images.', conversationId);
       
       if (aiResponse) {
-        await m.React("✅");
+        
         await Matrix.sendMessage(chatId, {
           text: `🖼️ *Image Received*\n\n${aiResponse}\n\n💡 *I can help you:*\n• Describe the image in detail\n• Edit the image (say "edit this image to...")\n• Enhance quality\n• Remove background\n• Generate similar images\n• Extract colors from the image\n\nJust tell me what you need!`
         }, { quoted: m });
@@ -330,7 +330,7 @@ const chatbot = async (m, Matrix) => {
     const reply = await callAI(media.prompt, 'You are Njabulo-AI, a helpful multimedia assistant. Be friendly and offer specific help.', conversationId);
     
     if (reply) {
-      await m.React("✅");
+      
       return Matrix.sendMessage(chatId, {
         text: `🤖 *Njabulo-AI*\n\n${reply}`
       }, { quoted: m });
@@ -367,7 +367,7 @@ Be helpful, friendly, conversational, and proactive in offering your capabilitie
       }, { quoted: m });
     }
 
-    await m.React("✅");
+    
     return Matrix.sendMessage(chatId, {
       text: `🤖 *Njabulo-AI*\n\n${reply}`
     }, { quoted: m });
