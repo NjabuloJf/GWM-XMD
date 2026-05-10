@@ -138,7 +138,9 @@ const socialdownloadsmenu = async (m, Matrix) => {
 .ᴜɴsᴘʟᴀsʜ
 .ʜᴀᴘᴘʏᴍᴏᴅ
 .ᴀᴘᴋᴍɪʀʀᴏʀ
-.ғᴍ`,
+.ғᴍ
+.ᴘʟᴀʏ
+.ᴠɪᴅᴇᴏ`,
           },
           footer: {
             text: "ᴀssɪsᴛᴀɴᴛ ʙʏ sɪʀ ɴᴊᴀʙᴜʟᴏ-ᴊʙ ᴜɪ",
