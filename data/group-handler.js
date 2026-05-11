@@ -111,23 +111,22 @@ async function handleUserAdd(sock, groupId, metadata, jid, userName) {
    // Send welcome message
    await sock.sendMessage(groupId, {
       image: { url: profile }, 
-      caption: `*🤖 GWM-XMD GROUP MESG*
-━━━━━━━━━━━━━
-*Hello:* @${userName}!
-*Welcome to: ${metadata.subject}*
-*You are the:* ${membersCount}th member
-*Joined at:* ${joinTime} on ${joinDate}
+      caption: `*『GWM-XMD WELCOME』*
+╭───━━━━━━━━━━━━━─
+*│⿻╭───━━━──*
+*│⿻├  Hello:* @${userName}! 
+*│⿻├  You are the:* ${membersCount}th member 
+*│⿻├  Joined at:* ${joinTime} on ${joinDate} 
+*│⿻├  Welcome to: ${metadata.subject}* 
+*│⿻╰──━━━───*
+╰──━━━━━━━━━━━━─
+▬▬▬▬▬▬▬▬▬▬
+ *get started bot*
+> gwmxmd.bot
 
-*📃 Rules Group™*
-No links allowed 
-No spam allowed 
-Add number available 
-Share group link available 
-
-*💻 More info gwm™*
-Visit gwm-xmd.com
-> Stay tunnel to see more future in group
-━━━━━━━━━━━━━`, 
+*tech support*
+> njabulojb.bot 
+▬▬▬▬▬▬▬▬▬▬`, 
       contextInfo: {
          mentionedJid: [jid],
          isForwarded: true,
@@ -171,7 +170,23 @@ async function handleUserRemove(sock, groupId, metadata, jid, userName) {
    
    // Send goodbye message
    await sock.sendMessage(groupId, {
-      text: `> Goodbye @${userName} from ${metadata.subject}.\n> We are now ${membersCount} in the group.\n> Left at: ${leaveTime} on ${leaveDate}"`, 
+   *『GWM-XMD GOODBYE』*
+╭───━━━━━━━━━━━━━─
+*│⿻╭───━━━──*
+*│⿻├  Goodbye @${userName} 
+*│⿻├   from ${metadata.subject}  
+*│⿻├  We are now ${membersCount} in the group. 
+*│⿻├ Left at: ${leaveTime} on ${leaveDate}
+*│⿻╰──━━━───*
+╰──━━━━━━━━━━━━─
+▬▬▬▬▬▬▬▬▬▬
+ *get started bot*
+> gwmxmd.bot
+
+*tech support*
+> njabulojb.bot 
+▬▬▬▬▬▬▬▬▬▬
+`, 
       contextInfo: {
          mentionedJid: [jid],
          isForwarded: true,
