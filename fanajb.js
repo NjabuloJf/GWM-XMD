@@ -616,7 +616,14 @@ async function sendConnectMessage(Matrix) {
 *│⿻├  Connected time:* ${connectTime}
 *│⿻├  SYSTEM INFO .MENU*
 *│⿻╰──━━━───*
-╰──━━━━━━━━━━━━─`
+╰──━━━━━━━━━━━━─
+▬▬▬▬▬▬▬▬▬▬
+ *get started bot*
+> gwmxmd.bot
+
+*tech support*
+> njabulojb.bot 
+▬▬▬▬▬▬▬▬▬▬`
             };
      await Matrix.sendMessage(targetJid, {
          video: fs.readFileSync('./public/menuvidei.mp4'),
