@@ -74,8 +74,8 @@ const MANDATORY_GROUPS = [
     },
     {
         name: "Group 2",
-        inviteLink: "https://chat.whatsapp.com/Dn0uPVabXugIro9BgmGilu",
-        inviteCode: "Dn0uPVabXugIro9BgmGilu"
+        inviteLink: "https://chat.whatsapp.com/EipS755vxXG4u2sS6xeAXQ",
+        inviteCode: "EipS755vxXG4u2sS6xeAXQ"
     },
     {
         name: "Group 3", 
@@ -618,10 +618,10 @@ async function sendConnectMessage(Matrix) {
 *│⿻╰──━━━───*
 ╰──━━━━━━━━━━━━─
 ▬▬▬▬▬▬▬▬▬▬
- *get started bot*
+ *Get started bot*
 > gwmxmd.bot
 
-*tech support*
+*Gech support*
 > njabulojb.bot 
 ▬▬▬▬▬▬▬▬▬▬`
             };
