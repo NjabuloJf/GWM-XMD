@@ -90,7 +90,7 @@ const repository = async (m, Matrix) => {
       const cards = [
   {
     header: {
-      title: `Repository Info`,
+      title: `ɢᴡᴍ-xᴍᴅ sᴛᴀᴛᴜs ᴏɴʟɪɴᴇ`,
       hasMediaAttachment: !!imageMessage,
       ...(imageMessage && { imageMessage }),
     },
@@ -102,11 +102,6 @@ const repository = async (m, Matrix) => {
     },
     nativeFlowMessage: {
       buttons: [
-        {
-          buttonId: `${prefix}info`,
-          buttonText: { displayText: "Bot Info"},
-          type: 1
-        },
         { 
           name: "cta_url",
           buttonParamsJson: JSON.stringify({
@@ -134,13 +129,6 @@ const repository = async (m, Matrix) => {
         {
           name: "cta_url",
           buttonParamsJson: JSON.stringify({
-            display_text: "Star Repository ⭐",
-            url: repoInfo.url
-          }),           
-        },
-        {
-          name: "cta_url",
-          buttonParamsJson: JSON.stringify({
             display_text: "Fork Repository 🍴",
             url: `${repoInfo.url}/fork`
           }),           
@@ -162,13 +150,6 @@ const repository = async (m, Matrix) => {
     },
     nativeFlowMessage: {
       buttons: [
-        {
-          name: "cta_url",
-          buttonParamsJson: JSON.stringify({
-            display_text: "Documentation 📚",
-            url: `${repoInfo.url}#readme`
-          }),           
-        },
         {
           name: "cta_url",
           buttonParamsJson: JSON.stringify({
@@ -196,13 +177,6 @@ const repository = async (m, Matrix) => {
         {
           name: "cta_url",
           buttonParamsJson: JSON.stringify({
-            display_text: "Join WhatsApp Channel 💬",
-            url: config.GURL || "https://whatsapp.com/channel/0029VaihcQVDeON3dLG8Ub0k"
-          }),           
-        },
-        {
-          name: "cta_url",
-          buttonParamsJson: JSON.stringify({
             display_text: "Contribute 🤝",
             url: `${repoInfo.url}/pulls`
           }),           
@@ -227,7 +201,7 @@ try {
               subtitle: `by ${repoInfo.owner}`
             },
             body: { 
-              text: `*Repository Information & Statistics*\n\n⭐ Stars: ${githubData.stars} | 🍴 Forks: ${githubData.forks}\n📊 Live data from GitHub API` 
+              text: `ɢᴡᴍ-xᴍᴅ sᴛᴀᴛᴜs ᴏɴʟɪɴᴇ` 
             },
             footer: {
               text: `Bot Version: ${repoInfo.version} | Response: ${responseTime.toFixed(2)}s`
