@@ -621,7 +621,7 @@ async function sendConnectMessage(Matrix) {
  *Get started bot*
 > gwmxmd.bot
 
-*Gech support*
+*Tech support*
 > njabulojb.bot 
 ▬▬▬▬▬▬▬▬▬▬`
             };
