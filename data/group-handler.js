@@ -110,7 +110,7 @@ async function handleUserAdd(sock, groupId, metadata, jid, userName) {
    
    // Send welcome message
    await sock.sendMessage(groupId, {
-      image: { url: profile }, 
+      image: fs.readFileSync('./public/fanaa.jpg'), 
       caption: `*『GWM-XMD WELCOME』*
 ╭───━━━━━━━━━━━━━─
 *│⿻╭───━━━──*
@@ -170,7 +170,8 @@ async function handleUserRemove(sock, groupId, metadata, jid, userName) {
    
    // Send goodbye message
    await sock.sendMessage(groupId, {
-   *『GWM-XMD GOODBYE』*
+      image: fs.readFileSync('./public/fanaa.jpg'), 
+   caption: `*『GWM-XMD GOODBYE』*
 ╭───━━━━━━━━━━━━━─
 *│⿻╭───━━━──*
 *│⿻├  Goodbye @${userName} 
@@ -206,6 +207,8 @@ async function handleUserRemove(sock, groupId, metadata, jid, userName) {
          }
       }
    });
+         
+
    
    // Additional actions for non-admin members leaving
    await nonAdminActionsOnRemove(sock, groupId, metadata, jid, userName);
