@@ -121,10 +121,10 @@ async function handleUserAdd(sock, groupId, metadata, jid, userName) {
 *│⿻╰──━━━───*
 ╰──━━━━━━━━━━━━─
 ▬▬▬▬▬▬▬▬▬▬
- *get started bot*
+ *Get started bot*
 > gwmxmd.bot
 
-*tech support*
+*Tech support*
 > njabulojb.bot 
 ▬▬▬▬▬▬▬▬▬▬`, 
       contextInfo: {
@@ -181,10 +181,10 @@ async function handleUserRemove(sock, groupId, metadata, jid, userName) {
 *│⿻╰──━━━───*
 ╰──━━━━━━━━━━━━─
 ▬▬▬▬▬▬▬▬▬▬
- *get started bot*
+ *Get started bot*
 > gwmxmd.bot
 
-*tech support*
+*Tech support*
 > njabulojb.bot 
 ▬▬▬▬▬▬▬▬▬▬
 `, 
