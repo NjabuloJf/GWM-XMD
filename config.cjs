@@ -22,7 +22,7 @@ const config = {
   BOT_NAME: process.env.BOT_NAME || "GWM-XMD",
   BOT_VERSION: process.env.BOT_VERSION || "1.0.0",
   REPO_URL: process.env.REPO_URL || "https://github.com/Njabulo/GWM-XMD",
-  REPO_OWNER: process.env.REPO_OWNER || "Njabulo",
+  REPO_OWNER: process.env.REPO_OWNER || "NjabuloJf",
   REPO_NAME: process.env.REPO_NAME || "GWM-XMD",
   MENU_IMAGE: process.env.MENU_IMAGE || "https://files.catbox.moe/vy8uyv.jpg",
   URL_CHANNEL: process.env.URL_CHANNEL || "https://whatsapp.com/channel/0029VbCZ6JNLY6dBhDfmCY1K", 
