@@ -1,7 +1,7 @@
 
 <p>
 <a href="https://njabulobot.vercel.app/" target="_blank" rel="noopener noreferrer">
-<img src="https://img.shields.io/badge/website-bot-purple?style=social&logo=github" alt="Njabulo Jb" />
+<img src="https://img.shields.io/badge/Start-free-bot-purple?style=social&logo=github" alt="Njabulo Jb" />
 </a>
 </p>
 
@@ -145,7 +145,7 @@
           <a href="+26777821911" target="_blank" rel="noopener noreferrer" className="mr-4">
             <img src="https://img.shields.io/badge/SMS-green?style=social&logo=messenger" alt="Message Owner" />
           </a>
-          <a href="fanajbai@gmail.com" target="_blank" rel="noopener noreferrer" className="mr-4">
+          <a href="fanajb65@gmail.com" target="_blank" rel="noopener noreferrer" className="mr-4">
             <img src="https://img.shields.io/badge/Gimal-green?style=social&logo=Gmail" alt="My Gmail" />
           </a>
 
