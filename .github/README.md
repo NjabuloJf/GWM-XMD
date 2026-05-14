@@ -1,7 +1,7 @@
 
 <p>
 <a href="https://njabulobot.vercel.app/" target="_blank" rel="noopener noreferrer">
-<img src="https://img.shields.io/badge/Start-free-bot-purple?style=social&logo=github" alt="Njabulo Jb" />
+<img src="https://img.shields.io/badge/Start-bot-purple?style=social&logo=github" alt="Njabulo Jb" />
 </a>
 </p>
 
